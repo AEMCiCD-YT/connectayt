@@ -310,7 +310,7 @@ ul { list-style: none; margin: 0; padding: 0; }
   position: relative;
   padding: 10.5rem 1.5rem 6.5rem;
   background-color: var(--bg-body);
-  background-image: linear-gradient(90deg, rgba(7, 14, 21, 0.95) 0%, rgba(10, 20, 29, 0.85) 45%, rgba(7, 14, 21, 0.35) 100%), url('assets/images/hero_background_universidades.jpg');
+  background-image: linear-gradient(90deg, rgba(7, 14, 21, 0.95) 0%, rgba(10, 20, 29, 0.85) 45%, rgba(7, 14, 21, 0.35) 100%), url('../images/hero_background_universidades.jpg');
   background-size: cover;
   background-position: right center;
   background-repeat: no-repeat;
@@ -895,7 +895,7 @@ ul { list-style: none; margin: 0; padding: 0; }
    ========================================================= */
 @media (max-width: 900px) {
   .hero-gala {
-    background-image: linear-gradient(180deg, rgba(7, 14, 21, 0.92) 0%, rgba(10, 20, 29, 0.88) 60%, rgba(7, 14, 21, 0.98) 100%), url('assets/images/hero_background_universidades.jpg');
+    background-image: linear-gradient(180deg, rgba(7, 14, 21, 0.92) 0%, rgba(10, 20, 29, 0.88) 60%, rgba(7, 14, 21, 0.98) 100%), url('../images/hero_background_universidades.jpg');
     background-position: center center;
   }
   .location-container, .contact-grid { grid-template-columns: 1fr; }

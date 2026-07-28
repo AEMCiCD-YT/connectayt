@@ -1,0 +1,56 @@
+1. Sección: Inicio
+
+Estructura deseada: Headline (titular) atractivo que denote comunidad, subtítulo descriptivo para ubicar al usuario, detalles clave (fecha/hora) y un mensaje claro sobre el control de acceso.
+
+Ejemplo de redacción:
+    - Titular: ¡Bienvenido a Conecta Universidades — Integración IEEE 2026!   
+    - Subtítulo: Únete a este evento interuniversitario de integración, networking estudiantil y fortalecimiento de comunidades tecnológicas.   
+    - Cuándo: Sábado 14 de noviembre de 2026.   
+    - Horario referencial: 20h00 – 02h00.   
+    - Acceso: Este será un evento privado con acceso controlado mediante registro, gafete, pulsera o acreditación.   
+    
+2. Sección: Misión y Visión (El enfoque del evento)
+
+Estructura deseada: Párrafos cortos o viñetas que expliquen el propósito del evento, destacando claramente la diferencia entre esta integración y una feria tradicional, usando un tono que inspire conexión e intercambio.
+
+Ejemplo de redacción:
+    - Nuestra Misión: Buscamos generar una experiencia de encuentro entre comunidades universitarias, promoviendo la colaboración, el intercambio de ideas, la convivencia y la creación de redes estudiantiles.   
+    - Nuestra Dinámica: A diferencia de una feria empresarial tradicional o abierta al público, priorizamos la movilidad, la conversación y la interacción natural. Es un espacio diseñado para el relacionamiento directo, acercando marcas e instituciones interesadas al talento joven.   
+    
+3. Sección: Patrocinadores
+
+Estructura deseada: Mensaje persuasivo (B2B) dirigido a marcas e instituciones, enumeración clara de los planes de patrocinio y mención de modalidades alternativas de apoyo.
+
+Ejemplo de redacción:
+    - ¿Por qué participar como sponsor?: Participar en Conecta Universidades permite a su empresa o institución acercarse directamente a comunidades universitarias, estudiantes líderes y talento joven vinculado a ciencia, tecnología, innovación y negocios.   
+    - Nuestros Planes:
+        - Premium: Obtenga reconocimiento destacado en piezas principales, presencia prioritaria frente a delegaciones y la posibilidad de realizar una activación especial.   
+        - Estándar: Ideal para empresas que desean acercarse directamente a estudiantes en un ambiente flexible, con presencia de representantes para networking libre.   
+        - Básico: Apoye la experiencia del evento y logre presencia inicial ante comunidades universitarias con visibilidad en piezas digitales.   
+    Otras opciones de participación: Las empresas también pueden participar mediante aportes en especie, tales como productos para sorteos, merchandising institucional, cupones, beneficios, o servicios logísticos y tecnológicos.   
+
+4. Sección: Alianzas y Organizadores
+
+Estructura deseada: Reconocimiento institucional a las entidades creadoras del evento y mención a las comunidades académicas invitadas que enriquecen el networking.
+
+Ejemplo de redacción:
+    - Nuestros Organizadores: La coordinación de este evento es gestionada de manera conjunta por la Asociación de Estudiantes de Matemática, Ciencias Computacionales y Ciencia de Datos (AEMCiCD) y la Rama Estudiantil IEEE Yachay Tech.   
+    - Comunidad Universitaria: El evento contará con la presencia institucional de las organizaciones coorganizadoras, así como delegaciones estudiantiles, representantes de asociaciones, clubes y miembros de ramas estudiantiles IEEE de distintas universidades del país.   
+    
+5. Sección: Ubicación
+
+Estructura deseada: Información clara sobre el recinto, destacando que es un entorno preparado para la dinámica específica del evento.
+
+Ejemplo de redacción:
+    - Lugar tentativo: Acrópolis, Ibarra (Sujeto a confirmación contractual y logística).   
+    - El Espacio: Conecta Universidades se desarrollará en un recinto privado, adecuado específicamente para la integración universitaria, el networking estudiantil, la recepción de delegaciones invitadas y las activaciones de marca.   
+    
+6. Sección: Contacto
+
+Estructura deseada: Llamado a la acción (CTA) directo para facilitar la comunicación oficial de empresas, sponsors y delegaciones con el equipo organizador.
+
+Ejemplo de redacción:
+    - Únete a la integración: Para confirmar su participación como sponsor, aliado, o coordinar espacios y activaciones, póngase en contacto con nosotros:   
+    - AEMCiCD: asoemc@yachaytech.edu.ec   
+    - IEEE Yachay Tech: ieee@yachaytech.edu.ec   
+    - WhatsApp de coordinación: 098 727 8018
