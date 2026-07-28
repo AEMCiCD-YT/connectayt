@@ -77,7 +77,7 @@ Escala tonal del azul institucional. Es la escala más versátil del sistema: cu
 
 ---
 
-## Cómo se combinan las tres paletas
+## 6. Cómo se combinan las tres paletas
 
 | Contexto | Paleta dominante | Paleta de acento |
 |---|---|---|
@@ -86,3 +86,10 @@ Escala tonal del azul institucional. Es la escala más versátil del sistema: cu
 | **Conecta Universidades** | Fondo oscuro + Sombra Azul (base nocturna) | Logos Escuelas (neones, degradados) |
 
 **Regla general de contraste:** los colores con luminancia alta —blanco, amarillo (`#fdca26`), cian (`#00bcca`), verde (`#00bc52`), azul claro (`#3c9fe6`)— llevan texto oscuro o negro encima. El resto de la paleta (rojos, azules profundos, morado, bronce, negro) lleva texto blanco.
+
+---
+
+## 7. Contribuidores & Desarrolladores
+
+* **Ariel Pincay** ([@arielpincayy](https://github.com/arielpincayy)) — Co-Desarrollador / Maquetación y Diseño de **Conecta Universidades** (Integración IEEE 2026) y Estructura del Macroevento.
+* **Equipo AEMCiCD & IEEE Yachay Tech** — Co-Organización y Desarrollo Institucional para **Conecta Empresas** y **Conecta Universidades**.
