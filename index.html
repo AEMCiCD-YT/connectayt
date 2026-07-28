@@ -4,71 +4,102 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Conecta IEEE YT 2026 | Portal Principal</title>
-  <meta name="description" content="Portal oficial de Conecta IEEE YT 2026 — Proyecto global organizado por IEEE Yachay Tech Student Branch y AEMCiCD. Acceso a Conecta Empresas y Conecta Universidades.">
+  <meta name="description" content="Proyecto Conecta IEEE YT 2026 — Dos componentes, un solo ecosistema de talento e innovación. Organizado conjuntamente por IEEE Yachay Tech Student Branch y AEMCiCD.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Outfit:wght@600;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles-hub.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles-hub.css?v=2.0">
 </head>
 <body>
 
-  <header>
-    <a class="brand-hub" href="index.html">
-      <strong>CONECTA IEEE YT</strong>
-      <span>MACROEVENTO · 2026</span>
-    </a>
+  <!-- ===================== HERO SECTION (CABECERA PRINCIPAL) ===================== -->
+  <header class="site-header-hub">
+    <div class="header-inner-hub">
+      <a class="brand-hub" href="index.html" aria-label="Conecta IEEE YT 2026, inicio">
+        <span class="brand-mark-hub" aria-hidden="true">
+          <svg viewBox="0 0 40 40" width="34" height="34">
+            <rect x="4" y="4" width="14" height="14" rx="3" fill="#00629b"/>
+            <rect x="22" y="4" width="14" height="14" rx="3" fill="#3c9fe6"/>
+            <rect x="4" y="22" width="14" height="14" rx="3" fill="#00bcca"/>
+            <rect x="22" y="22" width="14" height="14" rx="3" fill="#ef4036"/>
+          </svg>
+        </span>
+        <span class="brand-text-hub">
+          <strong>CONECTA IEEE YT</strong>
+          <span class="subbrand-tag-hub">2026</span>
+        </span>
+      </a>
+    </div>
   </header>
 
   <main>
-    <section class="hub-hero">
-      <p class="eyebrow">Proyecto Global Conecta 2026</p>
-      <h1>Dos experiencias, un solo ecosistema de talento e innovación</h1>
-      <p>
-        Selecciona la vertiente a la que deseas ingresar. Proyecto desarrollado por la Asociación de Estudiantes de Matemática, Ciencias Computacionales y Ciencia de Datos (AEMCiCD) y la Rama Estudiantil IEEE Yachay Tech.
-      </p>
+    <section class="hero-hub">
+      <div class="hero-inner-hub">
+        <p class="eyebrow-hub">Proyecto Conecta IEEE YT 2026</p>
+        <h1>Dos componentes, un solo ecosistema de talento e innovación</h1>
+        <p class="hero-lead-hub">
+          Elige tu perfil y descubre cómo estamos conectando a la academia, la industria y la comunidad tecnológica. Un proyecto organizado conjuntamente por IEEE Yachay Tech University Student Branch y AEMCiCD.
+        </p>
+      </div>
     </section>
 
-    <div class="selector-dual">
-      
-      <!-- Subdominio / Tarjeta 1: Conecta Empresas -->
-      <article class="card-hub empresas">
-        <div>
-          <span class="hub-tag tag-emp">Feria de Trabajo y Vinculación</span>
-          <h2>Conecta Empresas</h2>
-          <p>
-            Entorno profesional, académico y de networking diseñado para conectar a empresas, instituciones y organizaciones con talento universitario.
-          </p>
+    <!-- ===================== SELECTOR DUAL (TARJETAS DE NAVEGACIÓN) ===================== -->
+    <section class="selector-dual-section">
+      <div class="selector-dual-container">
+        
+        <!-- Tarjeta 1: Conecta Empresas (Perfil Corporativo y Empleabilidad) -->
+        <article class="card-hub card-empresas">
+          <div class="card-header-hub">
+            <span class="hub-tag tag-empresas">Feria de Trabajo y Vinculación</span>
+            <p class="perfil-subtitle">Perfil Corporativo y Empleabilidad</p>
+            <h3>Conecta Empresas</h3>
+            <p class="card-desc">
+              Un entorno profesional, académico y de networking diseñado para conectar a empresas, instituciones y organizaciones con talento universitario.
+            </p>
+          </div>
+
           <ul class="hub-points">
             <li>Generación de oportunidades de empleo, pasantías y prácticas preprofesionales.</li>
             <li>Interacción directa con estudiantes, egresados y jóvenes profesionales.</li>
-            <li>Difusión de convocatorias y posicionamiento de marca empleadora.</li>
+            <li>Difusión de convocatorias y posicionamiento estratégico de la marca empleadora.</li>
           </ul>
-        </div>
-        <a href="empresas/index.html" class="btn-hub btn-hub-emp">Ingresar a Conecta Empresas</a>
-      </article>
 
-      <!-- Subdominio / Tarjeta 2: Conecta Universidades -->
-      <article class="card-hub universidades">
-        <div>
-          <span class="hub-tag tag-uni">Integración & Networking Estudiantil</span>
-          <h2>Conecta Universidades</h2>
-          <p>
-            Evento interuniversitario de integración, gala nocturna y fortalecimiento de comunidades tecnológicas en una atmósfera relajada e inspiradora.
-          </p>
+          <div class="card-footer-hub">
+            <a href="empresas/index.html" class="btn-hub btn-hub-empresas">Descubrir Conecta Empresas</a>
+          </div>
+        </article>
+
+        <!-- Tarjeta 2: Conecta Universidades (Perfil Estudiantil e Integración) -->
+        <article class="card-hub card-universidades">
+          <div class="card-header-hub">
+            <span class="hub-tag tag-universidades">Integración y Networking Estudiantil</span>
+            <p class="perfil-subtitle">Perfil Estudiantil e Integración</p>
+            <h3>Conecta Universidades</h3>
+            <p class="card-desc">
+              Un evento interuniversitario orientado a reunir a estudiantes, ramas IEEE, asociaciones, clubes universitarios y aliados estratégicos en un mismo espacio de conexión.
+            </p>
+          </div>
+
           <ul class="hub-points">
-            <li>Encuentro entre ramas IEEE, asociaciones y clubes universitarios del país.</li>
-            <li>Gala de integración, networking libre y activaciones especiales.</li>
-            <li>Evento privado con acceso exclusivo mediante registro previo.</li>
+            <li>Promoción de la colaboración, el intercambio de ideas y la creación de redes estudiantiles.</li>
+            <li>Participación en activaciones, experiencias y relacionamiento directo con marcas e instituciones.</li>
+            <li>Un evento de acceso privado y controlado para acercar el talento joven.</li>
           </ul>
-        </div>
-        <a href="universidades/index.html" class="btn-hub btn-hub-uni">Ingresar a Conecta Universidades</a>
-      </article>
 
-    </div>
+          <div class="card-footer-hub">
+            <a href="universidades/index.html" class="btn-hub btn-hub-universidades">Conocer Conecta Universidades</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
   </main>
 
-  <footer>
-    <p>© 2026 Organizado conjuntamente por AEMCiCD y IEEE Yachay Tech Student Branch.</p>
+  <!-- ===================== FOOTER INSTITUCIONAL ===================== -->
+  <footer class="footer-hub">
+    <div class="footer-inner-hub">
+      <p class="footer-orgs">Organizan: <strong>AEMCiCD – IEEE Yachay Tech.</strong></p>
+    </div>
   </footer>
 
 </body>
