@@ -91,5 +91,6 @@ Escala tonal del azul institucional. Es la escala más versátil del sistema: cu
 
 ## 7. Contribuidores & Desarrolladores
 
-* **Ariel Pincay** ([@arielpincayy](https://github.com/arielpincayy)) — Co-Desarrollador / Maquetación y Diseño de **Conecta Universidades** (Integración IEEE 2026) y Estructura del Macroevento.
-* **Equipo AEMCiCD & IEEE Yachay Tech** — Co-Organización y Desarrollo Institucional para **Conecta Empresas** y **Conecta Universidades**.
+* **Mateo** ([@MATEO197802](https://github.com/MATEO197802)) — Desarrollador Principal / Creador de la sección **Conecta Universidades** (Integración IEEE 2026 - Gala Modo Noche) y Maquetador del Portal Hub Principal.
+* **Ariel Pincay** ([@arielpincayy](https://github.com/arielpincayy)) — Desarrollador de la sección **Conecta Empresas** (Feria B2B Modo Día).
+* **Equipo AEMCiCD & IEEE Yachay Tech** — Co-Organización Institucional.
