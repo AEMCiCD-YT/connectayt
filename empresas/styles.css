@@ -2,26 +2,28 @@
 
 /* Tema de Empresas homologado con Conecta Universidades. */
 body { background: var(--bg-body); color: var(--texto-main); }
+.header-inner { max-width: 1480px; }
 .brand-text span:last-child { color: var(--escuela-cian); }
 .primary-nav a { color: var(--texto-muted); }
 .primary-nav a:hover, .primary-nav a.active { color: var(--blanco); }
 
 .hero {
-  min-height: 100vh; padding: 8.5em 1.5em 5em; position: relative; overflow: hidden;
+  min-height: 100vh; padding: 10.5rem 1.5rem 6.5rem; position: relative; overflow: hidden;
   background-color: var(--bg-body);
   background-image: linear-gradient(90deg, rgba(7,14,21,.95) 0%, rgba(10,20,29,.85) 45%, rgba(7,14,21,.35) 100%), url('../universidades/assets/images/hero_background_universidades.jpg');
   background-size: cover; background-position: right center; background-repeat: no-repeat;
 }
 .hero::before { content: ''; position: absolute; width: 520px; height: 520px; right: 4%; top: 12%; border-radius: 50%; background: radial-gradient(circle, var(--glow-cian), var(--glow-morado) 42%, transparent 70%); filter: blur(20px); pointer-events: none; }
 .hero-inner { max-width: var(--container); margin: 0 auto; position: relative; z-index: 1; }
-.hero-copy { max-width: 690px; }
+.hero-copy { max-width: 780px; }
 .hero-copy h1 { color: var(--blanco); }
-.hero-lead { max-width: 62ch; color: var(--texto-muted); font-size: 1.1rem; }
-.hero-actions { display: flex; gap: 1em; flex-wrap: wrap; margin: 1.6em 0 2.2em; }
-.hero-facts { display: flex; gap: 2.5em; flex-wrap: wrap; margin: 0; }
-.hero-facts div { border-left: 2px solid var(--escuela-cian); padding-left: 1em; }
-.hero-facts dt { color: var(--escuela-cian); font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
-.hero-facts dd { color: var(--blanco); margin: .25em 0 0; }
+.hero-lead { max-width: 62ch; color: var(--texto-main); font-size: 1.25rem; margin: 1.4em 0 2em; line-height: 1.5; }
+.hero-actions { display: flex; gap: 1em; flex-wrap: wrap; margin-bottom: 2.5em; }
+.access-notice { margin-bottom: 2.5em; }
+.hero-facts { display: flex; gap: 2.5em; border-top: 1px solid var(--linea-glass); padding-top: 1.75em; margin: 0; }
+.hero-facts div { border-left: 0; padding-left: 0; }
+.hero-facts dt { color: var(--escuela-cian); font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; margin-bottom: .25em; }
+.hero-facts dd { color: var(--blanco); margin: 0; font-size: 1rem; font-weight: 700; }
 
 .section { padding: 5.5em 1.5em; background: var(--bg-body); }
 .section-alt { background: var(--bg-deep); }
