@@ -5,10 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Conecta Empresas 2026 | Feria Academia-Industria</title>
   <meta name="description" content="Conecta Empresas 2026 — feria de trabajo y vinculación academia-industria. IEEE Yachay Tech Student Branch y AEMCiCD. Hotel Ajaví, Ibarra.">
+  <meta name="theme-color" content="#1B3A6B">
+  <link rel="icon" type="image/png" sizes="32x32" href="../logos/Conecta%20Empresas/ce_logo_isocolor.png">
+  <link rel="apple-touch-icon" href="../logos/Conecta%20Empresas/ce_logo_isocolor.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=4.0">
 </head>
 <body class="theme-night">
 
@@ -17,19 +20,8 @@
   <!-- ===================== ENCABEZADO ===================== -->
   <header class="site-header" id="top">
     <div class="header-inner">
-      <a class="brand" href="../index.html" aria-label="Conecta Empresas, página principal">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 40 40" width="34" height="34">
-            <rect x="2" y="16" width="8" height="8" rx="1.5" fill="var(--rojo-base)"/>
-            <rect x="30" y="4" width="8" height="8" rx="1.5" fill="var(--azul-claro)"/>
-            <rect x="30" y="28" width="8" height="8" rx="1.5" fill="var(--azul-claro)"/>
-            <path d="M10 20 H24 M24 20 L32 12 M24 20 L32 28" stroke="var(--blanco)" stroke-width="2" fill="none" stroke-linecap="round"/>
-          </svg>
-        </span>
-        <span class="brand-text">
-          <strong>CONECTA</strong>
-          <span>EMPRESAS · 2026</span>
-        </span>
+      <a class="brand" href="../index.html" aria-label="Conecta Empresas, inicio">
+        <img src="../logos/Conecta%20Empresas/ce_logo_hcolor.png" alt="Conecta Empresas 2026" width="3204" height="601" loading="eager" decoding="async" style="height:48px;width:auto;display:block">
       </a>
 
       <div class="nav-details">
@@ -322,22 +314,22 @@
           IEEE Yachay Tech: <a href="mailto:ieee@yachaytech.edu.ec" class="text-link">ieee@yachaytech.edu.ec</a>
         </p>
 
-        <form class="contact-form reveal" action="#" method="POST">
+        <form class="contact-form reveal" action="#" method="POST" novalidate>
           <div class="form-row">
             <label for="nombre">Nombre del representante</label>
-            <input type="text" id="nombre" name="nombre" autocomplete="name" required>
+            <input type="text" id="nombre" name="nombre" autocomplete="name" required placeholder="Ej: Ana Torres…">
           </div>
           <div class="form-row">
             <label for="empresa">Empresa</label>
-            <input type="text" id="empresa" name="empresa" autocomplete="organization" required>
+            <input type="text" id="empresa" name="empresa" autocomplete="organization" required placeholder="Ej: Empresa S.A.…">
           </div>
           <div class="form-row">
             <label for="correo">Correo corporativo</label>
-            <input type="email" id="correo" name="correo" autocomplete="email" required>
+            <input type="email" id="correo" name="correo" autocomplete="email" inputmode="email" spellcheck="false" required placeholder="nombre@empresa.com…">
           </div>
           <div class="form-row">
             <label for="mensaje">Modalidad de interés y requerimientos</label>
-            <textarea id="mensaje" name="mensaje" rows="4"></textarea>
+            <textarea id="mensaje" name="mensaje" rows="4" autocomplete="off" placeholder="Detalle su modalidad y requerimientos…"></textarea>
           </div>
           <button type="submit" class="btn btn-primary btn-block">Enviar solicitud</button>
         </form>
@@ -349,6 +341,7 @@
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-brand">
+        <img src="../logos/Conecta%20Empresas/ce_logo_hblanco.png" alt="Conecta Empresas" width="3204" height="601" loading="lazy" decoding="async" style="height:42px;width:auto;display:block;margin-bottom:0.8rem">
         <strong>Conecta Empresas 2026</strong>
         <p>Organizan IEEE Yachay Tech University Student Branch y AEMCiCD.</p>
       </div>

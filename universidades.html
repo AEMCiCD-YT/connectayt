@@ -5,10 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Conecta Universidades 2026 | Integración & Gala IEEE</title>
   <meta name="description" content="Conecta Universidades 2026 — Evento interuniversitario de integración, networking estudiantil y gala de la comunidad tecnológica. Organizan AEMCiCD y IEEE Yachay Tech Student Branch.">
+  <meta name="theme-color" content="#8B4DB8">
+  <link rel="icon" type="image/png" sizes="32x32" href="logos/Conecta%20Universidades/cu_logo_isocolor.png">
+  <link rel="apple-touch-icon" href="logos/Conecta%20Universidades/cu_logo_isocolor.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles-universidades.css?v=2.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Montserrat:wght@700;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles-universidades.css?v=4.0">
 </head>
 <body class="theme-night">
 
@@ -18,24 +21,7 @@
   <header class="site-header" id="top">
     <div class="header-inner">
       <a class="brand" href="#inicio" aria-label="Conecta Universidades, inicio">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 40 40" width="34" height="34">
-            <defs>
-              <linearGradient id="galaGlow" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="var(--escuela-cian)" />
-                <stop offset="50%" stop-color="var(--escuela-morado)" />
-                <stop offset="100%" stop-color="var(--escuela-coral)" />
-              </linearGradient>
-            </defs>
-            <circle cx="20" cy="20" r="18" fill="none" stroke="url(#galaGlow)" stroke-width="2.5" />
-            <polygon points="20,8 26,16 34,20 26,24 20,32 14,24 6,20 14,16" fill="url(#galaGlow)" opacity="0.85" />
-            <circle cx="20" cy="20" r="4" fill="var(--blanco)" />
-          </svg>
-        </span>
-        <span class="brand-text">
-          <strong>CONECTA</strong>
-          <span class="subbrand-tag">UNIVERSIDADES · 2026</span>
-        </span>
+        <img src="logos/Conecta%20Universidades/cu_logo_hcolor.png" alt="Conecta Universidades 2026" width="2991" height="601" loading="eager" decoding="async" style="height:48px;width:auto;display:block">
       </a>
 
       <div class="nav-details">
@@ -345,20 +331,20 @@
 
         <div class="contact-grid">
           
-          <form class="contact-form reveal" action="#" method="POST">
+          <form class="contact-form reveal" action="#" method="POST" novalidate>
             <div class="form-group">
               <label for="nombre">Nombre Completo / Representante:</label>
-              <input type="text" id="nombre" name="nombre" required placeholder="Ej: Ing. María Pérez">
+              <input type="text" id="nombre" name="nombre" autocomplete="name" required placeholder="Ej: María Pérez…">
             </div>
 
             <div class="form-group">
               <label for="organizacion">Organización / Universidad / Empresa:</label>
-              <input type="text" id="organizacion" name="organizacion" required placeholder="Ej: Rama IEEE / Empresa Tech">
+              <input type="text" id="organizacion" name="organizacion" autocomplete="organization" required placeholder="Ej: Rama IEEE / Empresa Tech…">
             </div>
 
             <div class="form-group">
               <label for="correo">Correo Electrónico:</label>
-              <input type="email" id="correo" name="correo" required placeholder="ejemplo@correo.com">
+              <input type="email" id="correo" name="correo" autocomplete="email" inputmode="email" spellcheck="false" required placeholder="ejemplo@correo.com…">
             </div>
 
             <div class="form-group">
@@ -373,7 +359,7 @@
 
             <div class="form-group">
               <label for="mensaje">Mensaje / Requerimientos:</label>
-              <textarea id="mensaje" name="mensaje" rows="4" placeholder="Escriba su consulta o propuesta de participación..."></textarea>
+              <textarea id="mensaje" name="mensaje" rows="4" autocomplete="off" placeholder="Escriba su consulta o propuesta de participación…"></textarea>
             </div>
 
             <button type="submit" class="btn btn-primary btn-submit">Enviar Solicitud</button>
@@ -418,6 +404,7 @@
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-brand-block">
+        <img src="logos/Conecta%20Universidades/cu_logo_hblanco.png" alt="Conecta Universidades" width="2991" height="601" loading="lazy" decoding="async" style="height:42px;width:auto;display:block;margin-bottom:0.9rem">
         <p class="footer-title"><strong>Conecta Universidades 2026</strong></p>
         <p class="footer-sub">Jornada Interuniversitaria de Integración y Networking Tecnológico</p>
         <p>© 2026 Organizado por AEMCiCD y la Rama Estudiantil IEEE Yachay Tech.</p>

@@ -1,84 +1,239 @@
-@import url('../universidades/styles.css');
-
-/* Tema de Empresas homologado con Conecta Universidades. */
-body { background: var(--bg-body); color: var(--texto-main); }
-.header-inner { max-width: 1480px; }
-.brand-text span:last-child { color: var(--escuela-cian); }
-.primary-nav a { color: var(--texto-muted); }
-.primary-nav a:hover, .primary-nav a.active { color: var(--blanco); }
-
-.hero {
-  min-height: 100vh; padding: 10.5rem 1.5rem 6.5rem; position: relative; overflow: hidden;
-  background-color: var(--bg-body);
-  background-image: linear-gradient(90deg, rgba(7,14,21,.95) 0%, rgba(10,20,29,.85) 45%, rgba(7,14,21,.35) 100%), url('../universidades/assets/images/hero_background_universidades.jpg');
-  background-size: cover; background-position: right center; background-repeat: no-repeat;
+/* =========================================================
+   CONECTA EMPRESAS 2026 — Sistema CE
+   Brochure DNA: Navy #1B3A6B + Red #E63946 + LightBlue #006BA6
+   Tipografía: Poppins (display 700-800) + Inter (body 400) — corporativo estructurado
+   Layout: Light corporativo, 35-40% whitespace, 2-4 cols, simétrico, zero fotografía
+   ========================================================= */
+:root {
+  --conecta-navy:        #1B3A6B;
+  --conecta-navy-light:  #3D5C95;
+  --conecta-navy-soft:   #EAF0F8;
+  --conecta-navy-dark:   #0F1E3A;
+  --conecta-red:         #E63946;
+  --conecta-red-light:   #F44747;
+  --conecta-red-dark:    #A0252A;
+  --conecta-blue:        #006BA6;
+  --conecta-blue-dark:   #0052A3;
+  --blanco:              #FFFFFF;
+  --negro:               #111111;
+  --texto-main:          #404040;
+  --texto-muted:         #555555;
+  --texto-soft:          #6B7280;
+  --linea-glass:         rgba(27,58,107,0.14);
+  --linea-soft:          #E5E7EB;
+  --bg-body:             #FFFFFF;
+  --bg-soft:             #F6F8FB;
+  --bg-deep:             #F6F8FB;
+  --bg-card:             #FFFFFF;
+  --bg-header:           rgba(255,255,255,0.94);
+  --radius:              8px;
+  --radius-card:         10px;
+  --container:           1120px;
+  --transition:          240ms cubic-bezier(0.16,1,0.3,1);
+  --font-display:        'Poppins', sans-serif;
+  --font-body:           'Inter', 'Open Sans', sans-serif;
+  --h1-size: clamp(2.2rem, 4.2vw + 0.8rem, 3.4rem);
+  --h2-size: clamp(1.55rem, 2.2vw + 0.8rem, 2.2rem);
+  --h3-size: 1.18rem;
+  --body-size: 0.96rem;
+  color-scheme: light;
 }
-.hero::before { content: ''; position: absolute; width: 520px; height: 520px; right: 4%; top: 12%; border-radius: 50%; background: radial-gradient(circle, var(--glow-cian), var(--glow-morado) 42%, transparent 70%); filter: blur(20px); pointer-events: none; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+body {
+  margin: 0; font-family: var(--font-body); font-size: var(--body-size); font-weight: 400;
+  color: var(--texto-main); background: var(--bg-body); line-height: 1.65;
+  -webkit-font-smoothing: antialiased; overflow-x: hidden;
+}
+h1,h2,h3 { font-family: var(--font-display); margin: 0; color: var(--conecta-navy); text-wrap: balance; }
+h1 { font-size: var(--h1-size); font-weight: 800; line-height: 1.1; letter-spacing: -0.015em; }
+h2 { font-size: var(--h2-size); font-weight: 700; line-height: 1.2; }
+h3 { font-size: var(--h3-size); font-weight: 700; }
+p { margin: 0 0 1em; color: var(--texto-muted); max-width: 70ch; }
+p strong, li strong { color: var(--conecta-navy); }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; margin: 0; padding: 0; }
+img { max-width: 100%; height: auto; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+.skip-link { position: absolute; left: -999px; top: 0; background: var(--conecta-red); color: var(--blanco); padding: 0.75em 1.25em; z-index: 300; border-radius: 0 0 8px 0; font-weight: 700; }
+.skip-link:focus { left: 0; }
+:focus-visible { outline: 3px solid var(--conecta-navy); outline-offset: 3px; }
+.eyebrow { font-family: var(--font-body); font-size: 0.76rem; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; color: var(--conecta-blue); margin: 0 0 0.6em; }
+.section-lead { max-width: 64ch; font-size: 1.05rem; color: var(--texto-muted); line-height: 1.6; }
+
+/* Botones CE — rojo exclusivamente para CTA, 8px, hover dark */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--font-body); font-size: 0.92rem; font-weight: 700;
+  padding: 0.82em 1.6em; border-radius: 8px; border: 1px solid transparent;
+  cursor: pointer; transition: background-color var(--transition), border-color var(--transition), color var(--transition), transform var(--transition), box-shadow var(--transition);
+  text-align: center; touch-action: manipulation; -webkit-tap-highlight-color: rgba(230,57,70,0.2);
+}
+.btn-primary { background: #CC1F2A; color: var(--blanco); box-shadow: 0 4px 14px rgba(204,31,42,0.22); }
+.btn-primary:hover { background: var(--conecta-red-dark); transform: translateY(-1px); box-shadow: 0 7px 20px rgba(160,37,42,0.32); }
+.btn-primary:active { background: #7A1C24; transform: translateY(0); }
+.btn-ghost { background: var(--blanco); color: var(--conecta-navy); border-color: rgba(27,58,107,0.20); }
+.btn-ghost:hover { background: var(--conecta-navy-soft); border-color: var(--conecta-navy); color: var(--conecta-navy-dark); }
+.w-100 { width: 100%; }
+
+/* Header — blanco sólido, borde sutil navy */
+.site-header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  background: var(--bg-header); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--linea-glass);
+}
+.header-inner { max-width: 1320px; margin: 0 auto; padding: 1.0em 1.25em; display: flex; align-items: center; justify-content: space-between; gap: 1.2em; }
+.brand { display: flex; align-items: center; gap: 0.75em; flex-shrink: 0; }
+.brand img { height: 48px; width: auto; max-width: min(260px, 68vw); display: block; }
+.footer-brand img { max-width: min(220px, 72vw); height: auto; }
+.brand-text { display: flex; flex-direction: column; line-height: 1.05; }
+.brand-text strong { font-family: var(--font-display); font-size: 1.12rem; font-weight: 800; letter-spacing: 0.03em; color: var(--conecta-navy); }
+.brand-text span:last-child { font-size: 0.66rem; font-weight: 800; letter-spacing: 0.12em; color: var(--conecta-navy); text-transform: uppercase; }
+.primary-nav { flex-shrink: 0; }
+.primary-nav ul { display: flex; align-items: center; gap: 0.35em; flex-wrap: nowrap; }
+.primary-nav a { font-size: 0.84rem; font-weight: 600; color: var(--texto-muted); padding: 0.55em 1.05em; border-radius: 999px; border: 1px solid transparent; white-space: nowrap; line-height: 1.2; min-width: max-content; transition: color var(--transition), background-color var(--transition), border-color var(--transition); }
+.primary-nav a:hover { color: var(--conecta-navy); background: var(--conecta-navy-soft); }
+.primary-nav a.active { color: var(--blanco); background: var(--conecta-navy); border-color: var(--conecta-navy); font-weight: 700; }
+.primary-nav .nav-cta { background: var(--conecta-red); color: var(--blanco); padding: 0.62em 1.45em; font-weight: 800; white-space: nowrap; flex-shrink: 0; min-width: max-content; box-shadow: 0 4px 12px rgba(230,57,70,0.22); }
+.primary-nav .nav-cta:hover { background: var(--conecta-red-dark); color: var(--blanco); }
+.primary-nav .nav-cta.active { background: var(--conecta-red-dark); border-color: var(--conecta-red-dark); }
+.nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5em; flex-direction: column; gap: 5px; }
+.nav-toggle span { display: block; width: 24px; height: 2.5px; background: var(--conecta-navy); border-radius: 2px; transition: transform var(--transition); }
+
+/* Hero — navy a sangre, tagline blanco, estructura centrada formal */
+.hero {
+  min-height: 88vh; padding: 9.2rem 1.5rem 4.5rem; position: relative; overflow: hidden;
+  background-color: var(--conecta-navy);
+  background-image:
+    radial-gradient(circle at 72% 18%, rgba(255,255,255,0.08) 0%, transparent 42%),
+    linear-gradient(180deg, rgba(27,58,107,0.10) 0%, rgba(15,30,58,0.45) 100%),
+    url('media/images/background_empresas.png');
+  background-size: cover; background-position: center center; background-repeat: no-repeat;
+}
+.hero::before {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(15,30,58,0.88) 0%, rgba(27,58,107,0.78) 52%, rgba(27,58,107,0.42) 100%);
+  pointer-events: none;
+}
 .hero-inner { max-width: var(--container); margin: 0 auto; position: relative; z-index: 1; }
-.hero-copy { max-width: 780px; }
-.hero-copy h1 { color: var(--blanco); }
-.hero-lead { max-width: 62ch; color: var(--texto-main); font-size: 1.25rem; margin: 1.4em 0 2em; line-height: 1.5; }
-.hero-actions { display: flex; gap: 1em; flex-wrap: wrap; margin-bottom: 2.5em; }
-.access-notice { margin-bottom: 2.5em; }
-.hero-facts { display: flex; gap: 2.5em; border-top: 1px solid var(--linea-glass); padding-top: 1.75em; margin: 0; }
-.hero-facts div { border-left: 0; padding-left: 0; }
-.hero-facts dt { color: var(--escuela-cian); font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; margin-bottom: .25em; }
-.hero-facts dd { color: var(--blanco); margin: 0; font-size: 1rem; font-weight: 700; }
+.hero-copy { max-width: 740px; }
+.hero .eyebrow { color: rgba(255,255,255,0.82); }
+.hero h1 { color: var(--blanco); }
+.hero-lead { max-width: 62ch; color: rgba(255,255,255,0.88); font-size: 1.18rem; margin: 1.1em 0 1.9em; line-height: 1.55; }
+.hero-actions { display: flex; gap: 0.9em; flex-wrap: wrap; margin-bottom: 2.1em; }
+.hero .btn-primary { background: var(--conecta-red); }
+.hero .btn-ghost { background: rgba(255,255,255,0.12); color: var(--blanco); border-color: rgba(255,255,255,0.28); backdrop-filter: blur(8px); }
+.hero .btn-ghost:hover { background: var(--blanco); color: var(--conecta-navy); border-color: var(--blanco); }
+.access-notice { display: flex; align-items: center; gap: 1em; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.24); padding: 0.85em 1.2em; border-radius: 8px; margin-bottom: 2.1em; max-width: 680px; backdrop-filter: blur(8px); }
+.notice-badge { background: var(--conecta-red); color: var(--blanco); font-size: 0.70rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.32em 0.82em; border-radius: 999px; white-space: nowrap; }
+.access-notice p { margin: 0; font-size: 0.90rem; color: var(--blanco); max-width: none; }
+.hero-facts { display: flex; gap: 2.2em; border-top: 1px solid rgba(255,255,255,0.20); padding-top: 1.5em; margin: 0; }
+.hero-facts dt { color: rgba(255,255,255,0.68); font-size: 0.72rem; letter-spacing: 0.11em; text-transform: uppercase; margin-bottom: 0.25em; font-weight: 700; }
+.hero-facts dd { color: var(--blanco); margin: 0; font-size: 0.96rem; font-weight: 700; }
 
-.section { padding: 5.5em 1.5em; background: var(--bg-body); }
-.section-alt { background: var(--bg-deep); }
-.section-dark { background: var(--bg-body); }
+/* Secciones corporativas */
+.section { padding: 5rem 1.5rem; background: var(--blanco); }
+.section-alt { background: var(--bg-soft); }
+.section-dark { background: var(--blanco); }
 .section-inner { max-width: var(--container); margin: 0 auto; }
-.section h2 { color: var(--blanco); margin-bottom: .5em; }
+.section h2 { color: var(--conecta-navy); margin-bottom: 0.45em; }
 .section p { color: var(--texto-muted); }
-.section strong { color: var(--blanco); }
-.section-lead { max-width: 62ch; font-size: 1.1rem; }
+.section strong { color: var(--conecta-navy); }
 
-.card, .talent-box, .value-card, .modalidad-card { background: var(--bg-card); border: 1px solid var(--linea-glass); border-radius: var(--radius); box-shadow: 0 12px 35px rgba(0,0,0,.16); transition: background var(--transition), border-color var(--transition), transform var(--transition); }
-.card:hover, .talent-box:hover, .value-card:hover, .modalidad-card:hover { background: var(--bg-card-hover); border-color: var(--escuela-cian); transform: translateY(-4px); }
-.card h3, .talent-box h3, .value-card h3, .modalidad-card h3 { color: var(--blanco); }
-.benefits-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25em; }
-.card, .talent-box, .value-card { padding: 1.5em; }
-.talent-cols, .value-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5em; }
-.talent-box ul { display: grid; gap: .7em; }
-.talent-box li { color: var(--texto-muted); padding-left: 1.35em; position: relative; }
-.talent-box li::before { content: '✦'; color: var(--escuela-cian); position: absolute; left: 0; }
+/* Cards CE — blanco, borde navy soft, estructura 2x2 grid */
+.card, .talent-box, .value-card, .modalidad-card {
+  background: var(--blanco); border: 1px solid var(--linea-glass); border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(27,58,107,0.06); transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+}
+.card:hover, .talent-box:hover, .value-card:hover, .modalidad-card:hover {
+  border-color: rgba(27,58,107,0.22); transform: translateY(-3px); box-shadow: 0 12px 28px rgba(27,58,107,0.10);
+}
+.card h3, .talent-box h3, .value-card h3, .modalidad-card h3 { color: var(--conecta-navy); }
+.card, .talent-box, .value-card { padding: 1.6em; }
+.benefits-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2em; }
+.talent-cols, .value-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.3em; }
+.talent-box ul { display: grid; gap: 0.65em; }
+.talent-box li { color: var(--texto-main); padding-left: 1.35em; position: relative; font-size: 0.92rem; line-height: 1.5; }
+.talent-box li::before { content: "—"; color: var(--conecta-red); position: absolute; left: 0; font-weight: 700; }
+.talent-box h3::after, .card h3::after { content: ""; display: block; width: 28px; height: 3px; background: var(--conecta-red); border-radius: 2px; margin-top: 0.45em; }
 
-.modalidad-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25em; }
-.modalidad-card { padding: 1.5em; position: relative; }
-.modalidad-card.modalidad-destacada { border-color: var(--escuela-cian); background: rgba(17,46,66,.85); }
-.modalidad-precio { color: var(--escuela-cian) !important; font-family: var(--font-display); font-size: 1.8rem; font-weight: 700; margin: .5em 0 0; }
-.modalidad-medida { color: var(--escuela-morado) !important; font-weight: 700; }
-.modalidad-badge { display: inline-block; background: var(--rojo-base); color: var(--blanco); border-radius: 999px; padding: .3em .8em; font-size: .75rem; font-weight: 700; margin-bottom: .8em; }
-.branches { margin-top: 2em; }
+/* Modalidades — precios gigantes navy 64pt, medidas azul claro */
+.modalidad-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2em; }
+.modalidad-card { padding: 1.6em; position: relative; }
+.modalidad-card.modalidad-destacada { border: 1.5px solid var(--conecta-navy); background: var(--blanco); box-shadow: 0 10px 28px rgba(27,58,107,0.12); }
+.modalidad-precio {
+  color: var(--conecta-navy) !important; font-family: var(--font-display); font-size: 2.1rem; font-weight: 800;
+  margin: 0.35em 0 0; letter-spacing: -0.02em; font-variant-numeric: tabular-nums;
+}
+.modalidad-medida { color: var(--conecta-blue) !important; font-weight: 700; font-size: 0.92rem; margin: 0.15em 0 0.6em; }
+.modalidad-card p:last-child { font-size: 0.90rem; line-height: 1.55; color: var(--texto-muted); }
+.modalidad-badge { display: inline-block; background: var(--conecta-red); color: var(--blanco); border-radius: 999px; padding: 0.32em 0.85em; font-size: 0.72rem; font-weight: 800; margin-bottom: 0.7em; letter-spacing: 0.04em; }
+.branches { margin-top: 1.9em; max-width: 72ch; color: var(--texto-muted); font-size: 0.92rem; line-height: 1.6; }
 
-.location-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 2em; align-items: stretch; }
-.location-facts { display: grid; gap: 1em; margin: 0; }
-.location-facts div { background: var(--bg-card); border: 1px solid var(--linea-glass); border-radius: var(--radius); padding: 1.25em; }
-.location-facts dt { color: var(--escuela-cian); font-weight: 700; }
-.location-facts dd { color: var(--texto-muted); margin: .35em 0 0; }
-.map-frame { min-height: 320px; overflow: hidden; border-radius: var(--radius); border: 1px solid var(--linea-glass); }
-.map-frame iframe { width: 100%; height: 100%; min-height: 320px; border: 0; filter: saturate(.75) contrast(1.05); }
+/* Ubicación CE */
+.location-grid { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 1.8em; align-items: stretch; }
+.location-facts { display: grid; gap: 0.9em; margin: 0; }
+.location-facts div { background: var(--blanco); border: 1px solid var(--linea-glass); border-radius: 10px; padding: 1.2em; box-shadow: 0 4px 14px rgba(27,58,107,0.05); }
+.location-facts dt { color: var(--conecta-navy); font-weight: 800; font-size: 0.86rem; margin-bottom: 0.2em; }
+.location-facts dd { color: var(--texto-muted); margin: 0.3em 0 0; font-size: 0.92rem; line-height: 1.5; }
+.map-frame { min-height: 320px; overflow: hidden; border-radius: 10px; border: 1px solid var(--linea-glass); box-shadow: 0 8px 24px rgba(27,58,107,0.08); }
+.map-frame iframe { width: 100%; height: 100%; min-height: 320px; border: 0; display: block; }
 
-.contact-form { max-width: 680px; display: grid; gap: 1em; }
-.form-row { display: grid; gap: .4em; }
-.form-row label { color: var(--texto-main); font-weight: 700; }
-.form-row input, .form-row textarea { width: 100%; border: 1px solid var(--linea-glass); border-radius: 8px; background: rgba(255,255,255,.05); color: var(--blanco); padding: .85em 1em; font: inherit; }
-.form-row input:focus, .form-row textarea:focus { border-color: var(--escuela-cian); outline: none; box-shadow: 0 0 0 3px rgba(0,188,202,.15); }
+/* Contacto CE — blanco con nav accents */
+.contact-form { max-width: 680px; display: grid; gap: 1em; background: var(--blanco); border: 1px solid var(--linea-glass); border-radius: 10px; padding: 1.9em; box-shadow: 0 10px 28px rgba(27,58,107,0.08); }
+.form-row { display: grid; gap: 0.4em; }
+.form-row label { color: var(--conecta-navy); font-weight: 700; font-size: 0.88rem; }
+.form-row input, .form-row textarea {
+  width: 100%; border: 1.5px solid var(--linea-soft); border-radius: 8px; background: var(--blanco);
+  color: var(--texto-main); padding: 0.80em 1em; font: inherit; font-size: 0.94rem;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+.form-row input::placeholder, .form-row textarea::placeholder { color: #9AA0A6; }
+.form-row input:focus, .form-row textarea:focus { border-color: var(--conecta-navy); outline: none; box-shadow: 0 0 0 3px rgba(27,58,107,0.12); }
 .btn-block { width: 100%; }
-.text-link { color: var(--escuela-cian); }
-.site-footer { background: #04080c; border-top: 1px solid var(--linea-glass); }
-.footer-inner { max-width: var(--container); margin: 0 auto; padding: 2.5em 1.5em; display: flex; gap: 2em; justify-content: space-between; align-items: center; flex-wrap: wrap; }
-.footer-brand strong { color: var(--blanco); }
-.footer-contact { display: flex; flex-direction: column; gap: .4em; color: var(--escuela-cian); }
-.footer-credit { color: var(--texto-muted); margin: 0; }
-.footer-credit span { color: var(--escuela-cian); }
+.text-link { color: var(--conecta-blue); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.text-link:hover { color: var(--conecta-navy); }
+.site-footer { background: var(--conecta-navy-dark); border-top: 4px solid var(--conecta-red); }
+.footer-inner { max-width: var(--container); margin: 0 auto; padding: 2.4em 1.5em; display: flex; gap: 2em; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+.footer-brand strong { color: var(--blanco); font-family: var(--font-display); }
+.footer-brand p { color: rgba(255,255,255,0.72); }
+.footer-contact { display: flex; flex-direction: column; gap: 0.4em; }
+.footer-contact a { color: rgba(255,255,255,0.88); font-weight: 600; font-size: 0.92rem; }
+.footer-contact a:hover { color: var(--blanco); text-decoration: underline; }
+.footer-credit { color: rgba(255,255,255,0.55); margin: 0; font-size: 0.88rem; }
+.footer-credit span { color: var(--blanco); font-weight: 700; }
 
+section[id], h2[id] { scroll-margin-top: 96px; }
+/* Reveal */
+.reveal { opacity: 0; transform: translateY(12px); transition: opacity 0.5s cubic-bezier(0.16,1,0.3,1), transform 0.5s cubic-bezier(0.16,1,0.3,1); }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 1150px) {
+  .primary-nav a { padding: 0.5em 0.78em; font-size: 0.80rem; }
+  .primary-nav .nav-cta { padding: 0.55em 1.15em; }
+  .header-inner { gap: 0.8em; }
+}
 @media (max-width: 860px) { .modalidad-grid { grid-template-columns: repeat(2, 1fr); } .location-grid { grid-template-columns: 1fr; } }
 @media (max-width: 680px) {
-  .hero { min-height: auto; padding-top: 8em; background-image: linear-gradient(180deg, rgba(7,14,21,.92), rgba(7,14,21,.98)), url('../universidades/assets/images/hero_background_universidades.jpg'); background-position: center; }
+  .hero { min-height: auto; padding-top: 7.5rem; background-position: center; }
+  .hero::before { background: linear-gradient(180deg, rgba(15,30,58,0.88) 0%, rgba(27,58,107,0.90) 100%); }
   .hero-facts { flex-direction: column; gap: 1em; }
   .benefits-grid, .talent-cols, .value-grid, .modalidad-grid { grid-template-columns: 1fr; }
-  .primary-nav { background: var(--bg-header); }
   .header-inner { padding-left: 1em; padding-right: 1em; }
+}
+@media (max-width: 1080px) {
+  .nav-toggle { display: flex; }
+  .primary-nav { position: fixed; top: 76px; left: 0; right: 0; background: var(--bg-header); border-bottom: 1px solid var(--linea-glass); padding: 1.4em; transform: translateY(-120%); transition: transform var(--transition); box-shadow: 0 10px 24px rgba(0,0,0,0.08); }
+  .primary-nav.is-open { transform: translateY(0); }
+  .primary-nav ul { flex-direction: column; align-items: flex-start; gap: 1.1em; }
+  .primary-nav a { font-size: 0.92rem; padding: 0.6em 1em; white-space: nowrap; }
+  .section { padding: 4rem 1.25rem; }
+}
+@media (max-width: 480px) {
+  .brand img { height: 36px !important; }
+  .footer-brand img { height: 32px !important; }
 }
