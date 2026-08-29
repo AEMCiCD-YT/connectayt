@@ -108,14 +108,14 @@
       if (this.maxDistance < 130) this.maxDistance = 130;
       if (this.maxDistance > 200) this.maxDistance = 200;
 
-      this.particleCount = Math.floor((this.width * this.height) / (this.isCorporate ? 10000 : 15000));
-      if (this.particleCount < 60) this.particleCount = 60;
-      if (this.particleCount > 130) this.particleCount = 130;
+      this.particleCount = Math.floor((this.width * this.height) / (this.isCorporate ? 9500 : (this.isGala ? 10000 : 13000)));
+      if (this.particleCount < 70) this.particleCount = 70;
+      if (this.particleCount > 150) this.particleCount = 150;
     }
 
     createAuroras() {
       this.auroras = [];
-      const numAuroras = this.isCorporate ? 4 : 3;
+      const numAuroras = this.isCorporate ? 4 : (this.isGala ? 4 : 3);
       for (let i = 0; i < numAuroras; i++) {
         this.auroras.push({
           x: (this.width / (numAuroras + 1)) * (i + 1),
@@ -131,7 +131,7 @@
     createParticles() {
       this.particles = [];
       for (let i = 0; i < this.particleCount; i++) {
-        const baseRadius = this.isCorporate ? (Math.random() * 1.8 + 2.8) : (Math.random() * 1.2 + 2.0);
+        const baseRadius = this.isCorporate ? (Math.random() * 1.8 + 2.8) : (this.isGala ? (Math.random() * 1.6 + 2.4) : (Math.random() * 1.2 + 2.0));
         this.particles.push({
           x: Math.random() * this.width,
           y: Math.random() * this.height,
@@ -298,10 +298,10 @@
           this.ctx.fillStyle = `rgb(${pColor.r}, ${pColor.g}, ${pColor.b})`;
           this.ctx.fill();
         } else {
-          // ESTILO HUB & GALA: Halo pastel suave difuso
-          const glowAlpha = 0.20;
+          // ESTILO HUB & GALA: Halo pastel suave luminoso
+          const glowAlpha = this.isGala ? 0.32 : 0.20;
           this.ctx.beginPath();
-          this.ctx.arc(p.x, p.y, currentRadius * 1.9, 0, Math.PI * 2);
+          this.ctx.arc(p.x, p.y, currentRadius * (this.isGala ? 2.3 : 1.9), 0, Math.PI * 2);
           this.ctx.fillStyle = `rgba(${pColor.r}, ${pColor.g}, ${pColor.b}, ${glowAlpha})`;
           this.ctx.fill();
 
@@ -319,12 +319,12 @@
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < this.maxDistance) {
-            const lineAlpha = (1 - dist / this.maxDistance) * (this.isCorporate ? 0.42 : 0.22);
+            const lineAlpha = (1 - dist / this.maxDistance) * (this.isCorporate ? 0.42 : (this.isGala ? 0.38 : 0.24));
             this.ctx.beginPath();
             this.ctx.moveTo(p.x, p.y);
             this.ctx.lineTo(p2.x, p2.y);
             this.ctx.strokeStyle = `rgba(${pColor.r}, ${pColor.g}, ${pColor.b}, ${lineAlpha})`;
-            this.ctx.lineWidth = this.isCorporate ? 1.15 : 0.9;
+            this.ctx.lineWidth = this.isCorporate ? 1.15 : (this.isGala ? 1.1 : 0.95);
             this.ctx.stroke();
           }
         }

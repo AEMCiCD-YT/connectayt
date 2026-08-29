@@ -7,13 +7,13 @@
    ========================================================= */
 
 :root {
-  /* --- Fondos de Gala Nocturna Cálida & Vidrio Esmerilado --- */
+  /* --- Fondos de Gala Nocturna Cálida & Vidrio Esmerilado Translúcido --- */
   --bg-night-base:     #0d0a14; /* Obsidiana aterciopelada / ciruela profunda */
-  --bg-night-alt:      rgba(20, 14, 30, 0.72);
-  --bg-night-darker:   rgba(14, 9, 22, 0.85);
-  --bg-header:         rgba(13, 10, 20, 0.88);
-  --bg-glass-card:     rgba(30, 20, 46, 0.62);
-  --bg-glass-hover:    rgba(46, 30, 70, 0.75);
+  --bg-night-alt:      rgba(20, 14, 30, 0.28);
+  --bg-night-darker:   rgba(14, 9, 22, 0.38);
+  --bg-header:         rgba(13, 10, 20, 0.82);
+  --bg-glass-card:     rgba(28, 18, 44, 0.55);
+  --bg-glass-hover:    rgba(46, 30, 70, 0.70);
   --linea-glass:       rgba(255, 255, 255, 0.12);
 
   /* --- Paleta Pastel Creativa de Gala (Cero Neón Estridente) --- */
