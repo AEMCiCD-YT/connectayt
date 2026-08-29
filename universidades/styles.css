@@ -54,6 +54,29 @@
 
 html { scroll-behavior: smooth; }
 
+/* Enlace accesible oculto fuera de pantalla (sólo visible con tab/focus) */
+.skip-link {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+  background: var(--grad-btn-gala);
+  color: var(--blanco);
+  padding: 0.75em 1.5rem;
+  z-index: 9999;
+  font-weight: 700;
+  font-family: var(--font-display);
+  border-radius: 0 0 12px 12px;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 body {
   font-family: var(--font-body);
   background-color: var(--bg-night-base);
