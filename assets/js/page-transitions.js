@@ -1,27 +1,30 @@
 /**
- * Conecta IEEE YT 2026 — Transición Animada de Logotipos en Navbar
- * Anima elegantemente el logotipo de la barra de navegación al cambiar
- * entre el Portal Hub, Conecta Universidades y Conecta Empresas.
+ * Conecta IEEE YT 2026 — Transición Animada Nativa de Logotipos en Navbar
+ * Anima con fluidez el logotipo oficial de la cabecera al navegar entre
+ * el Hub Conecta YT, Conecta Universidades y Conecta Empresas.
  */
 
 (function () {
   'use strict';
 
+  function purgeOldOverlays() {
+    document.querySelectorAll('#conectaTransitionOverlay, .conecta-transition-overlay').forEach((el) => {
+      el.remove();
+    });
+  }
+
+  // Purgar inmediatamente al cargar el script y al estar listo el DOM
+  purgeOldOverlays();
+
   function initLogoTransitions() {
-    // Eliminar cualquier overlay previo si existiera
-    const oldOverlay = document.getElementById('conectaTransitionOverlay');
-    if (oldOverlay) {
-      oldOverlay.remove();
-    }
+    purgeOldOverlays();
 
     const navbarLogo = document.querySelector('.brand-logo-img, .brand-logo-hub, .brand img');
     if (navbarLogo) {
-      // Activar animación de entrada fluida
       navbarLogo.classList.remove('logo-transitioning');
       navbarLogo.classList.add('logo-enter-active');
     }
 
-    // Interceptar clics en enlaces entre secciones para animar el logo
     const links = document.querySelectorAll('a[href]');
     links.forEach((link) => {
       const href = link.getAttribute('href');
@@ -75,6 +78,7 @@
   }
 
   window.addEventListener('pageshow', () => {
+    purgeOldOverlays();
     document.body.classList.remove('page-transition-out');
     const navbarLogo = document.querySelector('.brand-logo-img, .brand-logo-hub, .brand img');
     if (navbarLogo) {
