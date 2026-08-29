@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="ytGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0080b7" />
+      <stop offset="100%" stop-color="#00487c" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Símbolo Oficial Isotipo Yachay Tech: Matriz Geométrica de Conocimiento e Innovación -->
+  <g fill="url(#ytGrad)">
+    <!-- Marco Exterior Escalonado -->
+    <path d="M 60 60 H 340 V 340 H 60 Z M 95 95 V 305 H 305 V 95 Z" fill-rule="evenodd" />
+    
+    <!-- Geometría Central Yachay -->
+    <path d="M 120 120 H 180 V 160 H 145 V 240 H 180 V 280 H 120 Z" />
+    <path d="M 220 120 H 280 V 280 H 220 V 240 H 255 V 160 H 220 Z" />
+    <rect x="180" y="185" width="40" height="30" rx="4" />
+  </g>
+</svg>
