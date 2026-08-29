@@ -1,22 +1,22 @@
 /* =========================================================
    CONECTA EMPRESAS 2026 — Sistema de Diseño
    Paleta 80/20 & Distribución Cromática Make Health (MIT Critical Data)
-   Fondo Cinético y Auroras Vivas Continuas en Toda la Página
+   Fondo Cinético Translúcido y Bolas Interactivas Visibles en Toda la Página
    Tipografía: Outfit (Headings) + DM Sans (Body)
    Layout: Bento Box ortogonal, equilibrio estático, bordes rectos
    ========================================================= */
 
 :root {
-  /* --- Fondos Translúcidos para Visibilidad de Fondo Vivo --- */
-  --bg-page:           #f0f4f8;
-  --bg-white:          rgba(255, 255, 255, 0.65);
-  --bg-card:           rgba(255, 255, 255, 0.85);
-  --bg-alt:            rgba(235, 243, 250, 0.45);
-  --bg-deep:           rgba(17, 46, 66, 0.88);
-  --bg-deep-alt:       #1c4a6b;
+  /* --- Fondos Ultra-Translúcidos para Máxima Visibilidad de las Bolas y Auroras Interactivas --- */
+  --bg-page:           #f4f8fb;
+  --bg-white:          rgba(255, 255, 255, 0.32);
+  --bg-card:           rgba(255, 255, 255, 0.78);
+  --bg-card-hover:     rgba(255, 255, 255, 0.95);
+  --bg-alt:            rgba(230, 242, 250, 0.28);
+  --bg-deep:           rgba(14, 38, 56, 0.82);
   --bg-darker:         #070e15;
 
-  /* --- Acentos Estratégicos & Cromáticos --- */
+  /* --- Acentos Estratégicos & Cromáticos Saturados --- */
   --azul-principal:    #00629b;
   --azul-hover:        #112e42;
   --azul-light:        #3c9fe6;
@@ -30,10 +30,10 @@
   /* --- Textos & Neutros --- */
   --texto-black:       #000000;
   --texto-dark:        #1e293b;
-  --texto-muted:       #475569;
+  --texto-muted:       #334155;
   --texto-light:       #f1f5f9;
   --texto-white:       #ffffff;
-  --border-light:      rgba(17, 46, 66, 0.12);
+  --border-light:      rgba(0, 98, 155, 0.15);
   --border-deep:       rgba(255, 255, 255, 0.18);
 
   /* --- Tipografía --- */
@@ -134,7 +134,7 @@ p strong, li strong {
 
 .section-lead {
   font-size: 1.2rem;
-  color: var(--texto-muted);
+  color: var(--texto-dark);
   max-width: 72ch;
   margin-bottom: var(--gap-md);
 }
@@ -160,13 +160,13 @@ p strong, li strong {
 .btn-primary {
   background-color: var(--azul-principal);
   color: var(--texto-white);
-  box-shadow: 0 4px 14px rgba(0, 98, 155, 0.25);
+  box-shadow: 0 4px 14px rgba(0, 98, 155, 0.3);
 }
 
 .btn-primary:hover {
   background-color: var(--azul-hover);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 98, 155, 0.4);
+  box-shadow: 0 6px 20px rgba(0, 98, 155, 0.45);
 }
 
 .btn-primary:active {
@@ -174,13 +174,14 @@ p strong, li strong {
 }
 
 .btn-ghost {
-  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0.08);
   color: var(--texto-white);
   border-color: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(6px);
 }
 
 .btn-ghost:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.18);
   border-color: var(--texto-white);
   transform: translateY(-2px);
 }
@@ -200,8 +201,9 @@ p strong, li strong {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(14px);
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border-light);
 }
 
@@ -237,7 +239,7 @@ p strong, li strong {
 .primary-nav a {
   font-size: 0.94rem;
   font-weight: 600;
-  color: var(--texto-muted);
+  color: var(--texto-dark);
   padding: 0.5em 0.85em;
   border-radius: var(--radius-bento);
   transition: all var(--transition);
@@ -245,7 +247,7 @@ p strong, li strong {
 
 .primary-nav a:hover {
   color: var(--azul-principal);
-  background: rgba(0, 98, 155, 0.08);
+  background: rgba(0, 98, 155, 0.1);
 }
 
 .primary-nav .nav-cta {
@@ -278,14 +280,17 @@ main {
 }
 
 /* =========================================================
-   HERO SECTION
+   HERO SECTION (TRANSLÚCIDO CON TRANSICIÓN SUAVE AL FONDO)
    ========================================================= */
 .hero {
-  background: radial-gradient(circle at 65% 45%, rgba(28, 74, 107, 0.95) 0%, rgba(12, 32, 48, 0.95) 65%, rgba(6, 13, 20, 0.98) 100%);
+  background: linear-gradient(180deg, rgba(14, 38, 58, 0.88) 0%, rgba(9, 24, 38, 0.72) 80%, rgba(244, 248, 251, 0.15) 100%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   color: var(--texto-white);
-  padding: 6.5rem 1.5rem 5rem;
+  padding: 7rem 1.5rem 5.5rem;
   position: relative;
   overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .hero-inner {
@@ -306,7 +311,7 @@ main {
 
 .hero-lead {
   font-size: 1.25rem;
-  color: #c3d3de;
+  color: #e2e8f0;
   margin-bottom: var(--gap-md);
   line-height: 1.55;
 }
@@ -342,7 +347,7 @@ main {
 }
 
 /* =========================================================
-   SECCIONES COMUNES (TRANSLÚCIDAS PARA VER EL FONDO)
+   SECCIONES COMUNES (TRANSLÚCIDAS PARA VER LAS BOLAS INTERACTIVAS)
    ========================================================= */
 .section {
   padding: var(--gap-xxl) 1.5rem;
@@ -356,12 +361,14 @@ main {
 
 .section-alt {
   background-color: var(--bg-alt);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .section-white {
   background-color: var(--bg-white);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 /* =========================================================
@@ -376,37 +383,39 @@ main {
 
 .bento-card {
   background: var(--bg-card);
-  backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.85);
   border-radius: var(--radius-bento);
   padding: var(--gap-md);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition), background-color var(--transition);
 }
 
 .bento-card:hover {
+  background: var(--bg-card-hover);
   transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.09);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
 }
 
 /* Acentos cromáticos diferenciados con resplandor vivo */
 .bento-card-cian { border-left: 5px solid var(--escuela-cian); }
-.bento-card-cian:hover { border-color: var(--escuela-cian); box-shadow: 0 12px 32px rgba(0, 188, 202, 0.18); }
+.bento-card-cian:hover { border-color: var(--escuela-cian); box-shadow: 0 12px 32px rgba(0, 188, 202, 0.22); }
 
 .bento-card-purpura { border-left: 5px solid var(--escuela-purpura); }
-.bento-card-purpura:hover { border-color: var(--escuela-purpura); box-shadow: 0 12px 32px rgba(157, 124, 176, 0.18); }
+.bento-card-purpura:hover { border-color: var(--escuela-purpura); box-shadow: 0 12px 32px rgba(157, 124, 176, 0.22); }
 
 .bento-card-coral { border-left: 5px solid var(--escuela-coral); }
-.bento-card-coral:hover { border-color: var(--escuela-coral); box-shadow: 0 12px 32px rgba(255, 82, 66, 0.18); }
+.bento-card-coral:hover { border-color: var(--escuela-coral); box-shadow: 0 12px 32px rgba(255, 82, 66, 0.22); }
 
 .bento-card-amarillo { border-left: 5px solid var(--escuela-amarillo); }
-.bento-card-amarillo:hover { border-color: var(--escuela-amarillo); box-shadow: 0 12px 32px rgba(253, 202, 38, 0.18); }
+.bento-card-amarillo:hover { border-color: var(--escuela-amarillo); box-shadow: 0 12px 32px rgba(253, 202, 38, 0.22); }
 
 .bento-card-verde { border-left: 5px solid var(--escuela-verde); }
-.bento-card-verde:hover { border-color: var(--escuela-verde); box-shadow: 0 12px 32px rgba(0, 188, 82, 0.18); }
+.bento-card-verde:hover { border-color: var(--escuela-verde); box-shadow: 0 12px 32px rgba(0, 188, 82, 0.22); }
 
 .bento-card-azul { border-left: 5px solid var(--azul-principal); }
-.bento-card-azul:hover { border-color: var(--azul-principal); box-shadow: 0 12px 32px rgba(0, 98, 155, 0.18); }
+.bento-card-azul:hover { border-color: var(--azul-principal); box-shadow: 0 12px 32px rgba(0, 98, 155, 0.22); }
 
 /* =========================================================
    SPONSORS / EMPRESAS PARTICIPANTES (GRID FIJO)
@@ -421,7 +430,8 @@ main {
 .sponsor-card-fixed {
   background: var(--bg-card);
   backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.7);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.85);
   border-radius: var(--radius-bento);
   padding: 1.75rem 1.25rem;
   text-align: center;
@@ -430,7 +440,7 @@ main {
   align-items: center;
   justify-content: center;
   min-height: 155px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
   transition: all var(--transition);
 }
 
@@ -441,10 +451,11 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 98, 155, 0.06);
-  border: 1px solid rgba(0, 98, 155, 0.15);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(0, 98, 155, 0.18);
   border-radius: 12px;
   padding: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .sponsor-logo-img {
@@ -458,9 +469,10 @@ main {
 }
 
 .sponsor-card-fixed:hover {
+  background: var(--bg-card-hover);
   border-color: var(--azul-principal);
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(0, 98, 155, 0.15);
+  box-shadow: 0 8px 25px rgba(0, 98, 155, 0.2);
 }
 
 .sponsor-card-fixed strong {
@@ -487,28 +499,30 @@ main {
 
 .committee-card {
   background: var(--bg-card);
-  backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.85);
   border-radius: var(--radius-bento);
   padding: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   aspect-ratio: 1 / 1;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition), background-color var(--transition);
 }
 
 .committee-card:hover {
+  background: var(--bg-card-hover);
   transform: translateY(-4px);
 }
 
-.comm-cian:hover { border-color: var(--escuela-cian); box-shadow: 0 10px 28px rgba(0, 188, 202, 0.2); }
-.comm-purpura:hover { border-color: var(--escuela-purpura); box-shadow: 0 10px 28px rgba(157, 124, 176, 0.2); }
-.comm-coral:hover { border-color: var(--escuela-coral); box-shadow: 0 10px 28px rgba(255, 82, 66, 0.2); }
-.comm-amarillo:hover { border-color: var(--escuela-amarillo); box-shadow: 0 10px 28px rgba(253, 202, 38, 0.2); }
-.comm-verde:hover { border-color: var(--escuela-verde); box-shadow: 0 10px 28px rgba(0, 188, 82, 0.2); }
-.comm-azul:hover { border-color: var(--azul-principal); box-shadow: 0 10px 28px rgba(0, 98, 155, 0.2); }
+.comm-cian:hover { border-color: var(--escuela-cian); box-shadow: 0 10px 28px rgba(0, 188, 202, 0.25); }
+.comm-purpura:hover { border-color: var(--escuela-purpura); box-shadow: 0 10px 28px rgba(157, 124, 176, 0.25); }
+.comm-coral:hover { border-color: var(--escuela-coral); box-shadow: 0 10px 28px rgba(255, 82, 66, 0.25); }
+.comm-amarillo:hover { border-color: var(--escuela-amarillo); box-shadow: 0 10px 28px rgba(253, 202, 38, 0.25); }
+.comm-verde:hover { border-color: var(--escuela-verde); box-shadow: 0 10px 28px rgba(0, 188, 82, 0.25); }
+.comm-azul:hover { border-color: var(--azul-principal); box-shadow: 0 10px 28px rgba(0, 98, 155, 0.25); }
 
 .dept-badge {
   font-size: 0.75rem;
@@ -521,12 +535,12 @@ main {
   margin-bottom: 1rem;
 }
 
-.badge-cian { color: var(--escuela-cian); background: rgba(0, 188, 202, 0.12); border: 1px solid rgba(0, 188, 202, 0.3); }
-.badge-purpura { color: var(--escuela-purpura); background: rgba(157, 124, 176, 0.12); border: 1px solid rgba(157, 124, 176, 0.3); }
-.badge-coral { color: var(--escuela-coral); background: rgba(255, 82, 66, 0.12); border: 1px solid rgba(255, 82, 66, 0.3); }
-.badge-amarillo { color: #b58d00; background: rgba(253, 202, 38, 0.15); border: 1px solid rgba(253, 202, 38, 0.3); }
-.badge-verde { color: var(--escuela-verde); background: rgba(0, 188, 82, 0.12); border: 1px solid rgba(0, 188, 82, 0.3); }
-.badge-azul { color: var(--azul-principal); background: rgba(0, 98, 155, 0.12); border: 1px solid rgba(0, 98, 155, 0.3); }
+.badge-cian { color: #00848e; background: rgba(0, 188, 202, 0.16); border: 1px solid rgba(0, 188, 202, 0.4); }
+.badge-purpura { color: #724c88; background: rgba(157, 124, 176, 0.16); border: 1px solid rgba(157, 124, 176, 0.4); }
+.badge-coral { color: #d63024; background: rgba(255, 82, 66, 0.16); border: 1px solid rgba(255, 82, 66, 0.4); }
+.badge-amarillo { color: #8f6f00; background: rgba(253, 202, 38, 0.2); border: 1px solid rgba(253, 202, 38, 0.45); }
+.badge-verde { color: #00873b; background: rgba(0, 188, 82, 0.16); border: 1px solid rgba(0, 188, 82, 0.4); }
+.badge-azul { color: #004b77; background: rgba(0, 98, 155, 0.16); border: 1px solid rgba(0, 98, 155, 0.4); }
 
 .committee-info h3 {
   font-size: 1.25rem;
@@ -551,7 +565,7 @@ main {
   font-size: 0.82rem;
   font-weight: 700;
   color: var(--texto-dark);
-  background: var(--bg-alt);
+  background: rgba(255, 255, 255, 0.8);
   border: 1px solid var(--border-light);
   padding: 0.4em 0.8em;
   border-radius: var(--radius-bento);
@@ -577,8 +591,9 @@ main {
 
 .location-facts {
   background: var(--bg-card);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.85);
   border-radius: var(--radius-bento);
   padding: var(--gap-md);
   display: flex;
@@ -602,8 +617,9 @@ main {
 
 .map-frame {
   background: var(--bg-card);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.85);
   border-radius: var(--radius-bento);
   overflow: hidden;
   min-height: 320px;
@@ -621,19 +637,21 @@ main {
    FORMULARIO DE CONTACTO / REGISTRO
    ========================================================= */
 .contact-section {
-  background: rgba(235, 243, 250, 0.5);
-  backdrop-filter: blur(10px);
+  background: var(--bg-alt);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .form-box {
   background: var(--bg-card);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
   border-radius: var(--radius-bento);
   padding: var(--gap-md);
   max-width: 760px;
   margin: var(--gap-md) auto 0;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
 }
 
 .form-group {
@@ -675,8 +693,9 @@ main {
    FRANJA FINAL CORPORATIVA (PRE-FOOTER)
    ========================================================= */
 .pre-footer-corporate {
-  background: rgba(17, 46, 66, 0.92);
+  background: rgba(14, 38, 56, 0.88);
   backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   color: var(--texto-white);
   padding: var(--gap-xl) 1.5rem;
   text-align: center;
@@ -706,8 +725,9 @@ main {
    FOOTER INSTITUCIONAL
    ========================================================= */
 .site-footer {
-  background: rgba(7, 14, 21, 0.95);
+  background: rgba(7, 14, 21, 0.94);
   backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   color: var(--texto-light);
   padding: var(--gap-lg) 1.5rem 2rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);

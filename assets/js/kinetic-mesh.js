@@ -8,15 +8,15 @@
 (function () {
   'use strict';
 
-  // Paleta Conecta Empresas / Hub (Corporativa & Escuelas)
+  // Paleta Conecta Empresas / Hub (Corporativa & Escuelas — Tonos Vivos Saturados de Alto Contraste)
   const PALETTE_VIBRANT = [
-    { r: 0,   g: 188, b: 202, hex: '#00bcca', name: 'Cian' },
-    { r: 60,  g: 159, b: 230, hex: '#3c9fe6', name: 'Azul Eléctrico' },
-    { r: 157, g: 124, b: 176, hex: '#9d7cb0', name: 'Púrpura' },
-    { r: 255, g: 82,  b: 66,  hex: '#ff5242', name: 'Coral' },
-    { r: 253, g: 202, b: 38,  hex: '#fdca26', name: 'Oro' },
-    { r: 0,   g: 188, b: 82,  hex: '#00bc52', name: 'Verde' },
-    { r: 0,   g: 98,  b: 155, hex: '#00629b', name: 'Azul IEEE' }
+    { r: 0,   g: 150, b: 214, hex: '#0096d6', name: 'Cian Azul Vibrante' },
+    { r: 239, g: 64,  b: 54,  hex: '#ef4036', name: 'Coral Rojo Vivo' },
+    { r: 142, g: 68,  b: 173, hex: '#8e44ad', name: 'Púrpura Amatista' },
+    { r: 0,   g: 177, b: 106, hex: '#00b16a', name: 'Esmeralda / Jade' },
+    { r: 243, g: 156, b: 18,  hex: '#f39c12', name: 'Ámbar Cálido' },
+    { r: 0,   g: 98,  b: 155, hex: '#00629b', name: 'Azul IEEE' },
+    { r: 230, g: 46,  b: 101, hex: '#e62e65', name: 'Magenta Carmesí' }
   ];
 
   // Paleta Conecta Universidades (Gala Nocturna Creativa — Tonos Cálidos, Orquídea, Rosa, Matcha y Champán)
@@ -61,7 +61,7 @@
       this.mouse = {
         x: -9999,
         y: -9999,
-        radius: 220,
+        radius: 260,
         isActive: false
       };
 
@@ -84,13 +84,13 @@
       this.canvas.height = this.height * this.dpr;
       this.ctx.scale(this.dpr, this.dpr);
 
-      this.maxDistance = Math.min(this.width, this.height) * 0.2;
-      if (this.maxDistance < 120) this.maxDistance = 120;
-      if (this.maxDistance > 180) this.maxDistance = 180;
+      this.maxDistance = Math.min(this.width, this.height) * 0.22;
+      if (this.maxDistance < 130) this.maxDistance = 130;
+      if (this.maxDistance > 200) this.maxDistance = 200;
 
-      this.particleCount = Math.floor((this.width * this.height) / 14000);
-      if (this.particleCount < 50) this.particleCount = 50;
-      if (this.particleCount > 110) this.particleCount = 110;
+      this.particleCount = Math.floor((this.width * this.height) / 12000);
+      if (this.particleCount < 55) this.particleCount = 55;
+      if (this.particleCount > 120) this.particleCount = 120;
     }
 
     createAuroras() {
@@ -99,12 +99,12 @@
       const numAuroras = 4;
       for (let i = 0; i < numAuroras; i++) {
         this.auroras.push({
-          x: (this.width / (numAuroras + 1)) * (i + 1),
-          y: (this.height / 2) + (Math.random() - 0.5) * (this.height * 0.5),
-          vx: (Math.random() - 0.5) * 0.4,
-          vy: (Math.random() - 0.5) * 0.4,
-          radius: Math.min(this.width, this.height) * (0.35 + Math.random() * 0.25),
-          colorOffset: i * 1.75
+          x: Math.random() * this.width,
+          y: Math.random() * this.height,
+          radius: Math.min(this.width, this.height) * (0.45 + Math.random() * 0.35),
+          vx: (Math.random() - 0.5) * 0.45,
+          vy: (Math.random() - 0.5) * 0.45,
+          colorOffset: (i * (this.palette.length / numAuroras))
         });
       }
     }
@@ -112,13 +112,13 @@
     createParticles() {
       this.particles = [];
       for (let i = 0; i < this.particleCount; i++) {
-        const colorIdx = i % this.palette.length;
+        const baseRadius = this.isPastel ? (Math.random() * 2.8 + 1.8) : (Math.random() * 3.6 + 2.8);
         this.particles.push({
           x: Math.random() * this.width,
           y: Math.random() * this.height,
           vx: (Math.random() - 0.5) * 0.65,
           vy: (Math.random() - 0.5) * 0.65,
-          radius: Math.random() * 2.8 + 1.6,
+          radius: baseRadius,
           colorOffset: Math.random() * this.palette.length,
           phase: Math.random() * Math.PI * 2,
           pulseSpeed: Math.random() * 0.03 + 0.015
@@ -161,20 +161,19 @@
           const dx = p.x - clickX;
           const dy = p.y - clickY;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 280 && dist > 0) {
-            const force = (1 - dist / 280) * 5.5;
+          if (dist < 220 && dist > 0) {
+            const force = (1 - dist / 220) * 4;
             p.vx += (dx / dist) * force;
             p.vy += (dy / dist) * force;
           }
         });
       });
 
-      let resizeTimer;
+      let resizeTimeout;
       window.addEventListener('resize', () => {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(() => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
           this.resize();
-          this.createAuroras();
           this.createParticles();
         }, 150);
       });
@@ -197,11 +196,11 @@
         if (a.y > this.height + 100) a.y = -100;
 
         const auroraColor = getDynamicColor(time, this.palette, a.colorOffset, 0.00045);
-        const auroraAlpha = this.isPastel ? 0.09 : 0.07;
+        const auroraAlpha = this.isPastel ? 0.12 : 0.15;
 
         const radialGrad = this.ctx.createRadialGradient(a.x, a.y, 0, a.x, a.y, a.radius);
         radialGrad.addColorStop(0, `rgba(${auroraColor.r}, ${auroraColor.g}, ${auroraColor.b}, ${auroraAlpha})`);
-        radialGrad.addColorStop(0.5, `rgba(${auroraColor.r}, ${auroraColor.g}, ${auroraColor.b}, ${auroraAlpha * 0.4})`);
+        radialGrad.addColorStop(0.5, `rgba(${auroraColor.r}, ${auroraColor.g}, ${auroraColor.b}, ${auroraAlpha * 0.45})`);
         radialGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
 
         this.ctx.fillStyle = radialGrad;
@@ -238,16 +237,16 @@
 
           if (dist < this.mouse.radius && dist > 0) {
             const force = (1 - dist / this.mouse.radius) * 0.85;
-            p.vx += (dx / dist) * force * 0.12;
-            p.vy += (dy / dist) * force * 0.12;
+            p.vx += (dx / dist) * force * 0.14;
+            p.vy += (dy / dist) * force * 0.14;
 
             // Línea luminosa hacia el cursor
-            const lineAlpha = (1 - dist / this.mouse.radius) * 0.55;
+            const lineAlpha = (1 - dist / this.mouse.radius) * 0.65;
             this.ctx.beginPath();
             this.ctx.moveTo(p.x, p.y);
             this.ctx.lineTo(this.mouse.x, this.mouse.y);
             this.ctx.strokeStyle = `rgba(${dynamicGlobalColor.r}, ${dynamicGlobalColor.g}, ${dynamicGlobalColor.b}, ${lineAlpha})`;
-            this.ctx.lineWidth = 1.3;
+            this.ctx.lineWidth = 1.8;
             this.ctx.stroke();
           }
         }
@@ -255,12 +254,12 @@
         // Color individual con morphing continuo bien perceptible
         const pColor = getDynamicColor(time, this.palette, p.colorOffset, 0.0007);
         p.phase += p.pulseSpeed;
-        const currentRadius = p.radius + Math.sin(p.phase) * 0.6;
+        const currentRadius = p.radius + Math.sin(p.phase) * 0.7;
 
         // Halo de resplandor
-        const glowAlpha = this.isPastel ? 0.35 : 0.45;
+        const glowAlpha = this.isPastel ? 0.4 : 0.6;
         this.ctx.beginPath();
-        this.ctx.arc(p.x, p.y, currentRadius * 2.8, 0, Math.PI * 2);
+        this.ctx.arc(p.x, p.y, currentRadius * 3.2, 0, Math.PI * 2);
         this.ctx.fillStyle = `rgba(${pColor.r}, ${pColor.g}, ${pColor.b}, ${glowAlpha})`;
         this.ctx.fill();
 
@@ -278,18 +277,12 @@
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < this.maxDistance) {
-            const alpha = (1 - dist / this.maxDistance) * 0.38;
+            const lineAlpha = (1 - dist / this.maxDistance) * (this.isPastel ? 0.35 : 0.48);
             this.ctx.beginPath();
             this.ctx.moveTo(p.x, p.y);
             this.ctx.lineTo(p2.x, p2.y);
-
-            const grad = this.ctx.createLinearGradient(p.x, p.y, p2.x, p2.y);
-            const p2Color = getDynamicColor(time, this.palette, p2.colorOffset, 0.0007);
-            grad.addColorStop(0, `rgba(${pColor.r}, ${pColor.g}, ${pColor.b}, ${alpha})`);
-            grad.addColorStop(1, `rgba(${p2Color.r}, ${p2Color.g}, ${p2Color.b}, ${alpha})`);
-
-            this.ctx.strokeStyle = grad;
-            this.ctx.lineWidth = 1.0;
+            this.ctx.strokeStyle = `rgba(${pColor.r}, ${pColor.g}, ${pColor.b}, ${lineAlpha})`;
+            this.ctx.lineWidth = this.isPastel ? 1.2 : 1.6;
             this.ctx.stroke();
           }
         }
@@ -299,18 +292,23 @@
     }
   }
 
-  // Inicializar canvas fijo global
-  document.addEventListener('DOMContentLoaded', () => {
-    let globalCanvas = document.getElementById('globalKineticCanvas');
-    if (!globalCanvas) {
-      globalCanvas = document.createElement('canvas');
-      globalCanvas.id = 'globalKineticCanvas';
-      globalCanvas.className = 'global-kinetic-canvas';
-      document.body.prepend(globalCanvas);
+  // Inicializar automáticamente cuando el DOM esté listo
+  function initGlobalMesh() {
+    let canvas = document.getElementById('globalKineticCanvas');
+    if (!canvas) {
+      canvas = document.createElement('canvas');
+      canvas.id = 'globalKineticCanvas';
+      canvas.className = 'global-kinetic-canvas';
+      document.body.prepend(canvas);
     }
-    const theme = document.body.dataset.theme || 'dark';
-    new FullPageKineticMesh(globalCanvas, { theme });
-  });
 
-  window.FullPageKineticMesh = FullPageKineticMesh;
+    const theme = document.body.getAttribute('data-theme') || 'default';
+    window.globalKineticMesh = new FullPageKineticMesh(canvas, { theme });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initGlobalMesh);
+  } else {
+    initGlobalMesh();
+  }
 })();
