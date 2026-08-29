@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=17.0">
+  <link rel="stylesheet" href="styles.css?v=18.0">
 </head>
 <body data-theme="dark-pastel">
 
@@ -45,10 +45,9 @@
   <main id="contenido">
 
     <!-- ===================== 1. HERO SECTION ===================== -->
-    <section id="inicio" class="hero-gala">
+    <section id="inicio" class="hero hero-gala">
       <div class="hero-inner">
         <div class="hero-copy">
-          <span class="text-outline-giant">GALA TECH</span>
           <p class="eyebrow-gala">Integración & Networking Estudiantil</p>
           <h1>El Hub Analógico: Donde las verdaderas redes no se programan, se construyen en persona.</h1>
           <p class="hero-lead">
@@ -56,16 +55,17 @@
           </p>
 
           <div class="hero-actions">
-            <button type="button" class="btn btn-primary btn-register-trigger">Confirma tu asistencia a la tribu</button>
-            <a href="#vision" class="btn btn-ghost">Descubre la Experiencia</a>
+            <button type="button" class="btn-gala btn-gala-primary btn-register-trigger">Confirma tu asistencia a la tribu</button>
+            <a href="#vision" class="btn-gala btn-gala-ghost">Descubre la Experiencia</a>
           </div>
 
           <div class="access-notice">
-            <span class="notice-badge">Acceso Controlado</span>
-            <p>Evento privado exclusivo mediante registro previo, gafete, pulsera o acreditación oficial.</p>
+            <span class="access-notice-dot"></span>
+            <strong>Acceso Controlado</strong>
+            <p style="margin:0;">Evento privado exclusivo mediante registro previo, gafete, pulsera o acreditación oficial.</p>
           </div>
 
-          <dl class="hero-facts">
+          <dl class="hero-facts-gala">
             <div>
               <dt>Fecha</dt>
               <dd>Sábado 21 de noviembre | Jornada Nocturna</dd>
@@ -460,7 +460,7 @@
 
         <div class="form-group">
           <label>Tipo de Perfil (Para logística de tarifas y acreditación):</label>
-          <div class="radio-group">
+          <div class="form-options-row">
             <label class="radio-label">
               <input type="radio" name="tipoPerfil" value="pregrado" checked>
               Estudiante de pregrado
@@ -496,13 +496,13 @@
         </div>
 
         <div class="form-group">
-          <label class="checkbox-label">
+          <label class="check-label">
             <input type="checkbox" id="regHospedaje">
             Deseo postular a una Beca de Hospedaje para delegaciones interprovinciales
           </label>
         </div>
 
-        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Confirmar mi Acreditación</button>
+        <button type="submit" class="btn-gala-submit" style="margin-top: 1rem;">Confirmar mi Acreditación</button>
       </form>
     </div>
   </div>
@@ -517,8 +517,8 @@
     </div>
   </div>
 
-  <script src="assets/js/kinetic-mesh.js?v=17.0"></script>
-  <script src="assets/js/page-transitions.js?v=17.0"></script>
-  <script src="script.js?v=17.0"></script>
+  <script src="assets/js/kinetic-mesh.js?v=18.0"></script>
+  <script src="assets/js/page-transitions.js?v=18.0"></script>
+  <script src="script.js?v=18.0"></script>
 </body>
 </html>
