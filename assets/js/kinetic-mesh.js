@@ -19,15 +19,15 @@
     { r: 0,   g: 98,  b: 155, hex: '#00629b', name: 'Azul IEEE' }
   ];
 
-  // Paleta Conecta Universidades (Modo Oscuro Pastel Make Health)
+  // Paleta Conecta Universidades (Gala Nocturna Creativa — Tonos Cálidos, Orquídea, Rosa, Matcha y Champán)
   const PALETTE_PASTEL = [
-    { r: 125, g: 211, b: 252, hex: '#7dd3fc', name: 'Cian Cielo Pastel' },
-    { r: 196, g: 181, b: 253, hex: '#c4b5fd', name: 'Lavanda / Lila Pastel' },
-    { r: 252, g: 165, b: 165, hex: '#fca5a5', name: 'Melocotón / Coral Pastel' },
-    { r: 253, g: 230, b: 138, hex: '#fde68a', name: 'Mantequilla / Crema Pastel' },
-    { r: 134, g: 239, b: 172, hex: '#86efac', name: 'Menta Suave Pastel' },
-    { r: 147, g: 197, b: 253, hex: '#93c5fd', name: 'Bígaro / Azul Suave Pastel' },
-    { r: 244, g: 114, b: 182, hex: '#f472b6', name: 'Rosa Orquídea Pastel' }
+    { r: 251, g: 113, b: 133, hex: '#fb7185', name: 'Rosa Coral Atardecer' },
+    { r: 192, g: 132, b: 252, hex: '#c084fc', name: 'Orquídea / Lavanda Cósmico' },
+    { r: 134, g: 239, b: 172, hex: '#86efac', name: 'Matcha / Jade Pastel' },
+    { r: 253, g: 230, b: 138, hex: '#fde68a', name: 'Mantequilla / Champán' },
+    { r: 253, g: 186, b: 116, hex: '#fdba74', name: 'Melocotón / Albaricoque' },
+    { r: 232, g: 121, b: 249, hex: '#e879f9', name: 'Violeta Rubí Pastel' },
+    { r: 94,  g: 234, b: 212, hex: '#5eead4', name: 'Menta Turquesa Suave' }
   ];
 
   function interpolateColor(color1, color2, factor) {

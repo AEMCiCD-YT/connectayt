@@ -247,7 +247,7 @@ main {
 }
 
 .card-universidades::before {
-  background: linear-gradient(90deg, var(--escuela-cian), var(--escuela-purpura), var(--rojo-base));
+  background: linear-gradient(90deg, #fb7185, #c084fc, #fdba74);
 }
 
 .card-hub:hover {
@@ -262,8 +262,8 @@ main {
 }
 
 .card-universidades:hover { 
-  border-color: var(--escuela-cian); 
-  box-shadow: 0 16px 40px rgba(0, 188, 202, 0.35);
+  border-color: #fb7185; 
+  box-shadow: 0 16px 40px rgba(251, 113, 133, 0.35);
 }
 
 .hub-tag {
@@ -278,7 +278,7 @@ main {
 }
 
 .tag-empresas { background: rgba(60, 159, 230, 0.15); color: var(--azul-claro); border: 1px solid rgba(60, 159, 230, 0.3); }
-.tag-universidades { background: rgba(0, 188, 202, 0.15); color: var(--escuela-cian); border: 1px solid rgba(0, 188, 202, 0.3); }
+.tag-universidades { background: rgba(251, 113, 133, 0.15); color: #fb7185; border: 1px solid rgba(251, 113, 133, 0.35); }
 
 .perfil-subtitle {
   font-size: 0.85rem;
@@ -323,6 +323,10 @@ main {
   font-size: 0.95rem;
 }
 
+.card-universidades .hub-points li::before {
+  color: #fb7185;
+}
+
 .card-footer-hub {
   margin-top: auto;
 }
@@ -348,13 +352,13 @@ main {
 }
 
 .btn-hub-universidades {
-  background: linear-gradient(135deg, var(--rojo-base), var(--escuela-coral));
+  background: linear-gradient(135deg, #f43f5e 0%, #c084fc 60%, #e879f9 100%);
   color: var(--blanco);
-  box-shadow: 0 4px 18px rgba(239, 64, 54, 0.35);
+  box-shadow: 0 4px 20px rgba(244, 63, 94, 0.4);
 }
 .btn-hub-universidades:hover {
   transform: scale(1.03);
-  box-shadow: 0 8px 28px rgba(239, 64, 54, 0.6);
+  box-shadow: 0 8px 30px rgba(244, 63, 94, 0.65);
 }
 
 /* =========================================================
