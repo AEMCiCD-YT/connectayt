@@ -1,7 +1,7 @@
-// Conecta Universidades 2026 — Interacciones de Gala
+// Conecta Universidades 2026 — Interacciones de Gala & Formulario Unificado
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* --- Menú móvil --- */
+  /* --- Menú Móvil --- */
   const navToggle = document.getElementById('navToggle');
   const primaryNav = document.getElementById('primaryNav');
 
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* --- Burbuja Glassmorphism dinámica al navegar / hacer scroll (Scrollspy) --- */
+  /* --- Scrollspy Activo con Glassmorphism --- */
   const sections = document.querySelectorAll('main section[id]');
   const navLinks = document.querySelectorAll('.primary-nav a[href^="#"]');
 
@@ -45,19 +45,15 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         });
       },
-      { threshold: 0.3, rootMargin: '-60px 0px -40% 0px' }
+      { threshold: 0.25, rootMargin: '-60px 0px -40% 0px' }
     );
 
     sections.forEach((sec) => spyObserver.observe(sec));
   }
 
-  /* --- Revelado de secciones al hacer scroll --- */
+  /* --- Revelado Suave de Secciones --- */
   const revealTargets = document.querySelectorAll('.reveal');
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  if (prefersReducedMotion || !('IntersectionObserver' in window)) {
-    revealTargets.forEach((el) => el.classList.add('is-visible'));
-  } else {
+  if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -67,35 +63,94 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         });
       },
-      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+      { threshold: 0.1 }
     );
     revealTargets.forEach((el) => observer.observe(el));
+  } else {
+    revealTargets.forEach((el) => el.classList.add('is-visible'));
   }
 
-  /* --- Validación del formulario de contacto --- */
-  const contactForm = document.querySelector('.contact-form');
-  if (contactForm) {
-    contactForm.addEventListener('submit', (event) => {
-      const requiredFields = contactForm.querySelectorAll('[required]');
-      let allValid = true;
+  /* --- Modal de Registro Unificado (Confirma tu Asistencia) --- */
+  const registerTriggers = document.querySelectorAll('.btn-register-trigger');
+  const registerModal = document.getElementById('registerModal');
+  const registerClose = document.getElementById('registerClose');
+  const registrationForm = document.getElementById('registrationForm');
 
-      requiredFields.forEach((field) => {
-        if (!field.value.trim()) {
-          allValid = false;
-          field.style.borderColor = 'var(--rojo-base)';
-        } else {
-          field.style.borderColor = '';
-        }
-      });
+  const openRegisterModal = (e) => {
+    if (e) e.preventDefault();
+    if (registerModal) {
+      registerModal.classList.add('is-active');
+      document.body.style.overflow = 'hidden';
+    }
+  };
 
-      if (!allValid) {
-        event.preventDefault();
-        alert('Por favor complete los campos obligatorios para enviar su solicitud.');
-      } else {
-        event.preventDefault();
-        alert('¡Gracias por su interés en Conecta Universidades 2026! El equipo organizador coordinará su mensaje en breve.');
-        contactForm.reset();
-      }
+  const closeRegisterModal = () => {
+    if (registerModal) {
+      registerModal.classList.remove('is-active');
+      document.body.style.overflow = '';
+    }
+  };
+
+  registerTriggers.forEach(btn => btn.addEventListener('click', openRegisterModal));
+  if (registerClose) registerClose.addEventListener('click', closeRegisterModal);
+  if (registerModal) {
+    registerModal.addEventListener('click', (e) => {
+      if (e.target === registerModal) closeRegisterModal();
     });
   }
+
+  /* --- Validación del Formulario Unificado --- */
+  if (registrationForm) {
+    registrationForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const emailField = document.getElementById('regEmail');
+      const emailVal = emailField.value.trim().toLowerCase();
+
+      // Validación de correo institucional para estudiantes
+      const userType = document.querySelector('input[name="tipoPerfil"]:checked');
+      if (userType && userType.value === 'pregrado' && !emailVal.includes('.edu')) {
+        alert('Por favor ingrese un correo institucional válido (.edu o .edu.ec) para validar su condición de estudiante.');
+        emailField.focus();
+        return;
+      }
+
+      alert('¡Confirmación exitosa! Hemos registrado tu asistencia a Conecta Universidades 2026. Te enviaremos tus credenciales y detalles de acceso al correo.');
+      registrationForm.reset();
+      closeRegisterModal();
+    });
+  }
+
+  /* --- Modal Legal --- */
+  const legalTriggers = document.querySelectorAll('.legal-trigger');
+  const legalModal = document.getElementById('legalModal');
+  const legalClose = document.getElementById('legalClose');
+
+  if (legalModal) {
+    legalTriggers.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        legalModal.classList.add('is-active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    const closeLegal = () => {
+      legalModal.classList.remove('is-active');
+      document.body.style.overflow = '';
+    };
+
+    if (legalClose) legalClose.addEventListener('click', closeLegal);
+    legalModal.addEventListener('click', (e) => {
+      if (e.target === legalModal) closeLegal();
+    });
+  }
+
+  // Tecla Escape para cerrar modales
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeRegisterModal();
+      if (legalModal) legalModal.classList.remove('is-active');
+      document.body.style.overflow = '';
+    }
+  });
 });

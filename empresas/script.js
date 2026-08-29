@@ -1,58 +1,91 @@
-// Conecta Empresas 2026 — interacciones de la página
+// Conecta Empresas 2026 — Interacciones & Accesibilidad
 document.addEventListener('DOMContentLoaded', () => {
+  // Mobile Nav Toggle
   const navToggle = document.getElementById('navToggle');
   const primaryNav = document.getElementById('primaryNav');
 
   if (navToggle && primaryNav) {
-    const setMenuState = (isOpen) => {
+    navToggle.addEventListener('click', () => {
+      const isOpen = primaryNav.classList.toggle('is-open');
       navToggle.classList.toggle('is-open', isOpen);
-      primaryNav.classList.toggle('is-open', isOpen);
       navToggle.setAttribute('aria-expanded', String(isOpen));
-    };
-    navToggle.addEventListener('click', () => setMenuState(!navToggle.classList.contains('is-open')));
-    primaryNav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setMenuState(false)));
-  }
+    });
 
-  const sections = document.querySelectorAll('main section[id]');
-  const navLinks = document.querySelectorAll('.primary-nav a[href^="#"]');
-  if (sections.length && navLinks.length && 'IntersectionObserver' in window) {
-    const spyObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        navLinks.forEach((link) => link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`));
+    primaryNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        primaryNav.classList.remove('is-open');
+        navToggle.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
       });
-    }, { threshold: 0.3, rootMargin: '-60px 0px -40% 0px' });
-    sections.forEach((section) => spyObserver.observe(section));
+    });
   }
 
-  const revealTargets = document.querySelectorAll('.reveal');
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reducedMotion || !('IntersectionObserver' in window)) {
-    revealTargets.forEach((element) => element.classList.add('is-visible'));
-  } else {
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
+  // Smooth Scroll
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (targetId.length > 1) {
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          e.preventDefault();
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    });
+  });
+
+  // Reveal Animations
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('is-visible');
-          revealObserver.unobserve(entry.target);
+          observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-    revealTargets.forEach((element) => revealObserver.observe(element));
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  } else {
+    reveals.forEach(el => el.classList.add('is-visible'));
   }
 
+  // Form Submission Handler
   const contactForm = document.querySelector('.contact-form');
   if (contactForm) {
-    contactForm.addEventListener('submit', (event) => {
-      let valid = true;
-      contactForm.querySelectorAll('[required]').forEach((field) => {
-        const empty = !field.value.trim();
-        field.style.borderColor = empty ? 'var(--rojo-base)' : '';
-        valid = valid && !empty;
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('¡Gracias por registrar tu interés en Conecta Empresas 2026! Hemos recibido tus datos correctamente.');
+      contactForm.reset();
+    });
+  }
+
+  // Modal Legal
+  const legalTriggers = document.querySelectorAll('.legal-trigger');
+  const legalModal = document.getElementById('legalModal');
+  const legalClose = document.getElementById('legalClose');
+
+  if (legalModal) {
+    legalTriggers.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        legalModal.classList.add('is-active');
+        document.body.style.overflow = 'hidden';
       });
-      if (!valid) {
-        event.preventDefault();
-        alert('Por favor complete los campos obligatorios para enviar su solicitud.');
+    });
+
+    const closeModal = () => {
+      legalModal.classList.remove('is-active');
+      document.body.style.overflow = '';
+    };
+
+    if (legalClose) legalClose.addEventListener('click', closeModal);
+    legalModal.addEventListener('click', (e) => {
+      if (e.target === legalModal) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && legalModal.classList.contains('is-active')) {
+        closeModal();
       }
     });
   }

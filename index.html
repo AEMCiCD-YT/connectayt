@@ -5,26 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Conecta IEEE YT 2026 | Portal Principal</title>
   <meta name="description" content="Proyecto Conecta IEEE YT 2026 — Dos componentes, un solo ecosistema de talento e innovación. Organizado conjuntamente por IEEE Yachay Tech Student Branch y AEMCiCD.">
-  <meta name="theme-color" content="#ffffff">
-  <link rel="icon" type="image/png" sizes="32x32" href="logos/Conecta%20YT/conectayt_logo_isocolor.png">
-  <link rel="apple-touch-icon" href="logos/Conecta%20YT/conectayt_logo_isocolor.png">
+  <meta name="theme-color" content="#070e15">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/logos/conectayt_logo_isocolor.png">
+  <link rel="apple-touch-icon" href="assets/logos/conectayt_logo_isocolor.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Montserrat:wght@700;800;900&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles-hub.css?v=4.0">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles-hub.css?v=5.0">
 </head>
 <body>
 
-  <!-- ===================== HERO SECTION (CABECERA PRINCIPAL) ===================== -->
-  <header class="site-header-hub">
+  <!-- ===================== ENCABEZADO / NAVBAR ===================== -->
+  <header class="site-header-hub" id="inicio">
     <div class="header-inner-hub">
       <a class="brand-hub" href="index.html" aria-label="Conecta YT 2026, inicio">
-        <img src="logos/Conecta%20YT/conectayt_logo_hcolor.png" alt="Conecta YT 2026" width="1822" height="601" loading="eager" decoding="async" style="height:48px;width:auto;display:block">
+        <img class="brand-logo-img" src="assets/logos/conectayt_logo_hcolor.png" alt="Conecta YT 2026" width="1822" height="601">
       </a>
+
+      <button type="button" class="nav-toggle-hub" id="navToggle" aria-label="Abrir menú" aria-controls="primaryNav" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav-hub" id="primaryNav">
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#selector">Modalidades</a></li>
+          <li><a href="#partners">Partners</a></li>
+          <li><a href="#comite">Local Committee</a></li>
+          <li><a class="nav-cta" href="#selector">Elegir Perfil</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
 
   <main>
+    <!-- ===================== HERO SECTION ===================== -->
     <section class="hero-hub">
       <div class="hero-inner-hub">
         <p class="eyebrow-hub">Proyecto Conecta IEEE YT 2026</p>
@@ -35,11 +50,11 @@
       </div>
     </section>
 
-    <!-- ===================== SELECTOR DUAL (TARJETAS DE NAVEGACIÓN) ===================== -->
-    <section class="selector-dual-section">
+    <!-- ===================== SELECTOR DUAL ===================== -->
+    <section class="selector-dual-section" id="selector">
       <div class="selector-dual-container">
         
-        <!-- Tarjeta 1: Conecta Empresas (Perfil Corporativo y Empleabilidad) -->
+        <!-- Tarjeta 1: Conecta Empresas -->
         <article class="card-hub card-empresas">
           <div class="card-header-hub">
             <span class="hub-tag tag-empresas">Feria de Trabajo y Vinculación</span>
@@ -61,7 +76,7 @@
           </div>
         </article>
 
-        <!-- Tarjeta 2: Conecta Universidades (Perfil Estudiantil e Integración) -->
+        <!-- Tarjeta 2: Conecta Universidades -->
         <article class="card-hub card-universidades">
           <div class="card-header-hub">
             <span class="hub-tag tag-universidades">Integración y Networking Estudiantil</span>
@@ -85,16 +100,207 @@
 
       </div>
     </section>
+
+    <!-- ===================== CARRUSEL DE SPONSORS & PARTNERS ===================== -->
+    <section class="partners-section" id="partners">
+      <div class="partners-inner">
+        <div class="partners-header">
+          <p class="eyebrow-hub">Respaldo Institucional & Aliados</p>
+          <h2>Partners y Organizaciones Aliadas</h2>
+          <p>Unidos para impulsar el ecosistema tecnológico, la empleabilidad y la integración académica nacional.</p>
+        </div>
+
+        <div class="marquee-container" aria-label="Carrusel de patrocinadores y aliados">
+          <div class="marquee-track">
+            <div class="partner-item">IEEE Yachay Tech</div>
+            <div class="partner-item">AEMCiCD</div>
+            <div class="partner-item">Universidad Yachay Tech</div>
+            <div class="partner-item">IEEE Ecuador Section</div>
+            <div class="partner-item">IEEE Foundation / SPAx</div>
+            <div class="partner-item">IEEE Computer Society</div>
+            <div class="partner-item">IEEE Women in Engineering</div>
+            <div class="partner-item">Red Universitaria Ecuador</div>
+            <!-- Duplicado para loop infinito fluido -->
+            <div class="partner-item">IEEE Yachay Tech</div>
+            <div class="partner-item">AEMCiCD</div>
+            <div class="partner-item">Universidad Yachay Tech</div>
+            <div class="partner-item">IEEE Ecuador Section</div>
+            <div class="partner-item">IEEE Foundation / SPAx</div>
+            <div class="partner-item">IEEE Computer Society</div>
+            <div class="partner-item">IEEE Women in Engineering</div>
+            <div class="partner-item">Red Universitaria Ecuador</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== LOCAL COMMITTEE (ORGANIZADORES) ===================== -->
+    <section class="committee-section" id="comite">
+      <div class="committee-inner">
+        <div class="section-title-center">
+          <p class="eyebrow-hub">Comité Organizador</p>
+          <h2>Local Committee</h2>
+          <p>El equipo multidisciplinario de líderes estudiantiles y facilitadores que construyen el puente entre el talento joven y las oportunidades reales.</p>
+        </div>
+
+        <div class="committee-grid">
+          
+          <article class="committee-card">
+            <span class="dept-badge">Dirección General</span>
+            <div class="committee-info">
+              <h3>Dirección & Liderazgo</h3>
+              <p>Coordinación ejecutiva y visión integral del macroevento Conecta 2026.</p>
+            </div>
+            <div class="committee-links">
+              <a href="mailto:ieee@yachaytech.edu.ec" class="comm-btn" aria-label="Correo Dirección">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                Email
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener" class="comm-btn" aria-label="LinkedIn Dirección">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                LinkedIn
+              </a>
+            </div>
+          </article>
+
+          <article class="committee-card">
+            <span class="dept-badge">Logística & Operaciones</span>
+            <div class="committee-info">
+              <h3>Gestión de Sedes y Recintos</h3>
+              <p>Producción técnica, coordinación de espacios y protocolo de asistencia.</p>
+            </div>
+            <div class="committee-links">
+              <a href="mailto:ieee@yachaytech.edu.ec" class="comm-btn" aria-label="Correo Logística">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                Email
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener" class="comm-btn" aria-label="LinkedIn Logística">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                LinkedIn
+              </a>
+            </div>
+          </article>
+
+          <article class="committee-card">
+            <span class="dept-badge">Finanzas & Sponsors</span>
+            <div class="committee-info">
+              <h3>Relaciones Corporativas</h3>
+              <p>Vinculación con empresas patrocinadoras y gestión de alianzas estratégicas.</p>
+            </div>
+            <div class="committee-links">
+              <a href="mailto:asoemc@yachaytech.edu.ec" class="comm-btn" aria-label="Correo Finanzas">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                Email
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener" class="comm-btn" aria-label="LinkedIn Finanzas">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                LinkedIn
+              </a>
+            </div>
+          </article>
+
+          <article class="committee-card">
+            <span class="dept-badge">Comunicaciones & Prensa</span>
+            <div class="committee-info">
+              <h3>Difusión & Marketing</h3>
+              <p>Estrategia de comunicación digital, contenido y difusión nacional.</p>
+            </div>
+            <div class="committee-links">
+              <a href="mailto:asoemc@yachaytech.edu.ec" class="comm-btn" aria-label="Correo Comunicaciones">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                Email
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener" class="comm-btn" aria-label="LinkedIn Comunicaciones">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                LinkedIn
+              </a>
+            </div>
+          </article>
+
+          <article class="committee-card">
+            <span class="dept-badge">Relaciones Universitarias</span>
+            <div class="committee-info">
+              <h3>Comunidad & Delegaciones</h3>
+              <p>Atención a delegaciones interuniversitarias, ramas IEEE y clubes académicos.</p>
+            </div>
+            <div class="committee-links">
+              <a href="mailto:ieee@yachaytech.edu.ec" class="comm-btn" aria-label="Correo Relaciones">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                Email
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener" class="comm-btn" aria-label="LinkedIn Relaciones">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                LinkedIn
+              </a>
+            </div>
+          </article>
+
+          <article class="committee-card">
+            <span class="dept-badge">Tecnología & Plataforma</span>
+            <div class="committee-info">
+              <h3>Desarrollo Web & Sistemas</h3>
+              <p>Arquitectura digital, registro unificado y plataformas interactivas del evento.</p>
+            </div>
+            <div class="committee-links">
+              <a href="mailto:ieee@yachaytech.edu.ec" class="comm-btn" aria-label="Correo Tecnología">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                Email
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener" class="comm-btn" aria-label="LinkedIn Tecnología">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                LinkedIn
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- ===================== FOOTER INSTITUCIONAL ===================== -->
   <footer class="footer-hub">
     <div class="footer-inner-hub">
-      <img src="logos/Conecta%20YT/conectayt_logo_hblanco.png" alt="Conecta YT" width="1822" height="601" loading="lazy" decoding="async" style="height:42px;width:auto;display:block;margin:0 auto 1rem">
+      <div class="footer-brand-logo">
+        <img src="assets/logos/conectayt_logo_hblanco.png" alt="Conecta YT 2026" width="1822" height="601">
+      </div>
+      
       <p class="footer-orgs">Organizan: <strong>AEMCiCD – IEEE Yachay Tech.</strong></p>
-      <p class="footer-credits" style="font-size: 0.82rem; color: rgba(255,255,255,0.55); margin-top: 0.4rem;">Desarrollado por <strong>Mateo (MATEO197802)</strong> y <strong>Ariel Pincay</strong>.</p>
+      
+      <!-- Íconos Vectoriales Funcionales de Redes Sociales -->
+      <div class="footer-social-links" aria-label="Redes sociales oficiales">
+        <a href="https://www.instagram.com/ieee_yachaytech/" target="_blank" rel="noopener" class="social-icon-btn" aria-label="Instagram IEEE Yachay Tech">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/company/ieee-yachay-tech/" target="_blank" rel="noopener" class="social-icon-btn" aria-label="LinkedIn Oficial">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="https://wa.me/593987278018" target="_blank" rel="noopener" class="social-icon-btn" aria-label="WhatsApp Coordinación">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        </a>
+        <a href="mailto:ieee@yachaytech.edu.ec" class="social-icon-btn" aria-label="Correo Institucional">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </a>
+      </div>
+
+      <div class="footer-bottom-links">
+        <a href="#" class="legal-trigger">Términos, Condiciones y Política de Privacidad</a>
+        <span>© 2026 Conecta IEEE YT. Todos los derechos reservados.</span>
+      </div>
     </div>
   </footer>
 
+  <!-- ===================== MODAL DE TÉRMINOS & PRIVACIDAD ===================== -->
+  <div class="modal-overlay" id="legalModal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-content-box">
+      <button type="button" class="modal-close-btn" id="legalClose" aria-label="Cerrar">&times;</button>
+      <h2>Términos, Condiciones y Política de Privacidad</h2>
+      <p><strong>Tratamiento de Datos Personales:</strong> La información recopilada a través de los formularios oficiales del evento Conecta IEEE YT 2026 será utilizada con fines exclusivos de registro, validación académica, coordinación logística de asistencia y comunicación directa sobre el evento por parte del comité organizador (AEMCiCD y IEEE Yachay Tech Student Branch).</p>
+      <p><strong>Compromiso de Confidencialidad:</strong> Los datos no serán vendidos, cedidos ni compartidos con terceros ajenos a las actividades oficiales de acreditación y vinculación autorizadas por el participante.</p>
+      <p><strong>Normas de Participación:</strong> Tanto Conecta Empresas como Conecta Universidades son eventos de acceso controlado mediante credencial o registro previo, garantizando un entorno seguro, profesional e integrador.</p>
+    </div>
+  </div>
+
+  <script src="script-hub.js"></script>
 </body>
 </html>
