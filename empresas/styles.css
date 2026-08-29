@@ -846,29 +846,44 @@ main {
 /* =========================================================
    PRE-FOOTER & FOOTER
    ========================================================= */
-.pre-footer {
-  background: linear-gradient(180deg, rgba(241, 246, 250, 0.9) 0%, rgba(226, 232, 240, 0.95) 100%);
-  backdrop-filter: blur(14px);
+.pre-footer, .pre-footer-corporate {
+  background: rgba(236, 245, 252, 0.40);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   padding: var(--gap-xl) 1.5rem;
   text-align: center;
-  border-top: 1px solid rgba(203, 213, 225, 0.8);
+  border-top: 1px solid rgba(2, 132, 199, 0.12);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .pre-footer-inner {
   max-width: 800px;
   margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.pre-footer h3 {
+.pre-footer h3, .pre-footer-corporate h3 {
   font-size: 2.2rem;
   color: var(--texto-black);
   margin-bottom: 0.85rem;
+  text-align: center;
 }
 
-.pre-footer p {
+.pre-footer p, .pre-footer-corporate p {
   color: var(--texto-muted);
   font-size: 1.15rem;
   margin-bottom: var(--gap-md);
+  text-align: center;
+}
+
+.pre-footer .btn, .pre-footer-corporate .btn {
+  margin: 0 auto;
 }
 
 .site-footer {
