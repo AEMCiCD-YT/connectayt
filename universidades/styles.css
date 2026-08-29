@@ -1,19 +1,19 @@
 /* =========================================================
    CONECTA UNIVERSIDADES 2026 — Sistema de Diseño
-   Inspiración Visual: RenderATL (renderatl.com) — Gala Tecnológica Vibrante
-   Paleta: Modo Noche Cinético (#112e42, #000000, Acentos Neón Escuelas)
+   Inspiración Visual: RenderATL & MAKE HEALTH (MIT Critical Data)
+   Fondo Cinético Continuo en Toda la Página (Full-Page Canvas)
+   y Distribución Cromática Dinámica de Tarjetas
    Tipografía: Outfit (Headings) + DM Sans (Body)
-   Layout: Grilla Asimétrica 12 Columnas, Tensión Diagonal & Kinetic Tickers
    ========================================================= */
 
 :root {
   /* --- Fondos Dominantes --- */
   --bg-deep:           #112e42;
   --bg-pure-black:     #000000;
-  --bg-night-body:     #050b11;
-  --bg-glass-card:     rgba(13, 33, 49, 0.6);
-  --bg-glass-hover:    rgba(20, 52, 75, 0.85);
-  --bg-header:         rgba(5, 11, 17, 0.94);
+  --bg-night-body:     #04090e;
+  --bg-glass-card:     rgba(11, 26, 40, 0.65);
+  --bg-glass-hover:    rgba(18, 44, 66, 0.88);
+  --bg-header:         rgba(4, 9, 14, 0.92);
 
   /* --- Acentos Vibrantes Escuelas YT --- */
   --escuela-cian:      #00bcca;
@@ -21,18 +21,19 @@
   --escuela-amarillo:  #fdca26;
   --escuela-rojo:      #ff5242;
   --escuela-purpura:   #9d7cb0;
+  --azul-claro:        #3c9fe6;
+  --rojo-base:         #ef4036;
 
   /* --- Degradados Cinéticos RenderATL --- */
   --grad-azul:         linear-gradient(135deg, #25628f 0%, #3c9fe6 100%);
   --grad-rojo:         linear-gradient(135deg, #ef4036 0%, #ff5242 100%);
   --grad-gala:         linear-gradient(90deg, #00bcca 0%, #9d7cb0 50%, #ff5242 100%);
-  --grad-neon-border:  linear-gradient(135deg, #00bcca 0%, rgba(157, 124, 176, 0.6) 50%, #ff5242 100%);
 
   /* --- Textos & Neutros --- */
   --blanco:            #ffffff;
   --texto-main:        #f1f5f9;
   --texto-muted:       #94a9ba;
-  --linea-glass:       rgba(60, 159, 230, 0.24);
+  --linea-glass:       rgba(60, 159, 230, 0.22);
   --glow-cian:         rgba(0, 188, 202, 0.4);
   --glow-rojo:         rgba(239, 64, 54, 0.4);
 
@@ -62,7 +63,19 @@ body {
   font-size: 1.125rem; /* 18px */
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  position: relative;
   overflow-x: hidden;
+}
+
+/* Canvas Cinético Global de Fondo Completo */
+.global-kinetic-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -228,6 +241,8 @@ small {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+  z-index: 2;
 }
 
 .brand {
@@ -298,23 +313,18 @@ small {
   border-radius: 2px; transition: transform var(--transition);
 }
 
+main {
+  position: relative;
+  z-index: 1;
+}
+
 /* =========================================================
-   HERO SECTION (GALA TECNOLÓGICA CON FONDO 3D IA)
+   HERO SECTION
    ========================================================= */
 .hero-gala {
   position: relative;
   padding: 10.5rem 1.5rem 6.5rem;
-  background: radial-gradient(circle at 65% 35%, #112e42 0%, #060e17 60%, #000000 100%);
   overflow: hidden;
-}
-
-.hero-canvas-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
 }
 
 .hero-inner {
@@ -322,16 +332,6 @@ small {
   margin: 0 auto;
   position: relative;
   z-index: 2;
-  pointer-events: none;
-}
-
-.hero-inner a,
-.hero-inner button,
-.hero-inner p,
-.hero-inner h1,
-.hero-inner span,
-.hero-inner dl {
-  pointer-events: auto;
 }
 
 .hero-copy {
@@ -409,7 +409,8 @@ small {
    KINETIC TICKER TAPE (RENDERATL STYLE)
    ========================================================= */
 .ticker-tape-container {
-  background: #02070c;
+  background: rgba(2, 7, 12, 0.75);
+  backdrop-filter: blur(10px);
   border-top: 1px solid var(--linea-glass);
   border-bottom: 1px solid var(--linea-glass);
   padding: 0.85rem 0;
@@ -449,15 +450,21 @@ small {
 }
 
 /* =========================================================
-   SECCIONES COMUNES
+   SECCIONES COMUNES (TRANSLÚCIDAS PARA VER EL FONDO)
    ========================================================= */
 .section {
   padding: var(--spacing-xxl) 1.5rem;
   position: relative;
 }
 
-.section-dark { background-color: var(--bg-night-body); }
-.section-darker { background-color: #02060a; }
+.section-dark { 
+  background-color: rgba(4, 9, 14, 0.7); 
+  backdrop-filter: blur(12px);
+}
+.section-darker { 
+  background-color: rgba(2, 6, 10, 0.82); 
+  backdrop-filter: blur(14px);
+}
 
 .section-inner {
   max-width: 1200px;
@@ -465,7 +472,7 @@ small {
 }
 
 /* =========================================================
-   GALA CARDS (ASIMETRÍA CONTROLADA & RENDERATL FLOW)
+   GALA CARDS (DISTRIBUCIÓN CROMÁTICA MAKE HEALTH)
    ========================================================= */
 .gala-grid-asymmetric {
   display: grid;
@@ -487,8 +494,8 @@ small {
 
 .gala-card-right {
   grid-column: span 5;
-  background: rgba(157, 124, 176, 0.09);
-  border: 1px solid rgba(157, 124, 176, 0.3);
+  background: rgba(157, 124, 176, 0.12);
+  border: 1px solid rgba(157, 124, 176, 0.35);
   border-radius: 24px;
   padding: var(--spacing-lg);
   backdrop-filter: blur(12px);
@@ -499,13 +506,13 @@ small {
 .gala-card-left:hover {
   transform: translateY(-5px);
   border-color: var(--escuela-cian);
-  box-shadow: 0 16px 40px rgba(0, 188, 202, 0.2);
+  box-shadow: 0 16px 40px rgba(0, 188, 202, 0.25);
 }
 
 .gala-card-right:hover {
   transform: translateY(-5px);
   border-color: var(--escuela-purpura);
-  box-shadow: 0 16px 40px rgba(157, 124, 176, 0.25);
+  box-shadow: 0 16px 40px rgba(157, 124, 176, 0.3);
 }
 
 .card-halo-icon {
@@ -531,7 +538,7 @@ small {
 }
 
 /* =========================================================
-   COMUNIDAD & ALIADOS (DELEGACIONES)
+   COMUNIDAD & ALIADOS (DELEGACIONES CROMÁTICAS)
    ========================================================= */
 .community-tags-grid {
   display: grid;
@@ -542,6 +549,7 @@ small {
 
 .univ-badge-card {
   background: var(--bg-glass-card);
+  backdrop-filter: blur(10px);
   border: 1px solid var(--linea-glass);
   border-radius: 16px;
   padding: 1.5rem;
@@ -550,11 +558,15 @@ small {
 }
 
 .univ-badge-card:hover {
-  border-color: var(--escuela-cian);
-  background: var(--bg-glass-hover);
   transform: translateY(-3px);
-  box-shadow: 0 10px 28px rgba(0, 188, 202, 0.25);
 }
+
+.card-accent-cian:hover { border-color: var(--escuela-cian); box-shadow: 0 10px 28px rgba(0, 188, 202, 0.3); }
+.card-accent-purpura:hover { border-color: var(--escuela-purpura); box-shadow: 0 10px 28px rgba(157, 124, 176, 0.3); }
+.card-accent-coral:hover { border-color: var(--escuela-coral); box-shadow: 0 10px 28px rgba(255, 82, 66, 0.3); }
+.card-accent-amarillo:hover { border-color: var(--escuela-amarillo); box-shadow: 0 10px 28px rgba(253, 202, 38, 0.3); }
+.card-accent-verde:hover { border-color: var(--escuela-verde); box-shadow: 0 10px 28px rgba(0, 188, 82, 0.3); }
+.card-accent-azul:hover { border-color: var(--azul-claro); box-shadow: 0 10px 28px rgba(60, 159, 230, 0.3); }
 
 .univ-badge-card strong {
   font-family: var(--font-display);
@@ -570,7 +582,7 @@ small {
 }
 
 /* =========================================================
-   LOCAL COMMITTEE (TARJETAS CUADRADAS IDÉNTICAS)
+   LOCAL COMMITTEE (TARJETAS CUADRADAS CROMÁTICAS)
    ========================================================= */
 .committee-grid {
   display: grid;
@@ -581,6 +593,7 @@ small {
 
 .committee-card {
   background: var(--bg-glass-card);
+  backdrop-filter: blur(12px);
   border: 1px solid var(--linea-glass);
   border-radius: 18px;
   padding: 2rem;
@@ -593,24 +606,33 @@ small {
 
 .committee-card:hover {
   background: var(--bg-glass-hover);
-  border-color: var(--escuela-cian);
   transform: translateY(-4px);
-  box-shadow: 0 12px 35px rgba(0, 188, 202, 0.25);
 }
+
+.comm-cian:hover { border-color: var(--escuela-cian); box-shadow: 0 12px 35px rgba(0, 188, 202, 0.3); }
+.comm-purpura:hover { border-color: var(--escuela-purpura); box-shadow: 0 12px 35px rgba(157, 124, 176, 0.3); }
+.comm-coral:hover { border-color: var(--escuela-coral); box-shadow: 0 12px 35px rgba(255, 82, 66, 0.3); }
+.comm-amarillo:hover { border-color: var(--escuela-amarillo); box-shadow: 0 12px 35px rgba(253, 202, 38, 0.3); }
+.comm-verde:hover { border-color: var(--escuela-verde); box-shadow: 0 12px 35px rgba(0, 188, 82, 0.3); }
+.comm-azul:hover { border-color: var(--azul-claro); box-shadow: 0 12px 35px rgba(60, 159, 230, 0.3); }
 
 .dept-badge {
   font-size: 0.72rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--escuela-cian);
-  background: rgba(0, 188, 202, 0.12);
-  border: 1px solid rgba(0, 188, 202, 0.25);
   padding: 0.35em 0.8em;
   border-radius: 999px;
   align-self: flex-start;
   margin-bottom: 1rem;
 }
+
+.badge-cian { color: var(--escuela-cian); background: rgba(0, 188, 202, 0.12); border: 1px solid rgba(0, 188, 202, 0.3); }
+.badge-purpura { color: var(--escuela-purpura); background: rgba(157, 124, 176, 0.12); border: 1px solid rgba(157, 124, 176, 0.3); }
+.badge-coral { color: var(--escuela-coral); background: rgba(255, 82, 66, 0.12); border: 1px solid rgba(255, 82, 66, 0.3); }
+.badge-amarillo { color: var(--escuela-amarillo); background: rgba(253, 202, 38, 0.12); border: 1px solid rgba(253, 202, 38, 0.3); }
+.badge-verde { color: var(--escuela-verde); background: rgba(0, 188, 82, 0.12); border: 1px solid rgba(0, 188, 82, 0.3); }
+.badge-azul { color: var(--azul-claro); background: rgba(60, 159, 230, 0.12); border: 1px solid rgba(60, 159, 230, 0.3); }
 
 .committee-info h3 {
   font-size: 1.25rem;
@@ -667,6 +689,7 @@ small {
 
 .loc-item {
   background: var(--bg-glass-card);
+  backdrop-filter: blur(10px);
   border: 1px solid var(--linea-glass);
   border-radius: 16px;
   padding: 1.5rem;
@@ -681,6 +704,7 @@ small {
 
 .location-map-frame {
   background: var(--bg-glass-card);
+  backdrop-filter: blur(10px);
   border: 1px solid var(--linea-glass);
   border-radius: 16px;
   overflow: hidden;
@@ -700,10 +724,13 @@ small {
    FRANJA FINAL DE CONTACTO (SPONSORS)
    ========================================================= */
 .pre-footer-sponsors {
-  background: #020508;
+  background: rgba(2, 5, 8, 0.85);
+  backdrop-filter: blur(14px);
   border-top: 1px solid var(--linea-glass);
   padding: var(--spacing-xl) 1.5rem;
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .pre-footer-inner {
@@ -727,10 +754,13 @@ small {
    FOOTER INSTITUCIONAL (LIMPIO)
    ========================================================= */
 .site-footer {
-  background: #000000;
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(16px);
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   padding: var(--spacing-lg) 1.5rem 2rem;
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .footer-inner {

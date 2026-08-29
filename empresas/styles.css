@@ -1,7 +1,7 @@
 /* =========================================================
    CONECTA EMPRESAS 2026 — Sistema de Diseño
-   Paleta 80/20: Blanco Puro (#ffffff), Negro (#000000), 
-                 Azules Profundos (#112e42, #1c4a6b), Azul Principal (#00629b)
+   Paleta 80/20 & Distribución Cromática Make Health (MIT Critical Data)
+   Fondo Cinético Global en Toda la Página
    Tipografía: Outfit (Headings) + DM Sans (Body)
    Layout: Bento Box ortogonal, equilibrio estático, bordes rectos
    ========================================================= */
@@ -9,18 +9,23 @@
 :root {
   /* --- Fondos Dominantes (80%) --- */
   --bg-page:           #f8fafc;
-  --bg-white:          #ffffff;
-  --bg-card:           #ffffff;
-  --bg-alt:            #f1f5f9;
+  --bg-white:          rgba(255, 255, 255, 0.92);
+  --bg-card:           rgba(255, 255, 255, 0.94);
+  --bg-alt:            rgba(241, 245, 249, 0.88);
   --bg-deep:           #112e42;
   --bg-deep-alt:       #1c4a6b;
   --bg-darker:         #070e15;
 
-  /* --- Acentos Estratégicos (20%) --- */
+  /* --- Acentos Estratégicos & Cromáticos (20%) --- */
   --azul-principal:    #00629b;
   --azul-hover:        #112e42;
   --azul-light:        #3c9fe6;
   --rojo-acento:       #ef4036;
+  --escuela-cian:      #00bcca;
+  --escuela-purpura:   #9d7cb0;
+  --escuela-coral:     #ff5242;
+  --escuela-amarillo:  #fdca26;
+  --escuela-verde:     #00bc52;
 
   /* --- Textos & Neutros --- */
   --texto-black:       #000000;
@@ -44,7 +49,7 @@
   --gap-xxl:           6rem;    /* 96px */
 
   /* --- Bordes Geométricos Rectos --- */
-  --radius-bento:      4px;
+  --radius-bento:      6px;
   --transition:        180ms ease-in-out;
 }
 
@@ -59,6 +64,19 @@ body {
   font-size: 1.125rem; /* 18px */
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Canvas Cinético Global de Fondo Completo */
+.global-kinetic-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -103,8 +121,8 @@ p strong, li strong {
 .eyebrow {
   font-family: var(--font-body);
   font-size: 0.875rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+  font-weight: 800;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--azul-principal);
   margin-bottom: 0.75rem;
@@ -170,17 +188,6 @@ p strong, li strong {
   transform: scale(0.98);
 }
 
-.btn-outline {
-  background-color: transparent;
-  color: var(--azul-principal);
-  border-color: var(--azul-principal);
-}
-
-.btn-outline:hover {
-  background-color: var(--azul-principal);
-  color: var(--texto-white);
-}
-
 .btn-block {
   width: 100%;
 }
@@ -192,8 +199,8 @@ p strong, li strong {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border-light);
 }
 
@@ -204,6 +211,8 @@ p strong, li strong {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+  z-index: 2;
 }
 
 .brand {
@@ -262,8 +271,13 @@ p strong, li strong {
   border-radius: 2px; transition: transform var(--transition);
 }
 
+main {
+  position: relative;
+  z-index: 1;
+}
+
 /* =========================================================
-   HERO SECTION (AZUL PROFUNDO INSTITUCIONAL)
+   HERO SECTION
    ========================================================= */
 .hero {
   background: radial-gradient(circle at 65% 45%, #1c4a6b 0%, #0c2030 65%, #060d14 100%);
@@ -273,29 +287,11 @@ p strong, li strong {
   overflow: hidden;
 }
 
-.hero-canvas-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-
 .hero-inner {
   max-width: 1160px;
   margin: 0 auto;
   position: relative;
   z-index: 2;
-  pointer-events: none;
-}
-
-.hero-inner a,
-.hero-inner button,
-.hero-inner p,
-.hero-inner h1,
-.hero-inner dl {
-  pointer-events: auto;
 }
 
 .hero-copy {
@@ -345,10 +341,11 @@ p strong, li strong {
 }
 
 /* =========================================================
-   SECCIONES COMUNES
+   SECCIONES COMUNES (TRANSLÚCIDAS PARA VER EL FONDO)
    ========================================================= */
 .section {
   padding: var(--gap-xxl) 1.5rem;
+  position: relative;
 }
 
 .section-inner {
@@ -358,14 +355,16 @@ p strong, li strong {
 
 .section-alt {
   background-color: var(--bg-alt);
+  backdrop-filter: blur(10px);
 }
 
 .section-white {
   background-color: var(--bg-white);
+  backdrop-filter: blur(10px);
 }
 
 /* =========================================================
-   BENTO BOX GRIDS (EQUILIBRIO ESTÁTICO)
+   BENTO BOX GRIDS (DISTRIBUCIÓN CROMÁTICA MAKE HEALTH)
    ========================================================= */
 .bento-grid-2 {
   display: grid;
@@ -376,25 +375,37 @@ p strong, li strong {
 
 .bento-card {
   background: var(--bg-card);
+  backdrop-filter: blur(8px);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-bento);
   padding: var(--gap-md);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
-  transition: transform var(--transition), box-shadow var(--transition);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
 }
 
 .bento-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
-.bento-card-primary {
-  border-left: 4px solid var(--azul-principal);
-}
+/* Acentos cromáticos diferenciados para cada bloque */
+.bento-card-cian { border-left: 5px solid var(--escuela-cian); }
+.bento-card-cian:hover { border-color: var(--escuela-cian); }
 
-.bento-card-accent {
-  border-left: 4px solid var(--rojo-acento);
-}
+.bento-card-purpura { border-left: 5px solid var(--escuela-purpura); }
+.bento-card-purpura:hover { border-color: var(--escuela-purpura); }
+
+.bento-card-coral { border-left: 5px solid var(--escuela-coral); }
+.bento-card-coral:hover { border-color: var(--escuela-coral); }
+
+.bento-card-amarillo { border-left: 5px solid var(--escuela-amarillo); }
+.bento-card-amarillo:hover { border-color: var(--escuela-amarillo); }
+
+.bento-card-verde { border-left: 5px solid var(--escuela-verde); }
+.bento-card-verde:hover { border-color: var(--escuela-verde); }
+
+.bento-card-azul { border-left: 5px solid var(--azul-principal); }
+.bento-card-azul:hover { border-color: var(--azul-principal); }
 
 /* =========================================================
    SPONSORS / EMPRESAS PARTICIPANTES (GRID FIJO)
@@ -408,6 +419,7 @@ p strong, li strong {
 
 .sponsor-card-fixed {
   background: var(--bg-white);
+  backdrop-filter: blur(8px);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-bento);
   padding: 2rem 1.5rem;
@@ -424,7 +436,7 @@ p strong, li strong {
 .sponsor-card-fixed:hover {
   border-color: var(--azul-principal);
   transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0, 98, 155, 0.1);
+  box-shadow: 0 8px 25px rgba(0, 98, 155, 0.12);
 }
 
 .sponsor-card-fixed strong {
@@ -440,7 +452,7 @@ p strong, li strong {
 }
 
 /* =========================================================
-   LOCAL COMMITTEE (TARJETAS CUADRADAS IDÉNTICAS)
+   LOCAL COMMITTEE (TARJETAS CUADRADAS CROMÁTICAS)
    ========================================================= */
 .committee-grid {
   display: grid;
@@ -451,6 +463,7 @@ p strong, li strong {
 
 .committee-card {
   background: var(--bg-white);
+  backdrop-filter: blur(8px);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-bento);
   padding: 2rem;
@@ -459,27 +472,37 @@ p strong, li strong {
   justify-content: space-between;
   aspect-ratio: 1 / 1;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
-  transition: transform var(--transition), border-color var(--transition);
+  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
 }
 
 .committee-card:hover {
-  border-color: var(--azul-principal);
   transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
 }
+
+.comm-cian:hover { border-color: var(--escuela-cian); box-shadow: 0 10px 25px rgba(0, 188, 202, 0.15); }
+.comm-purpura:hover { border-color: var(--escuela-purpura); box-shadow: 0 10px 25px rgba(157, 124, 176, 0.15); }
+.comm-coral:hover { border-color: var(--escuela-coral); box-shadow: 0 10px 25px rgba(255, 82, 66, 0.15); }
+.comm-amarillo:hover { border-color: var(--escuela-amarillo); box-shadow: 0 10px 25px rgba(253, 202, 38, 0.15); }
+.comm-verde:hover { border-color: var(--escuela-verde); box-shadow: 0 10px 25px rgba(0, 188, 82, 0.15); }
+.comm-azul:hover { border-color: var(--azul-principal); box-shadow: 0 10px 25px rgba(0, 98, 155, 0.15); }
 
 .dept-badge {
   font-size: 0.75rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--azul-principal);
-  background: rgba(0, 98, 155, 0.08);
   padding: 0.35em 0.8em;
   border-radius: var(--radius-bento);
   align-self: flex-start;
   margin-bottom: 1rem;
 }
+
+.badge-cian { color: var(--escuela-cian); background: rgba(0, 188, 202, 0.1); border: 1px solid rgba(0, 188, 202, 0.25); }
+.badge-purpura { color: var(--escuela-purpura); background: rgba(157, 124, 176, 0.1); border: 1px solid rgba(157, 124, 176, 0.25); }
+.badge-coral { color: var(--escuela-coral); background: rgba(255, 82, 66, 0.1); border: 1px solid rgba(255, 82, 66, 0.25); }
+.badge-amarillo { color: #b58d00; background: rgba(253, 202, 38, 0.15); border: 1px solid rgba(253, 202, 38, 0.3); }
+.badge-verde { color: var(--escuela-verde); background: rgba(0, 188, 82, 0.1); border: 1px solid rgba(0, 188, 82, 0.25); }
+.badge-azul { color: var(--azul-principal); background: rgba(0, 98, 155, 0.1); border: 1px solid rgba(0, 98, 155, 0.25); }
 
 .committee-info h3 {
   font-size: 1.25rem;
@@ -572,7 +595,8 @@ p strong, li strong {
    FORMULARIO DE CONTACTO / REGISTRO
    ========================================================= */
 .contact-section {
-  background: #f1f5f9;
+  background: rgba(241, 245, 249, 0.9);
+  backdrop-filter: blur(10px);
 }
 
 .form-box {
@@ -628,6 +652,8 @@ p strong, li strong {
   padding: var(--gap-xl) 1.5rem;
   text-align: center;
   border-top: 3px solid var(--azul-principal);
+  position: relative;
+  z-index: 1;
 }
 
 .pre-footer-inner {
@@ -656,6 +682,8 @@ p strong, li strong {
   padding: var(--gap-lg) 1.5rem 2rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 0.95rem;
+  position: relative;
+  z-index: 1;
 }
 
 .footer-inner {
@@ -757,14 +785,8 @@ p strong, li strong {
   line-height: 1;
 }
 
-.modal-content-box h2 {
-  margin-bottom: 1rem;
-}
-
-.modal-content-box p {
-  margin-bottom: 1rem;
-  font-size: 0.95rem;
-}
+.modal-content-box h2 { margin-bottom: 1rem; }
+.modal-content-box p { margin-bottom: 1rem; font-size: 0.95rem; }
 
 /* =========================================================
    RESPONSIVE
@@ -780,14 +802,8 @@ p strong, li strong {
     transform: translateY(-120%);
     transition: transform var(--transition);
   }
-  .primary-nav.is-open {
-    transform: translateY(0);
-  }
-  .primary-nav ul {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-  }
+  .primary-nav.is-open { transform: translateY(0); }
+  .primary-nav ul { flex-direction: column; align-items: flex-start; gap: 1rem; }
   .hero { padding: 4.5rem 1.25rem 3.5rem; }
   .hero-facts { flex-direction: column; gap: 1rem; }
   .location-grid { grid-template-columns: 1fr; }
