@@ -1,10 +1,10 @@
 /**
  * Kinetic Aurora & Constellation Network Canvas — Full Page Engine
  * Soporta modos temáticos diferenciados:
- * 1. Default (Hub Conecta YT): Malla pastel armónica y homogénea
- * 2. dark-pastel (Conecta Universidades): Malla de gala cálida y botánica
- * 3. corporate (Conecta Empresas): Malla Formal Corporate Tech (Zafiro, Cian, Azul Eléctrico, Teal, Platino)
- *    con nodos de doble núcleo nítidos, alta visibilidad y radar interactivo.
+ * 1. Default (Hub Conecta YT): Modo oscuro con malla pastel armónica y homogénea
+ * 2. dark-pastel (Conecta Universidades): Modo oscuro de gala cálida y botánica
+ * 3. corporate (Conecta Empresas): MODO CLARO CORPORATIVO (Zafiro, Cobalto, Cian, Teal, Índigo)
+ *    con nodos pigmentados de alta nitidez, conexiones visibles sobre fondo claro y radar interactivo.
  */
 
 (function () {
@@ -32,15 +32,14 @@
     { r: 251, g: 113, b: 133, hex: '#fb7185', name: 'Rosa Sunset Cierre' }
   ];
 
-  // 3. Paleta Formal Corporate Tech para Conecta Empresas (Zafiro, Cian Tecnológico, Azul Eléctrico, Teal, Platino)
+  // 3. Paleta Formal Corporate Tech (Modo Claro) para Conecta Empresas (Cobalto, Zafiro, Cian, Teal, Índigo)
   const PALETTE_EMPRESAS_CORPORATE = [
-    { r: 37, g: 99, b: 235, hex: '#2563eb', name: 'Zafiro Corporativo' },
-    { r: 6, g: 182, b: 212, hex: '#06b6d4', name: 'Cian Tecnológico' },
-    { r: 56, g: 189, b: 248, hex: '#38bdf8', name: 'Azul Eléctrico' },
-    { r: 20, g: 184, b: 166, hex: '#14b8a6', name: 'Teal Esmeralda' },
-    { r: 129, g: 140, b: 248, hex: '#818cf8', name: 'Índigo Platino' },
-    { r: 248, g: 250, b: 252, hex: '#f8fafc', name: 'Perla Blanca' },
-    { r: 37, g: 99, b: 235, hex: '#2563eb', name: 'Zafiro Cierre' }
+    { r: 2, g: 132, b: 199, hex: '#0284c7', name: 'Cobalto Corporativo' },
+    { r: 3, g: 105, b: 161, hex: '#0369a1', name: 'Zafiro Profundo' },
+    { r: 8, g: 145, b: 178, hex: '#0891b2', name: 'Cian Tecnológico' },
+    { r: 67, g: 56, b: 202, hex: '#4338ca', name: 'Índigo Real' },
+    { r: 15, g: 118, b: 110, hex: '#0f766e', name: 'Teal Esmeralda' },
+    { r: 2, g: 132, b: 199, hex: '#0284c7', name: 'Cobalto Cierre' }
   ];
 
   function interpolateColor(color1, color2, factor) {
@@ -132,7 +131,7 @@
     createParticles() {
       this.particles = [];
       for (let i = 0; i < this.particleCount; i++) {
-        const baseRadius = this.isCorporate ? (Math.random() * 1.6 + 2.4) : (Math.random() * 1.2 + 2.0);
+        const baseRadius = this.isCorporate ? (Math.random() * 1.5 + 2.5) : (Math.random() * 1.2 + 2.0);
         this.particles.push({
           x: Math.random() * this.width,
           y: Math.random() * this.height,
@@ -216,11 +215,11 @@
         if (a.y > this.height + 120) a.y = -120;
 
         const auroraColor = getDynamicColor(time, this.palette, a.colorOffset, 0.00025);
-        const auroraAlpha = this.isCorporate ? 0.09 : 0.075;
+        const auroraAlpha = this.isCorporate ? 0.045 : 0.075;
 
         const radialGrad = this.ctx.createRadialGradient(a.x, a.y, 0, a.x, a.y, a.radius);
         radialGrad.addColorStop(0, `rgba(${auroraColor.r}, ${auroraColor.g}, ${auroraColor.b}, ${auroraAlpha})`);
-        radialGrad.addColorStop(0.5, `rgba(${auroraColor.r}, ${auroraColor.g}, ${auroraColor.b}, ${auroraAlpha * 0.4})`);
+        radialGrad.addColorStop(0.5, `rgba(${auroraColor.r}, ${auroraColor.g}, ${auroraColor.b}, ${auroraAlpha * 0.35})`);
         radialGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
 
         this.ctx.fillStyle = radialGrad;
@@ -277,23 +276,23 @@
         const currentRadius = p.radius + Math.sin(p.phase) * (this.isCorporate ? 0.6 : 0.4);
 
         if (this.isCorporate) {
-          // ESTILO CORPORATE TECH FORMAL: Nodos con doble anillo de alta definición
-          const glowAlpha = p.isHighPriority ? 0.32 : 0.22;
+          // MODO CLARO CORPORATIVO: Nodos nítidos con halo suave y núcleo contrastado
+          const glowAlpha = p.isHighPriority ? 0.22 : 0.14;
           
-          // Anillo exterior de resonancia
+          // Halo exterior sutil
           this.ctx.beginPath();
           this.ctx.arc(p.x, p.y, currentRadius * 2.2, 0, Math.PI * 2);
-          this.ctx.fillStyle = `rgba(${pColor.r}, ${pColor.g}, ${pColor.b}, ${glowAlpha * 0.5})`;
+          this.ctx.fillStyle = `rgba(${pColor.r}, ${pColor.g}, ${pColor.b}, ${glowAlpha})`;
           this.ctx.fill();
 
           // Anillo medio nítido
           this.ctx.beginPath();
           this.ctx.arc(p.x, p.y, currentRadius * 1.4, 0, Math.PI * 2);
-          this.ctx.strokeStyle = `rgba(${pColor.r}, ${pColor.g}, ${pColor.b}, 0.65)`;
+          this.ctx.strokeStyle = `rgba(${pColor.r}, ${pColor.g}, ${pColor.b}, 0.55)`;
           this.ctx.lineWidth = 1.0;
           this.ctx.stroke();
 
-          // Núcleo brillante de alta visibilidad
+          // Núcleo pigmentado brillante de alta definición
           this.ctx.beginPath();
           this.ctx.arc(p.x, p.y, currentRadius, 0, Math.PI * 2);
           this.ctx.fillStyle = `rgb(${pColor.r}, ${pColor.g}, ${pColor.b})`;
@@ -320,7 +319,7 @@
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < this.maxDistance) {
-            const lineAlpha = (1 - dist / this.maxDistance) * (this.isCorporate ? 0.32 : 0.22);
+            const lineAlpha = (1 - dist / this.maxDistance) * (this.isCorporate ? 0.30 : 0.22);
             this.ctx.beginPath();
             this.ctx.moveTo(p.x, p.y);
             this.ctx.lineTo(p2.x, p2.y);
