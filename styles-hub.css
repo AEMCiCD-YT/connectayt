@@ -1,14 +1,14 @@
 /* =========================================================
    HUB PRINCIPAL — CONECTA IEEE YT 2026
    Sistema de diseño con Fondo Cinético Continuo Global (Full-Page)
-   y Distribución Cromática Cambiante (Inspirado en MIT Critical Data / Make Health)
+   Auroras Vivas & Distribución Cromática Cambiante (Inspirado en MIT Critical Data / Make Health)
    Tipografía: Outfit (Headings) + DM Sans (Body)
    ========================================================= */
 
 :root {
-  --bg-hub:           #050b11;
-  --bg-hub-card:      rgba(11, 26, 40, 0.65);
-  --bg-hub-card-hover:rgba(18, 42, 64, 0.88);
+  --bg-hub:           #060c14;
+  --bg-hub-card:      rgba(15, 30, 48, 0.62);
+  --bg-hub-card-hover:rgba(22, 45, 72, 0.85);
 
   /* Paleta Cromática Dinámica */
   --azul-ieee:        #00629b;
@@ -23,8 +23,8 @@
   --blanco:           #ffffff;
   --negro:            #000000;
   --texto-main:       #f1f5f9;
-  --texto-muted:      #94a9ba;
-  --linea-glass:      rgba(60, 159, 230, 0.2);
+  --texto-muted:      #9cb0c2;
+  --linea-glass:      rgba(60, 159, 230, 0.22);
 
   --font-display:     'Outfit', sans-serif;
   --font-body:        'DM Sans', sans-serif;
@@ -62,6 +62,12 @@ body {
 
 a { color: inherit; text-decoration: none; }
 
+@keyframes chromaticShift {
+  0%   { filter: hue-rotate(0deg); }
+  50%  { filter: hue-rotate(180deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
 /* =========================================================
    HEADER / NAVBAR
    ========================================================= */
@@ -69,7 +75,7 @@ a { color: inherit; text-decoration: none; }
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(5, 11, 17, 0.9);
+  background: rgba(6, 12, 20, 0.88);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--linea-glass);
@@ -173,8 +179,10 @@ main {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   background: linear-gradient(90deg, var(--escuela-cian), var(--escuela-purpura), var(--escuela-coral));
+  background-size: 200% 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  animation: chromaticShift 10s ease-in-out infinite alternate;
   margin-bottom: 0.9em;
   display: inline-block;
 }
@@ -215,8 +223,8 @@ main {
 
 .card-hub {
   background: var(--bg-hub-card);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--linea-glass);
   border-radius: var(--radius);
   padding: 2.5rem;
@@ -250,12 +258,12 @@ main {
 
 .card-empresas:hover { 
   border-color: var(--azul-claro); 
-  box-shadow: 0 16px 40px rgba(0, 98, 155, 0.3);
+  box-shadow: 0 16px 40px rgba(0, 98, 155, 0.35);
 }
 
 .card-universidades:hover { 
   border-color: var(--escuela-cian); 
-  box-shadow: 0 16px 40px rgba(0, 188, 202, 0.3);
+  box-shadow: 0 16px 40px rgba(0, 188, 202, 0.35);
 }
 
 .hub-tag {
@@ -350,12 +358,12 @@ main {
 }
 
 /* =========================================================
-   SECCIÓN SPONSORS & PARTNERS (MARQUEE INFINITO)
+   SECCIÓN SPONSORS & PARTNERS (MARQUEE INFINITO TRANSLÚCIDO)
    ========================================================= */
 .partners-section {
   padding: 4.5rem 1.5rem;
-  background: rgba(3, 7, 12, 0.7);
-  backdrop-filter: blur(12px);
+  background: rgba(4, 9, 15, 0.35);
+  backdrop-filter: blur(10px);
   border-top: 1px solid var(--linea-glass);
   border-bottom: 1px solid var(--linea-glass);
   text-align: center;
@@ -412,7 +420,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(13, 33, 49, 0.6);
+  background: rgba(13, 33, 49, 0.5);
   border: 1px solid var(--linea-glass);
   border-radius: 14px;
   padding: 1.25rem 2rem;
@@ -422,6 +430,7 @@ main {
   font-size: 0.95rem;
   color: var(--blanco);
   white-space: nowrap;
+  backdrop-filter: blur(10px);
   transition: border-color var(--transition), transform var(--transition);
 }
 
@@ -469,7 +478,7 @@ main {
 
 .committee-card {
   background: var(--bg-hub-card);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(14px);
   border: 1px solid var(--linea-glass);
   border-radius: var(--radius);
   padding: 2rem;
@@ -558,7 +567,7 @@ main {
   border-top: 1px solid var(--linea-glass);
   padding: 3.5rem 1.5rem 2rem;
   text-align: center;
-  background: rgba(2, 6, 10, 0.9);
+  background: rgba(2, 6, 10, 0.75);
   backdrop-filter: blur(14px);
   position: relative;
   z-index: 1;

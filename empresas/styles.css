@@ -1,22 +1,22 @@
 /* =========================================================
    CONECTA EMPRESAS 2026 — Sistema de Diseño
    Paleta 80/20 & Distribución Cromática Make Health (MIT Critical Data)
-   Fondo Cinético Global en Toda la Página
+   Fondo Cinético y Auroras Vivas Continuas en Toda la Página
    Tipografía: Outfit (Headings) + DM Sans (Body)
    Layout: Bento Box ortogonal, equilibrio estático, bordes rectos
    ========================================================= */
 
 :root {
-  /* --- Fondos Dominantes (80%) --- */
-  --bg-page:           #f8fafc;
-  --bg-white:          rgba(255, 255, 255, 0.92);
-  --bg-card:           rgba(255, 255, 255, 0.94);
-  --bg-alt:            rgba(241, 245, 249, 0.88);
-  --bg-deep:           #112e42;
+  /* --- Fondos Translúcidos para Visibilidad de Fondo Vivo --- */
+  --bg-page:           #f0f4f8;
+  --bg-white:          rgba(255, 255, 255, 0.65);
+  --bg-card:           rgba(255, 255, 255, 0.85);
+  --bg-alt:            rgba(235, 243, 250, 0.45);
+  --bg-deep:           rgba(17, 46, 66, 0.88);
   --bg-deep-alt:       #1c4a6b;
   --bg-darker:         #070e15;
 
-  /* --- Acentos Estratégicos & Cromáticos (20%) --- */
+  /* --- Acentos Estratégicos & Cromáticos --- */
   --azul-principal:    #00629b;
   --azul-hover:        #112e42;
   --azul-light:        #3c9fe6;
@@ -33,8 +33,8 @@
   --texto-muted:       #475569;
   --texto-light:       #f1f5f9;
   --texto-white:       #ffffff;
-  --border-light:      #e2e8f0;
-  --border-deep:       rgba(255, 255, 255, 0.15);
+  --border-light:      rgba(17, 46, 66, 0.12);
+  --border-deep:       rgba(255, 255, 255, 0.18);
 
   /* --- Tipografía --- */
   --font-display:      'Outfit', sans-serif;
@@ -49,7 +49,7 @@
   --gap-xxl:           6rem;    /* 96px */
 
   /* --- Bordes Geométricos Rectos --- */
-  --radius-bento:      6px;
+  --radius-bento:      8px;
   --transition:        180ms ease-in-out;
 }
 
@@ -160,12 +160,13 @@ p strong, li strong {
 .btn-primary {
   background-color: var(--azul-principal);
   color: var(--texto-white);
+  box-shadow: 0 4px 14px rgba(0, 98, 155, 0.25);
 }
 
 .btn-primary:hover {
   background-color: var(--azul-hover);
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0, 98, 155, 0.3);
+  box-shadow: 0 6px 20px rgba(0, 98, 155, 0.4);
 }
 
 .btn-primary:active {
@@ -199,7 +200,7 @@ p strong, li strong {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border-light);
 }
@@ -244,7 +245,7 @@ p strong, li strong {
 
 .primary-nav a:hover {
   color: var(--azul-principal);
-  background: var(--bg-alt);
+  background: rgba(0, 98, 155, 0.08);
 }
 
 .primary-nav .nav-cta {
@@ -280,7 +281,7 @@ main {
    HERO SECTION
    ========================================================= */
 .hero {
-  background: radial-gradient(circle at 65% 45%, #1c4a6b 0%, #0c2030 65%, #060d14 100%);
+  background: radial-gradient(circle at 65% 45%, rgba(28, 74, 107, 0.95) 0%, rgba(12, 32, 48, 0.95) 65%, rgba(6, 13, 20, 0.98) 100%);
   color: var(--texto-white);
   padding: 6.5rem 1.5rem 5rem;
   position: relative;
@@ -375,37 +376,37 @@ main {
 
 .bento-card {
   background: var(--bg-card);
-  backdrop-filter: blur(8px);
-  border: 1px solid var(--border-light);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: var(--radius-bento);
   padding: var(--gap-md);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
   transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
 }
 
 .bento-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.09);
 }
 
-/* Acentos cromáticos diferenciados para cada bloque */
+/* Acentos cromáticos diferenciados con resplandor vivo */
 .bento-card-cian { border-left: 5px solid var(--escuela-cian); }
-.bento-card-cian:hover { border-color: var(--escuela-cian); }
+.bento-card-cian:hover { border-color: var(--escuela-cian); box-shadow: 0 12px 32px rgba(0, 188, 202, 0.18); }
 
 .bento-card-purpura { border-left: 5px solid var(--escuela-purpura); }
-.bento-card-purpura:hover { border-color: var(--escuela-purpura); }
+.bento-card-purpura:hover { border-color: var(--escuela-purpura); box-shadow: 0 12px 32px rgba(157, 124, 176, 0.18); }
 
 .bento-card-coral { border-left: 5px solid var(--escuela-coral); }
-.bento-card-coral:hover { border-color: var(--escuela-coral); }
+.bento-card-coral:hover { border-color: var(--escuela-coral); box-shadow: 0 12px 32px rgba(255, 82, 66, 0.18); }
 
 .bento-card-amarillo { border-left: 5px solid var(--escuela-amarillo); }
-.bento-card-amarillo:hover { border-color: var(--escuela-amarillo); }
+.bento-card-amarillo:hover { border-color: var(--escuela-amarillo); box-shadow: 0 12px 32px rgba(253, 202, 38, 0.18); }
 
 .bento-card-verde { border-left: 5px solid var(--escuela-verde); }
-.bento-card-verde:hover { border-color: var(--escuela-verde); }
+.bento-card-verde:hover { border-color: var(--escuela-verde); box-shadow: 0 12px 32px rgba(0, 188, 82, 0.18); }
 
 .bento-card-azul { border-left: 5px solid var(--azul-principal); }
-.bento-card-azul:hover { border-color: var(--azul-principal); }
+.bento-card-azul:hover { border-color: var(--azul-principal); box-shadow: 0 12px 32px rgba(0, 98, 155, 0.18); }
 
 /* =========================================================
    SPONSORS / EMPRESAS PARTICIPANTES (GRID FIJO)
@@ -418,9 +419,9 @@ main {
 }
 
 .sponsor-card-fixed {
-  background: var(--bg-white);
-  backdrop-filter: blur(8px);
-  border: 1px solid var(--border-light);
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
   border-radius: var(--radius-bento);
   padding: 2rem 1.5rem;
   text-align: center;
@@ -436,7 +437,7 @@ main {
 .sponsor-card-fixed:hover {
   border-color: var(--azul-principal);
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(0, 98, 155, 0.12);
+  box-shadow: 0 8px 25px rgba(0, 98, 155, 0.15);
 }
 
 .sponsor-card-fixed strong {
@@ -462,16 +463,16 @@ main {
 }
 
 .committee-card {
-  background: var(--bg-white);
-  backdrop-filter: blur(8px);
-  border: 1px solid var(--border-light);
+  background: var(--bg-card);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
   border-radius: var(--radius-bento);
   padding: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   aspect-ratio: 1 / 1;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
   transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
 }
 
@@ -479,12 +480,12 @@ main {
   transform: translateY(-4px);
 }
 
-.comm-cian:hover { border-color: var(--escuela-cian); box-shadow: 0 10px 25px rgba(0, 188, 202, 0.15); }
-.comm-purpura:hover { border-color: var(--escuela-purpura); box-shadow: 0 10px 25px rgba(157, 124, 176, 0.15); }
-.comm-coral:hover { border-color: var(--escuela-coral); box-shadow: 0 10px 25px rgba(255, 82, 66, 0.15); }
-.comm-amarillo:hover { border-color: var(--escuela-amarillo); box-shadow: 0 10px 25px rgba(253, 202, 38, 0.15); }
-.comm-verde:hover { border-color: var(--escuela-verde); box-shadow: 0 10px 25px rgba(0, 188, 82, 0.15); }
-.comm-azul:hover { border-color: var(--azul-principal); box-shadow: 0 10px 25px rgba(0, 98, 155, 0.15); }
+.comm-cian:hover { border-color: var(--escuela-cian); box-shadow: 0 10px 28px rgba(0, 188, 202, 0.2); }
+.comm-purpura:hover { border-color: var(--escuela-purpura); box-shadow: 0 10px 28px rgba(157, 124, 176, 0.2); }
+.comm-coral:hover { border-color: var(--escuela-coral); box-shadow: 0 10px 28px rgba(255, 82, 66, 0.2); }
+.comm-amarillo:hover { border-color: var(--escuela-amarillo); box-shadow: 0 10px 28px rgba(253, 202, 38, 0.2); }
+.comm-verde:hover { border-color: var(--escuela-verde); box-shadow: 0 10px 28px rgba(0, 188, 82, 0.2); }
+.comm-azul:hover { border-color: var(--azul-principal); box-shadow: 0 10px 28px rgba(0, 98, 155, 0.2); }
 
 .dept-badge {
   font-size: 0.75rem;
@@ -497,12 +498,12 @@ main {
   margin-bottom: 1rem;
 }
 
-.badge-cian { color: var(--escuela-cian); background: rgba(0, 188, 202, 0.1); border: 1px solid rgba(0, 188, 202, 0.25); }
-.badge-purpura { color: var(--escuela-purpura); background: rgba(157, 124, 176, 0.1); border: 1px solid rgba(157, 124, 176, 0.25); }
-.badge-coral { color: var(--escuela-coral); background: rgba(255, 82, 66, 0.1); border: 1px solid rgba(255, 82, 66, 0.25); }
+.badge-cian { color: var(--escuela-cian); background: rgba(0, 188, 202, 0.12); border: 1px solid rgba(0, 188, 202, 0.3); }
+.badge-purpura { color: var(--escuela-purpura); background: rgba(157, 124, 176, 0.12); border: 1px solid rgba(157, 124, 176, 0.3); }
+.badge-coral { color: var(--escuela-coral); background: rgba(255, 82, 66, 0.12); border: 1px solid rgba(255, 82, 66, 0.3); }
 .badge-amarillo { color: #b58d00; background: rgba(253, 202, 38, 0.15); border: 1px solid rgba(253, 202, 38, 0.3); }
-.badge-verde { color: var(--escuela-verde); background: rgba(0, 188, 82, 0.1); border: 1px solid rgba(0, 188, 82, 0.25); }
-.badge-azul { color: var(--azul-principal); background: rgba(0, 98, 155, 0.1); border: 1px solid rgba(0, 98, 155, 0.25); }
+.badge-verde { color: var(--escuela-verde); background: rgba(0, 188, 82, 0.12); border: 1px solid rgba(0, 188, 82, 0.3); }
+.badge-azul { color: var(--azul-principal); background: rgba(0, 98, 155, 0.12); border: 1px solid rgba(0, 98, 155, 0.3); }
 
 .committee-info h3 {
   font-size: 1.25rem;
@@ -552,8 +553,9 @@ main {
 }
 
 .location-facts {
-  background: var(--bg-white);
-  border: 1px solid var(--border-light);
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
   border-radius: var(--radius-bento);
   padding: var(--gap-md);
   display: flex;
@@ -576,8 +578,9 @@ main {
 }
 
 .map-frame {
-  background: var(--bg-white);
-  border: 1px solid var(--border-light);
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
   border-radius: var(--radius-bento);
   overflow: hidden;
   min-height: 320px;
@@ -595,18 +598,19 @@ main {
    FORMULARIO DE CONTACTO / REGISTRO
    ========================================================= */
 .contact-section {
-  background: rgba(241, 245, 249, 0.9);
+  background: rgba(235, 243, 250, 0.5);
   backdrop-filter: blur(10px);
 }
 
 .form-box {
-  background: var(--bg-white);
-  border: 1px solid var(--border-light);
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
   border-radius: var(--radius-bento);
   padding: var(--gap-md);
   max-width: 760px;
   margin: var(--gap-md) auto 0;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
 }
 
 .form-group {
@@ -630,7 +634,7 @@ main {
   font-size: 1rem;
   border: 1px solid var(--border-light);
   border-radius: var(--radius-bento);
-  background: var(--bg-page);
+  background: rgba(255, 255, 255, 0.9);
   color: var(--texto-black);
   transition: border-color var(--transition);
 }
@@ -640,14 +644,16 @@ main {
 .form-group textarea:focus {
   outline: none;
   border-color: var(--azul-principal);
-  background: var(--bg-white);
+  background: var(--texto-white);
+  box-shadow: 0 0 10px rgba(0, 98, 155, 0.2);
 }
 
 /* =========================================================
    FRANJA FINAL CORPORATIVA (PRE-FOOTER)
    ========================================================= */
 .pre-footer-corporate {
-  background: #112e42;
+  background: rgba(17, 46, 66, 0.92);
+  backdrop-filter: blur(14px);
   color: var(--texto-white);
   padding: var(--gap-xl) 1.5rem;
   text-align: center;
@@ -677,7 +683,8 @@ main {
    FOOTER INSTITUCIONAL
    ========================================================= */
 .site-footer {
-  background: #070e15;
+  background: rgba(7, 14, 21, 0.95);
+  backdrop-filter: blur(16px);
   color: var(--texto-light);
   padding: var(--gap-lg) 1.5rem 2rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -762,7 +769,8 @@ main {
 .modal-overlay.is-active { display: flex; }
 
 .modal-content-box {
-  background: var(--bg-white);
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
   border-radius: var(--radius-bento);
   max-width: 680px;
   width: 100%;
@@ -796,7 +804,7 @@ main {
   .primary-nav {
     position: fixed;
     top: 64px; left: 0; right: 0;
-    background: var(--bg-white);
+    background: rgba(255, 255, 255, 0.98);
     border-bottom: 1px solid var(--border-light);
     padding: 1.5rem;
     transform: translateY(-120%);
