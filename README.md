@@ -94,3 +94,9 @@ Escala tonal del azul institucional. Es la escala más versátil del sistema: cu
 * **Mateo** ([@MATEO197802](https://github.com/MATEO197802)) — Desarrollador de la sección Conecta Universidades (Integración IEEE 2026 - Gala Modo Noche) y Maquetador del Portal Hub Principal.
 * **Ariel Pincay** ([@arielpincayy](https://github.com/arielpincayy)) — Desarrollador de la sección Conecta Empresas (Feria B2B Modo Día).
 * **Equipo AEMCiCD & IEEE Yachay Tech** — Co-Organización Institucional.
+
+---
+
+## 8. Organización Oficial en GitHub
+
+Este proyecto pertenece y es co-administrado institucionalmente por la [Asociación de Estudiantes de Matemática, Ciencias Computacionales y Ciencia de Datos (AEMCiCD-YT)](https://github.com/AEMCiCD-YT).
