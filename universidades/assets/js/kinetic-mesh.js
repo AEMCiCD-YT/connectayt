@@ -4,7 +4,7 @@
  * 1. Default (Hub Conecta YT): Modo oscuro con malla pastel armónica y homogénea
  * 2. dark-pastel (Conecta Universidades): Modo oscuro de gala cálida y botánica
  * 3. corporate (Conecta Empresas): MODO CLARO CORPORATIVO (Zafiro, Cobalto, Cian, Teal, Índigo)
- *    con nodos pigmentados de alta nitidez, conexiones visibles sobre fondo claro y radar interactivo.
+ *    con nodos pigmentados de alta nitidez, conexiones visibles en toda la página y radar interactivo.
  */
 
 (function () {
@@ -81,7 +81,7 @@
       this.mouse = {
         x: -9999,
         y: -9999,
-        radius: this.isCorporate ? 240 : 200,
+        radius: this.isCorporate ? 260 : 200,
         isActive: false
       };
 
@@ -104,13 +104,13 @@
       this.canvas.height = this.height * this.dpr;
       this.ctx.scale(this.dpr, this.dpr);
 
-      this.maxDistance = Math.min(this.width, this.height) * (this.isCorporate ? 0.20 : 0.18);
-      if (this.maxDistance < 120) this.maxDistance = 120;
-      if (this.maxDistance > 180) this.maxDistance = 180;
+      this.maxDistance = Math.min(this.width, this.height) * (this.isCorporate ? 0.22 : 0.18);
+      if (this.maxDistance < 130) this.maxDistance = 130;
+      if (this.maxDistance > 200) this.maxDistance = 200;
 
-      this.particleCount = Math.floor((this.width * this.height) / (this.isCorporate ? 13000 : 15000));
-      if (this.particleCount < 50) this.particleCount = 50;
-      if (this.particleCount > 105) this.particleCount = 105;
+      this.particleCount = Math.floor((this.width * this.height) / (this.isCorporate ? 10000 : 15000));
+      if (this.particleCount < 60) this.particleCount = 60;
+      if (this.particleCount > 130) this.particleCount = 130;
     }
 
     createAuroras() {
@@ -120,7 +120,7 @@
         this.auroras.push({
           x: (this.width / (numAuroras + 1)) * (i + 1),
           y: Math.random() * this.height,
-          radius: Math.min(this.width, this.height) * (0.5 + Math.random() * 0.3),
+          radius: Math.min(this.width, this.height) * (0.55 + Math.random() * 0.35),
           vx: (Math.random() - 0.5) * 0.25,
           vy: (Math.random() - 0.5) * 0.25,
           colorOffset: (i * (this.palette.length / numAuroras))
@@ -131,16 +131,16 @@
     createParticles() {
       this.particles = [];
       for (let i = 0; i < this.particleCount; i++) {
-        const baseRadius = this.isCorporate ? (Math.random() * 1.5 + 2.5) : (Math.random() * 1.2 + 2.0);
+        const baseRadius = this.isCorporate ? (Math.random() * 1.8 + 2.8) : (Math.random() * 1.2 + 2.0);
         this.particles.push({
           x: Math.random() * this.width,
           y: Math.random() * this.height,
-          vx: (Math.random() - 0.5) * (this.isCorporate ? 0.35 : 0.4),
-          vy: (Math.random() - 0.5) * (this.isCorporate ? 0.35 : 0.4),
+          vx: (Math.random() - 0.5) * (this.isCorporate ? 0.38 : 0.4),
+          vy: (Math.random() - 0.5) * (this.isCorporate ? 0.38 : 0.4),
           radius: baseRadius,
           phase: Math.random() * Math.PI * 2,
           pulseSpeed: Math.random() * 0.025 + 0.012,
-          isHighPriority: Math.random() > 0.75
+          isHighPriority: Math.random() > 0.7
         });
       }
     }
@@ -180,8 +180,8 @@
           const dx = p.x - clickX;
           const dy = p.y - clickY;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 200 && dist > 0) {
-            const force = (1 - dist / 200) * 3.0;
+          if (dist < 220 && dist > 0) {
+            const force = (1 - dist / 220) * 3.5;
             p.vx += (dx / dist) * force;
             p.vy += (dy / dist) * force;
           }
@@ -215,11 +215,11 @@
         if (a.y > this.height + 120) a.y = -120;
 
         const auroraColor = getDynamicColor(time, this.palette, a.colorOffset, 0.00025);
-        const auroraAlpha = this.isCorporate ? 0.045 : 0.075;
+        const auroraAlpha = this.isCorporate ? 0.06 : 0.075;
 
         const radialGrad = this.ctx.createRadialGradient(a.x, a.y, 0, a.x, a.y, a.radius);
         radialGrad.addColorStop(0, `rgba(${auroraColor.r}, ${auroraColor.g}, ${auroraColor.b}, ${auroraAlpha})`);
-        radialGrad.addColorStop(0.5, `rgba(${auroraColor.r}, ${auroraColor.g}, ${auroraColor.b}, ${auroraAlpha * 0.35})`);
+        radialGrad.addColorStop(0.5, `rgba(${auroraColor.r}, ${auroraColor.g}, ${auroraColor.b}, ${auroraAlpha * 0.4})`);
         radialGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
 
         this.ctx.fillStyle = radialGrad;
@@ -257,39 +257,39 @@
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < this.mouse.radius && dist > 0) {
-            const force = (1 - dist / this.mouse.radius) * (this.isCorporate ? 0.85 : 0.65);
+            const force = (1 - dist / this.mouse.radius) * (this.isCorporate ? 0.95 : 0.65);
             p.vx += (dx / dist) * force * 0.1;
             p.vy += (dy / dist) * force * 0.1;
 
             // Línea luminosa hacia el cursor
-            const lineAlpha = (1 - dist / this.mouse.radius) * (this.isCorporate ? 0.55 : 0.38);
+            const lineAlpha = (1 - dist / this.mouse.radius) * (this.isCorporate ? 0.65 : 0.38);
             this.ctx.beginPath();
             this.ctx.moveTo(p.x, p.y);
             this.ctx.lineTo(this.mouse.x, this.mouse.y);
             this.ctx.strokeStyle = `rgba(${pColor.r}, ${pColor.g}, ${pColor.b}, ${lineAlpha})`;
-            this.ctx.lineWidth = this.isCorporate ? 1.3 : 1.1;
+            this.ctx.lineWidth = this.isCorporate ? 1.5 : 1.1;
             this.ctx.stroke();
           }
         }
 
         p.phase += p.pulseSpeed;
-        const currentRadius = p.radius + Math.sin(p.phase) * (this.isCorporate ? 0.6 : 0.4);
+        const currentRadius = p.radius + Math.sin(p.phase) * (this.isCorporate ? 0.7 : 0.4);
 
         if (this.isCorporate) {
-          // MODO CLARO CORPORATIVO: Nodos nítidos con halo suave y núcleo contrastado
-          const glowAlpha = p.isHighPriority ? 0.22 : 0.14;
+          // MODO CLARO CORPORATIVO: Nodos pigmentados de alto contraste
+          const glowAlpha = p.isHighPriority ? 0.28 : 0.18;
           
           // Halo exterior sutil
           this.ctx.beginPath();
-          this.ctx.arc(p.x, p.y, currentRadius * 2.2, 0, Math.PI * 2);
+          this.ctx.arc(p.x, p.y, currentRadius * 2.4, 0, Math.PI * 2);
           this.ctx.fillStyle = `rgba(${pColor.r}, ${pColor.g}, ${pColor.b}, ${glowAlpha})`;
           this.ctx.fill();
 
           // Anillo medio nítido
           this.ctx.beginPath();
-          this.ctx.arc(p.x, p.y, currentRadius * 1.4, 0, Math.PI * 2);
-          this.ctx.strokeStyle = `rgba(${pColor.r}, ${pColor.g}, ${pColor.b}, 0.55)`;
-          this.ctx.lineWidth = 1.0;
+          this.ctx.arc(p.x, p.y, currentRadius * 1.5, 0, Math.PI * 2);
+          this.ctx.strokeStyle = `rgba(${pColor.r}, ${pColor.g}, ${pColor.b}, 0.70)`;
+          this.ctx.lineWidth = 1.2;
           this.ctx.stroke();
 
           // Núcleo pigmentado brillante de alta definición
@@ -319,12 +319,12 @@
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < this.maxDistance) {
-            const lineAlpha = (1 - dist / this.maxDistance) * (this.isCorporate ? 0.30 : 0.22);
+            const lineAlpha = (1 - dist / this.maxDistance) * (this.isCorporate ? 0.42 : 0.22);
             this.ctx.beginPath();
             this.ctx.moveTo(p.x, p.y);
             this.ctx.lineTo(p2.x, p2.y);
             this.ctx.strokeStyle = `rgba(${pColor.r}, ${pColor.g}, ${pColor.b}, ${lineAlpha})`;
-            this.ctx.lineWidth = this.isCorporate ? 1.0 : 0.9;
+            this.ctx.lineWidth = this.isCorporate ? 1.15 : 0.9;
             this.ctx.stroke();
           }
         }
