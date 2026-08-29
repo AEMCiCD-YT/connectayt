@@ -1,14 +1,14 @@
 /**
  * Kinetic Constellation & Shifting Network Canvas — Full Page Background Engine
  * Inspirado en MIT Critical Data / Make Health
- * Sistema de nodos en movimiento continuo por toda la página, interacción global con cursor y transición cromática fluida.
+ * Soporte para Paleta Oficial e Iluminación Pastel Suave en Modo Oscuro.
  */
 
 (function () {
   'use strict';
 
-  // Paleta oficial Conecta IEEE YT & Escuelas
-  const PALETTE = [
+  // Paleta vibrante estándar
+  const PALETTE_DEFAULT = [
     { r: 0,   g: 188, b: 202, hex: '#00bcca' }, // Cian
     { r: 60,  g: 159, b: 230, hex: '#3c9fe6' }, // Azul Eléctrico
     { r: 157, g: 124, b: 176, hex: '#9d7cb0' }, // Púrpura
@@ -16,6 +16,17 @@
     { r: 253, g: 202, b: 38,  hex: '#fdca26' }, // Oro / Amarillo
     { r: 0,   g: 188, b: 82,  hex: '#00bc52' }, // Verde
     { r: 0,   g: 98,  b: 155, hex: '#00629b' }  // Azul IEEE
+  ];
+
+  // Paleta Modo Oscuro Pastel (Suave, Elegante, Mate)
+  const PALETTE_PASTEL = [
+    { r: 125, g: 211, b: 252, hex: '#7dd3fc' }, // Pastel Cian / Cielo
+    { r: 196, g: 181, b: 253, hex: '#c4b5fd' }, // Pastel Lavanda / Lila
+    { r: 252, g: 165, b: 165, hex: '#fca5a5' }, // Pastel Melocotón / Rosa
+    { r: 253, g: 230, b: 138, hex: '#fde68a' }, // Pastel Mantequilla
+    { r: 134, g: 239, b: 172, hex: '#86efac' }, // Pastel Menta
+    { r: 147, g: 197, b: 253, hex: '#93c5fd' }, // Pastel Bígaro / Azul Suave
+    { r: 244, g: 114, b: 182, hex: '#f472b6' }  // Pastel Rosa Orquídea
   ];
 
   function interpolateColor(color1, color2, factor) {
@@ -26,14 +37,14 @@
     };
   }
 
-  function getDynamicBrandColor(time, offset = 0) {
-    const totalColors = PALETTE.length;
-    const speed = 0.00025; // Transición cromática suave
+  function getDynamicColor(time, palette, offset = 0) {
+    const totalColors = palette.length;
+    const speed = 0.0002;
     const progress = ((time * speed + offset) % totalColors + totalColors) % totalColors;
     const index1 = Math.floor(progress);
     const index2 = (index1 + 1) % totalColors;
     const factor = progress - index1;
-    return interpolateColor(PALETTE[index1], PALETTE[index2], factor);
+    return interpolateColor(palette[index1], palette[index2], factor);
   }
 
   class FullPageKineticMesh {
@@ -41,6 +52,7 @@
       this.canvas = canvas;
       this.ctx = canvas.getContext('2d');
       this.theme = options.theme || 'dark';
+      this.palette = (this.theme === 'dark-pastel') ? PALETTE_PASTEL : PALETTE_DEFAULT;
       this.dpr = Math.min(window.devicePixelRatio || 1, 2);
 
       this.particles = [];
@@ -73,7 +85,6 @@
       if (this.maxDistance < 110) this.maxDistance = 110;
       if (this.maxDistance > 160) this.maxDistance = 160;
 
-      // Cantidad de partículas balanceada para rendimiento suave en toda la pantalla
       this.particleCount = Math.floor((this.width * this.height) / 16000);
       if (this.particleCount < 45) this.particleCount = 45;
       if (this.particleCount > 100) this.particleCount = 100;
@@ -82,12 +93,12 @@
     createParticles() {
       this.particles = [];
       for (let i = 0; i < this.particleCount; i++) {
-        const colorIdx = i % PALETTE.length;
+        const colorIdx = i % this.palette.length;
         this.particles.push({
           x: Math.random() * this.width,
           y: Math.random() * this.height,
-          vx: (Math.random() - 0.5) * 0.55,
-          vy: (Math.random() - 0.5) * 0.55,
+          vx: (Math.random() - 0.5) * 0.5,
+          vy: (Math.random() - 0.5) * 0.5,
           radius: Math.random() * 2.2 + 1.2,
           colorIdx: colorIdx,
           phase: Math.random() * Math.PI * 2,
@@ -97,7 +108,6 @@
     }
 
     bindEvents() {
-      // Seguimiento global del cursor en toda la ventana
       window.addEventListener('mousemove', (e) => {
         this.mouse.x = e.clientX;
         this.mouse.y = e.clientY;
@@ -110,7 +120,6 @@
         this.mouse.y = -9999;
       });
 
-      // Soporte táctil global
       window.addEventListener('touchmove', (e) => {
         if (e.touches && e.touches[0]) {
           this.mouse.x = e.touches[0].clientX;
@@ -125,7 +134,6 @@
         this.mouse.y = -9999;
       });
 
-      // Efecto onda expansiva al hacer clic
       window.addEventListener('click', (e) => {
         const clickX = e.clientX;
         const clickY = e.clientY;
@@ -155,25 +163,21 @@
     animate(time) {
       this.ctx.clearRect(0, 0, this.width, this.height);
 
-      const dynamicGlobalColor = getDynamicBrandColor(time);
+      const dynamicGlobalColor = getDynamicColor(time, this.palette);
 
       // 1. Actualizar y dibujar partículas
       for (let i = 0; i < this.particles.length; i++) {
         const p = this.particles[i];
 
-        // Movimiento continuo suave
         p.x += p.vx;
         p.y += p.vy;
 
-        // Fricción leve para estabilizar
         p.vx *= 0.992;
         p.vy *= 0.992;
 
-        // Mantener velocidad constante
         if (Math.abs(p.vx) < 0.12) p.vx += (Math.random() - 0.5) * 0.08;
         if (Math.abs(p.vy) < 0.12) p.vy += (Math.random() - 0.5) * 0.08;
 
-        // Envoltura / rebote en bordes de pantalla
         if (p.x < -10) p.x = this.width + 10;
         if (p.x > this.width + 10) p.x = -10;
         if (p.y < -10) p.y = this.height + 10;
@@ -190,26 +194,25 @@
             p.vx += (dx / dist) * force * 0.1;
             p.vy += (dy / dist) * force * 0.1;
 
-            // Línea de conexión al cursor
-            const lineAlpha = (1 - dist / this.mouse.radius) * 0.4;
+            const lineAlpha = (1 - dist / this.mouse.radius) * (this.theme === 'dark-pastel' ? 0.35 : 0.4);
             this.ctx.beginPath();
             this.ctx.moveTo(p.x, p.y);
             this.ctx.lineTo(this.mouse.x, this.mouse.y);
             this.ctx.strokeStyle = `rgba(${dynamicGlobalColor.r}, ${dynamicGlobalColor.g}, ${dynamicGlobalColor.b}, ${lineAlpha})`;
-            this.ctx.lineWidth = 1.1;
+            this.ctx.lineWidth = 1.0;
             this.ctx.stroke();
           }
         }
 
-        // Color individual con morphing cromático
-        const pColor = getDynamicBrandColor(time, p.colorIdx);
+        // Color individual con morphing
+        const pColor = getDynamicColor(time, this.palette, p.colorIdx);
         p.phase += p.pulseSpeed;
         const currentRadius = p.radius + Math.sin(p.phase) * 0.5;
 
-        // Halo de resplandor
-        const glowAlpha = this.theme === 'dark' ? 0.35 : 0.22;
+        // Halo de resplandor suave (Pastel difuso)
+        const glowAlpha = this.theme === 'dark-pastel' ? 0.22 : 0.32;
         this.ctx.beginPath();
-        this.ctx.arc(p.x, p.y, currentRadius * 2.6, 0, Math.PI * 2);
+        this.ctx.arc(p.x, p.y, currentRadius * 2.5, 0, Math.PI * 2);
         this.ctx.fillStyle = `rgba(${pColor.r}, ${pColor.g}, ${pColor.b}, ${glowAlpha})`;
         this.ctx.fill();
 
@@ -219,7 +222,7 @@
         this.ctx.fillStyle = `rgb(${pColor.r}, ${pColor.g}, ${pColor.b})`;
         this.ctx.fill();
 
-        // 2. Conectar partículas cercanas con líneas dinámicas
+        // 2. Conectar partículas cercanas con líneas suaves
         for (let j = i + 1; j < this.particles.length; j++) {
           const p2 = this.particles[j];
           const dx = p.x - p2.x;
@@ -227,18 +230,18 @@
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < this.maxDistance) {
-            const alpha = (1 - dist / this.maxDistance) * (this.theme === 'dark' ? 0.25 : 0.18);
+            const alpha = (1 - dist / this.maxDistance) * (this.theme === 'dark-pastel' ? 0.2 : 0.25);
             this.ctx.beginPath();
             this.ctx.moveTo(p.x, p.y);
             this.ctx.lineTo(p2.x, p2.y);
 
             const grad = this.ctx.createLinearGradient(p.x, p.y, p2.x, p2.y);
-            const p2Color = getDynamicBrandColor(time, p2.colorIdx);
+            const p2Color = getDynamicColor(time, this.palette, p2.colorIdx);
             grad.addColorStop(0, `rgba(${pColor.r}, ${pColor.g}, ${pColor.b}, ${alpha})`);
             grad.addColorStop(1, `rgba(${p2Color.r}, ${p2Color.g}, ${p2Color.b}, ${alpha})`);
 
             this.ctx.strokeStyle = grad;
-            this.ctx.lineWidth = 0.85;
+            this.ctx.lineWidth = 0.8;
             this.ctx.stroke();
           }
         }
