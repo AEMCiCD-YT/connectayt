@@ -511,20 +511,21 @@ main {
 .bento-card-amarillo:hover { border-color: var(--amber-accent); box-shadow: 0 10px 28px rgba(251, 191, 36, 0.22); }
 
 /* =========================================================
-   SPONSORS & ACADÉMICOS (TARJETAS CORPORATIVAS)
+   SPONSORS & ACADÉMICOS (TARJETAS CORPORATIVAS ESTILO UNIVERSIDADES)
    ========================================================= */
-.sponsors-grid-fixed {
+.community-tags-grid, .sponsors-grid, .sponsors-grid-fixed {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: var(--gap-sm);
   margin-top: var(--gap-md);
 }
 
-.sponsor-card-fixed {
+.univ-badge-card, .sponsor-card-fixed {
   background: var(--bg-section-card);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border: 1px solid var(--border-glass);
-  border-radius: var(--radius-bento);
+  border-radius: 18px;
   padding: 1.75rem 1.25rem;
   display: flex;
   flex-direction: column;
@@ -535,13 +536,11 @@ main {
   transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
 }
 
-.sponsor-card-fixed:hover {
+.univ-badge-card:hover, .sponsor-card-fixed:hover {
   transform: translateY(-4px);
-  border-color: var(--border-glass-hover);
-  box-shadow: 0 10px 28px rgba(2, 132, 199, 0.25);
 }
 
-.sponsor-logo-wrap {
+.univ-logo-wrap, .sponsor-logo-wrap {
   width: 72px;
   height: 72px;
   margin-bottom: 1rem;
@@ -550,27 +549,30 @@ main {
   justify-content: center;
   background: rgba(255, 255, 255, 0.95);
   border: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 14px;
+  border-radius: 16px;
   padding: 8px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
-  transition: transform var(--transition);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  transition: transform var(--transition), box-shadow var(--transition);
 }
 
+.univ-badge-card:hover .univ-logo-wrap,
 .sponsor-card-fixed:hover .sponsor-logo-wrap {
   transform: scale(1.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 
-.sponsor-logo-img {
+.univ-logo-img, .sponsor-logo-img {
   max-width: 100%;
   max-height: 100%;
   width: auto;
   height: auto;
   object-fit: contain;
   image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
   display: block;
 }
 
-.sponsor-card-fixed strong {
+.univ-badge-card strong, .sponsor-card-fixed strong {
   display: block;
   font-family: var(--font-display);
   font-size: 1.12rem;
@@ -578,10 +580,37 @@ main {
   margin-bottom: 0.25rem;
 }
 
-.sponsor-card-fixed span {
+.univ-badge-card span, .sponsor-card-fixed span {
   font-size: 0.85rem;
   color: var(--texto-muted);
 }
+
+.card-accent-rose { border-color: rgba(251, 113, 133, 0.35); }
+.card-accent-rose:hover { border-color: var(--coral-accent); box-shadow: 0 8px 24px rgba(251, 113, 133, 0.25); }
+
+.card-accent-orchid { border-color: rgba(192, 132, 252, 0.35); }
+.card-accent-orchid:hover { border-color: #c084fc; box-shadow: 0 8px 24px rgba(192, 132, 252, 0.25); }
+
+.card-accent-violet { border-color: rgba(232, 121, 249, 0.35); }
+.card-accent-violet:hover { border-color: #e879f9; box-shadow: 0 8px 24px rgba(232, 121, 249, 0.25); }
+
+.card-accent-peach { border-color: rgba(253, 186, 116, 0.35); }
+.card-accent-peach:hover { border-color: #fdba74; box-shadow: 0 8px 24px rgba(253, 186, 116, 0.25); }
+
+.card-accent-champagne { border-color: rgba(253, 230, 138, 0.35); }
+.card-accent-champagne:hover { border-color: #fde68a; box-shadow: 0 8px 24px rgba(253, 230, 138, 0.25); }
+
+.card-accent-matcha { border-color: rgba(134, 239, 172, 0.35); }
+.card-accent-matcha:hover { border-color: #86efac; box-shadow: 0 8px 24px rgba(134, 239, 172, 0.25); }
+
+.card-accent-mint { border-color: rgba(94, 234, 212, 0.35); }
+.card-accent-mint:hover { border-color: var(--teal-accent); box-shadow: 0 8px 24px rgba(94, 234, 212, 0.25); }
+
+.card-accent-cian { border-color: rgba(6, 182, 212, 0.35); }
+.card-accent-cian:hover { border-color: var(--cian-tech); box-shadow: 0 8px 24px rgba(6, 182, 212, 0.25); }
+
+.card-accent-purpura { border-color: rgba(129, 140, 248, 0.35); }
+.card-accent-purpura:hover { border-color: var(--indigo-accent); box-shadow: 0 8px 24px rgba(129, 140, 248, 0.25); }
 
 /* =========================================================
    LOCAL COMMITTEE (TARJETAS CUADRADAS CENTRADAS)
