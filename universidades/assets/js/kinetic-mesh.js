@@ -1,33 +1,33 @@
 /**
- * Kinetic Aurora & Constellation Shifting Network Canvas — Full Page Engine
- * Inspirado en MIT Critical Data / Make Health (Concepción & Roma)
- * Sistema de auroras cromáticas vivas, malla de nodos interconectados con el cursor
- * y transiciones de color fluidas y visibles por toda la página.
+ * Kinetic Aurora & Constellation Network Canvas — Full Page Engine
+ * Estilo: Paleta 100% Pastel Suave (Sin Colores Neón)
+ * Auroras atmosféricas difusas, malla de nodos pastel interconectados con el cursor
+ * y transiciones cromáticas orgánicas y elegantes.
  */
 
 (function () {
   'use strict';
 
-  // Paleta Conecta Empresas / Hub (Corporativa & Escuelas — Tonos Vivos Saturados de Alto Contraste)
-  const PALETTE_VIBRANT = [
-    { r: 0,   g: 150, b: 214, hex: '#0096d6', name: 'Cian Azul Vibrante' },
-    { r: 239, g: 64,  b: 54,  hex: '#ef4036', name: 'Coral Rojo Vivo' },
-    { r: 142, g: 68,  b: 173, hex: '#8e44ad', name: 'Púrpura Amatista' },
-    { r: 0,   g: 177, b: 106, hex: '#00b16a', name: 'Esmeralda / Jade' },
-    { r: 243, g: 156, b: 18,  hex: '#f39c12', name: 'Ámbar Cálido' },
-    { r: 0,   g: 98,  b: 155, hex: '#00629b', name: 'Azul IEEE' },
-    { r: 230, g: 46,  b: 101, hex: '#e62e65', name: 'Magenta Carmesí' }
+  // Paleta Pastel Universal Suave (Tonos Desaturados, Elegantes y Cálidos — Cero Neón)
+  const PALETTE_PASTEL_DEFAULT = [
+    { r: 196, g: 181, b: 253, hex: '#c4b5fd', name: 'Lavanda / Lila Suave' },
+    { r: 252, g: 165, b: 165, hex: '#fca5a5', name: 'Coral / Melocotón Suave' },
+    { r: 147, g: 197, b: 253, hex: '#93c5fd', name: 'Bígaro / Cielo Pastel' },
+    { r: 134, g: 239, b: 172, hex: '#86efac', name: 'Matcha / Salvia Pastel' },
+    { r: 253, g: 230, b: 138, hex: '#fde68a', name: 'Vainilla / Crema' },
+    { r: 244, g: 114, b: 182, hex: '#f472b6', name: 'Rosa Orquídea Pastel' },
+    { r: 167, g: 243, b: 208, hex: '#a7f3d0', name: 'Menta Celadón Suave' }
   ];
 
-  // Paleta Conecta Universidades (Gala Nocturna Creativa — Tonos Cálidos, Orquídea, Rosa, Matcha y Champán)
-  const PALETTE_PASTEL = [
-    { r: 251, g: 113, b: 133, hex: '#fb7185', name: 'Rosa Coral Atardecer' },
-    { r: 192, g: 132, b: 252, hex: '#c084fc', name: 'Orquídea / Lavanda Cósmico' },
-    { r: 134, g: 239, b: 172, hex: '#86efac', name: 'Matcha / Jade Pastel' },
-    { r: 253, g: 230, b: 138, hex: '#fde68a', name: 'Mantequilla / Champán' },
-    { r: 253, g: 186, b: 116, hex: '#fdba74', name: 'Melocotón / Albaricoque' },
+  // Paleta Conecta Universidades (Gala Nocturna Pastel Cálida)
+  const PALETTE_PASTEL_GALA = [
+    { r: 251, g: 113, b: 133, hex: '#fb7185', name: 'Rosa Sunset Pastel' },
+    { r: 192, g: 132, b: 252, hex: '#c084fc', name: 'Orquídea Cósmica Pastel' },
+    { r: 253, g: 186, b: 116, hex: '#fdba74', name: 'Albaricoque Pastel' },
+    { r: 134, g: 239, b: 172, hex: '#86efac', name: 'Matcha Pastel' },
+    { r: 253, g: 230, b: 138, hex: '#fde68a', name: 'Champán Pastel' },
     { r: 232, g: 121, b: 249, hex: '#e879f9', name: 'Violeta Rubí Pastel' },
-    { r: 94,  g: 234, b: 212, hex: '#5eead4', name: 'Menta Turquesa Suave' }
+    { r: 167, g: 243, b: 208, hex: '#a7f3d0', name: 'Menta Pastel' }
   ];
 
   function interpolateColor(color1, color2, factor) {
@@ -38,7 +38,7 @@
     };
   }
 
-  function getDynamicColor(time, palette, offset = 0, speed = 0.0006) {
+  function getDynamicColor(time, palette, offset = 0, speed = 0.0005) {
     const totalColors = palette.length;
     const progress = ((time * speed + offset) % totalColors + totalColors) % totalColors;
     const index1 = Math.floor(progress);
@@ -52,8 +52,8 @@
       this.canvas = canvas;
       this.ctx = canvas.getContext('2d');
       this.theme = options.theme || 'dark';
-      this.isPastel = (this.theme === 'dark-pastel');
-      this.palette = this.isPastel ? PALETTE_PASTEL : PALETTE_VIBRANT;
+      this.isGala = (this.theme === 'dark-pastel');
+      this.palette = this.isGala ? PALETTE_PASTEL_GALA : PALETTE_PASTEL_DEFAULT;
       this.dpr = Math.min(window.devicePixelRatio || 1, 2);
 
       this.particles = [];
@@ -61,7 +61,7 @@
       this.mouse = {
         x: -9999,
         y: -9999,
-        radius: 260,
+        radius: 220,
         isActive: false
       };
 
@@ -84,26 +84,26 @@
       this.canvas.height = this.height * this.dpr;
       this.ctx.scale(this.dpr, this.dpr);
 
-      this.maxDistance = Math.min(this.width, this.height) * 0.22;
-      if (this.maxDistance < 130) this.maxDistance = 130;
-      if (this.maxDistance > 200) this.maxDistance = 200;
+      this.maxDistance = Math.min(this.width, this.height) * 0.2;
+      if (this.maxDistance < 120) this.maxDistance = 120;
+      if (this.maxDistance > 180) this.maxDistance = 180;
 
-      this.particleCount = Math.floor((this.width * this.height) / 12000);
-      if (this.particleCount < 55) this.particleCount = 55;
-      if (this.particleCount > 120) this.particleCount = 120;
+      this.particleCount = Math.floor((this.width * this.height) / 14000);
+      if (this.particleCount < 50) this.particleCount = 50;
+      if (this.particleCount > 105) this.particleCount = 105;
     }
 
     createAuroras() {
-      // Campos de luz ambiental viva (Auroras flotantes difusas)
+      // Auroras ambientales suaves de fondo difuso (sin estridencias ni neón)
       this.auroras = [];
       const numAuroras = 4;
       for (let i = 0; i < numAuroras; i++) {
         this.auroras.push({
           x: Math.random() * this.width,
           y: Math.random() * this.height,
-          radius: Math.min(this.width, this.height) * (0.45 + Math.random() * 0.35),
-          vx: (Math.random() - 0.5) * 0.45,
-          vy: (Math.random() - 0.5) * 0.45,
+          radius: Math.min(this.width, this.height) * (0.45 + Math.random() * 0.3),
+          vx: (Math.random() - 0.5) * 0.35,
+          vy: (Math.random() - 0.5) * 0.35,
           colorOffset: (i * (this.palette.length / numAuroras))
         });
       }
@@ -112,16 +112,15 @@
     createParticles() {
       this.particles = [];
       for (let i = 0; i < this.particleCount; i++) {
-        const baseRadius = this.isPastel ? (Math.random() * 2.8 + 1.8) : (Math.random() * 3.6 + 2.8);
         this.particles.push({
           x: Math.random() * this.width,
           y: Math.random() * this.height,
-          vx: (Math.random() - 0.5) * 0.65,
-          vy: (Math.random() - 0.5) * 0.65,
-          radius: baseRadius,
+          vx: (Math.random() - 0.5) * 0.5,
+          vy: (Math.random() - 0.5) * 0.5,
+          radius: Math.random() * 2.5 + 1.8,
           colorOffset: Math.random() * this.palette.length,
           phase: Math.random() * Math.PI * 2,
-          pulseSpeed: Math.random() * 0.03 + 0.015
+          pulseSpeed: Math.random() * 0.02 + 0.01
         });
       }
     }
@@ -161,8 +160,8 @@
           const dx = p.x - clickX;
           const dy = p.y - clickY;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 220 && dist > 0) {
-            const force = (1 - dist / 220) * 4;
+          if (dist < 200 && dist > 0) {
+            const force = (1 - dist / 200) * 3;
             p.vx += (dx / dist) * force;
             p.vy += (dy / dist) * force;
           }
@@ -183,7 +182,7 @@
       this.ctx.clearRect(0, 0, this.width, this.height);
 
       // =========================================================
-      // 1. DIBUJAR AURORAS CROMÁTICAS FLUIDAS (FONDO VIVO MAKE HEALTH)
+      // 1. DIBUJAR AURORAS PASTEL FLUIDAS
       // =========================================================
       for (let i = 0; i < this.auroras.length; i++) {
         const a = this.auroras[i];
@@ -195,12 +194,12 @@
         if (a.y < -100) a.y = this.height + 100;
         if (a.y > this.height + 100) a.y = -100;
 
-        const auroraColor = getDynamicColor(time, this.palette, a.colorOffset, 0.00045);
-        const auroraAlpha = this.isPastel ? 0.12 : 0.15;
+        const auroraColor = getDynamicColor(time, this.palette, a.colorOffset, 0.00035);
+        const auroraAlpha = 0.09;
 
         const radialGrad = this.ctx.createRadialGradient(a.x, a.y, 0, a.x, a.y, a.radius);
         radialGrad.addColorStop(0, `rgba(${auroraColor.r}, ${auroraColor.g}, ${auroraColor.b}, ${auroraAlpha})`);
-        radialGrad.addColorStop(0.5, `rgba(${auroraColor.r}, ${auroraColor.g}, ${auroraColor.b}, ${auroraAlpha * 0.45})`);
+        radialGrad.addColorStop(0.5, `rgba(${auroraColor.r}, ${auroraColor.g}, ${auroraColor.b}, ${auroraAlpha * 0.4})`);
         radialGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
 
         this.ctx.fillStyle = radialGrad;
@@ -208,9 +207,9 @@
       }
 
       // =========================================================
-      // 2. DIBUJAR CONSTELACIÓN INTERACTIVA DE PARTÍCULAS
+      // 2. DIBUJAR CONSTELACIÓN PASTEL INTERACTIVA
       // =========================================================
-      const dynamicGlobalColor = getDynamicColor(time, this.palette, 0, 0.0007);
+      const dynamicGlobalColor = getDynamicColor(time, this.palette, 0, 0.0005);
 
       for (let i = 0; i < this.particles.length; i++) {
         const p = this.particles[i];
@@ -221,8 +220,8 @@
         p.vx *= 0.992;
         p.vy *= 0.992;
 
-        if (Math.abs(p.vx) < 0.15) p.vx += (Math.random() - 0.5) * 0.1;
-        if (Math.abs(p.vy) < 0.15) p.vy += (Math.random() - 0.5) * 0.1;
+        if (Math.abs(p.vx) < 0.12) p.vx += (Math.random() - 0.5) * 0.08;
+        if (Math.abs(p.vy) < 0.12) p.vy += (Math.random() - 0.5) * 0.08;
 
         if (p.x < -10) p.x = this.width + 10;
         if (p.x > this.width + 10) p.x = -10;
@@ -236,40 +235,40 @@
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < this.mouse.radius && dist > 0) {
-            const force = (1 - dist / this.mouse.radius) * 0.85;
-            p.vx += (dx / dist) * force * 0.14;
-            p.vy += (dy / dist) * force * 0.14;
+            const force = (1 - dist / this.mouse.radius) * 0.75;
+            p.vx += (dx / dist) * force * 0.1;
+            p.vy += (dy / dist) * force * 0.1;
 
-            // Línea luminosa hacia el cursor
-            const lineAlpha = (1 - dist / this.mouse.radius) * 0.65;
+            // Línea luminosa hacia el cursor (suave pastel)
+            const lineAlpha = (1 - dist / this.mouse.radius) * 0.45;
             this.ctx.beginPath();
             this.ctx.moveTo(p.x, p.y);
             this.ctx.lineTo(this.mouse.x, this.mouse.y);
             this.ctx.strokeStyle = `rgba(${dynamicGlobalColor.r}, ${dynamicGlobalColor.g}, ${dynamicGlobalColor.b}, ${lineAlpha})`;
-            this.ctx.lineWidth = 1.8;
+            this.ctx.lineWidth = 1.3;
             this.ctx.stroke();
           }
         }
 
-        // Color individual con morphing continuo bien perceptible
-        const pColor = getDynamicColor(time, this.palette, p.colorOffset, 0.0007);
+        // Color individual pastel suave
+        const pColor = getDynamicColor(time, this.palette, p.colorOffset, 0.0005);
         p.phase += p.pulseSpeed;
-        const currentRadius = p.radius + Math.sin(p.phase) * 0.7;
+        const currentRadius = p.radius + Math.sin(p.phase) * 0.5;
 
-        // Halo de resplandor
-        const glowAlpha = this.isPastel ? 0.4 : 0.6;
+        // Halo suave pastel (no neón estridente)
+        const glowAlpha = 0.28;
         this.ctx.beginPath();
-        this.ctx.arc(p.x, p.y, currentRadius * 3.2, 0, Math.PI * 2);
+        this.ctx.arc(p.x, p.y, currentRadius * 2.4, 0, Math.PI * 2);
         this.ctx.fillStyle = `rgba(${pColor.r}, ${pColor.g}, ${pColor.b}, ${glowAlpha})`;
         this.ctx.fill();
 
-        // Núcleo del nodo
+        // Núcleo del nodo pastel
         this.ctx.beginPath();
         this.ctx.arc(p.x, p.y, currentRadius, 0, Math.PI * 2);
         this.ctx.fillStyle = `rgb(${pColor.r}, ${pColor.g}, ${pColor.b})`;
         this.ctx.fill();
 
-        // Conectar con nodos cercanos
+        // Conectar con nodos cercanos con trazo suave
         for (let j = i + 1; j < this.particles.length; j++) {
           const p2 = this.particles[j];
           const dx = p.x - p2.x;
@@ -277,12 +276,12 @@
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < this.maxDistance) {
-            const lineAlpha = (1 - dist / this.maxDistance) * (this.isPastel ? 0.35 : 0.48);
+            const lineAlpha = (1 - dist / this.maxDistance) * 0.26;
             this.ctx.beginPath();
             this.ctx.moveTo(p.x, p.y);
             this.ctx.lineTo(p2.x, p2.y);
             this.ctx.strokeStyle = `rgba(${pColor.r}, ${pColor.g}, ${pColor.b}, ${lineAlpha})`;
-            this.ctx.lineWidth = this.isPastel ? 1.2 : 1.6;
+            this.ctx.lineWidth = 1.0;
             this.ctx.stroke();
           }
         }

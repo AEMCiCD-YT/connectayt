@@ -492,15 +492,17 @@ main {
 
 .committee-card {
   background: var(--bg-hub-card);
-  backdrop-filter: blur(14px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--linea-glass);
   border-radius: var(--radius);
-  padding: 2rem;
+  padding: 2.25rem 1.75rem;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: space-between;
   aspect-ratio: 1 / 1;
-  text-align: left;
+  text-align: center;
   transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
 }
 
@@ -509,50 +511,59 @@ main {
   transform: translateY(-4px);
 }
 
-/* Acentos cromáticos diferenciados por departamento */
-.comm-cian:hover { border-color: var(--escuela-cian); box-shadow: 0 12px 30px rgba(0, 188, 202, 0.25); }
-.comm-purpura:hover { border-color: var(--escuela-purpura); box-shadow: 0 12px 30px rgba(157, 124, 176, 0.25); }
-.comm-coral:hover { border-color: var(--escuela-coral); box-shadow: 0 12px 30px rgba(255, 82, 66, 0.25); }
-.comm-amarillo:hover { border-color: var(--escuela-amarillo); box-shadow: 0 12px 30px rgba(253, 202, 38, 0.25); }
-.comm-verde:hover { border-color: var(--escuela-verde); box-shadow: 0 12px 30px rgba(0, 188, 82, 0.25); }
-.comm-azul:hover { border-color: var(--azul-claro); box-shadow: 0 12px 30px rgba(60, 159, 230, 0.25); }
+/* Acentos cromáticos pastel suaves diferenciados por departamento (Sin neón) */
+.comm-cian:hover { border-color: #93c5fd; box-shadow: 0 10px 28px rgba(147, 197, 253, 0.2); }
+.comm-purpura:hover { border-color: #c4b5fd; box-shadow: 0 10px 28px rgba(196, 181, 253, 0.2); }
+.comm-coral:hover { border-color: #fca5a5; box-shadow: 0 10px 28px rgba(252, 165, 165, 0.2); }
+.comm-amarillo:hover { border-color: #fde68a; box-shadow: 0 10px 28px rgba(253, 230, 138, 0.2); }
+.comm-verde:hover { border-color: #86efac; box-shadow: 0 10px 28px rgba(134, 239, 172, 0.2); }
+.comm-azul:hover { border-color: #c4b5fd; box-shadow: 0 10px 28px rgba(196, 181, 253, 0.2); }
 
 .dept-badge {
   font-size: 0.72rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  padding: 0.35em 0.8em;
+  padding: 0.4em 0.95em;
   border-radius: 999px;
-  align-self: flex-start;
+  align-self: center;
   margin-bottom: 1rem;
 }
 
-.badge-cian { color: var(--escuela-cian); background: rgba(0, 188, 202, 0.12); border: 1px solid rgba(0, 188, 202, 0.3); }
-.badge-purpura { color: var(--escuela-purpura); background: rgba(157, 124, 176, 0.12); border: 1px solid rgba(157, 124, 176, 0.3); }
-.badge-coral { color: var(--escuela-coral); background: rgba(255, 82, 66, 0.12); border: 1px solid rgba(255, 82, 66, 0.3); }
-.badge-amarillo { color: var(--escuela-amarillo); background: rgba(253, 202, 38, 0.12); border: 1px solid rgba(253, 202, 38, 0.3); }
-.badge-verde { color: var(--escuela-verde); background: rgba(0, 188, 82, 0.12); border: 1px solid rgba(0, 188, 82, 0.3); }
-.badge-azul { color: var(--azul-claro); background: rgba(60, 159, 230, 0.12); border: 1px solid rgba(60, 159, 230, 0.3); }
+.badge-cian { color: #93c5fd; background: rgba(147, 197, 253, 0.14); border: 1px solid rgba(147, 197, 253, 0.35); }
+.badge-purpura { color: #c4b5fd; background: rgba(196, 181, 253, 0.14); border: 1px solid rgba(196, 181, 253, 0.35); }
+.badge-coral { color: #fca5a5; background: rgba(252, 165, 165, 0.14); border: 1px solid rgba(252, 165, 165, 0.35); }
+.badge-amarillo { color: #fde68a; background: rgba(253, 230, 138, 0.14); border: 1px solid rgba(253, 230, 138, 0.35); }
+.badge-verde { color: #86efac; background: rgba(134, 239, 172, 0.14); border: 1px solid rgba(134, 239, 172, 0.35); }
+.badge-azul { color: #93c5fd; background: rgba(147, 197, 253, 0.14); border: 1px solid rgba(147, 197, 253, 0.35); }
+
+.committee-info {
+  text-align: center;
+  width: 100%;
+}
 
 .committee-info h3 {
   font-family: var(--font-display);
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--blanco);
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.35rem;
+  text-align: center;
 }
 
 .committee-info p {
   font-size: 0.88rem;
   color: var(--texto-muted);
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
+  text-align: center;
 }
 
 .committee-links {
   display: flex;
+  justify-content: center;
   gap: 0.75rem;
   margin-top: auto;
+  width: 100%;
 }
 
 .comm-btn {
