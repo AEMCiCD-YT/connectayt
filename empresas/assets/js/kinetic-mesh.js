@@ -21,15 +21,13 @@
     { r: 196, g: 181, b: 253, hex: '#c4b5fd', name: 'Lila Pastel Cierre' }
   ];
 
-  // 2. Paleta Conecta Universidades (Gala Cálida & Botánica Armónica)
+  // 2. Paleta Conecta Universidades — Bicromática #9d7cb0 + #00bcca
   const PALETTE_UNIV_PASTEL = [
-    { r: 251, g: 113, b: 133, hex: '#fb7185', name: 'Rosa Sunset Gala' },
-    { r: 192, g: 132, b: 252, hex: '#c084fc', name: 'Orquídea Cósmica' },
-    { r: 232, g: 121, b: 249, hex: '#e879f9', name: 'Violeta Pastel' },
-    { r: 253, g: 186, b: 116, hex: '#fdba74', name: 'Melocotón Pastel' },
-    { r: 253, g: 230, b: 138, hex: '#fde68a', name: 'Champán Pastel' },
-    { r: 134, g: 239, b: 172, hex: '#86efac', name: 'Matcha Pastel' },
-    { r: 251, g: 113, b: 133, hex: '#fb7185', name: 'Rosa Sunset Cierre' }
+    { r: 157, g: 124, b: 176, hex: '#9d7cb0', name: 'Morado Principal' },
+    { r: 78,  g: 156, b: 189, hex: '#4e9cbd', name: 'Transición Morado→Cian' },
+    { r: 0,   g: 188, b: 202, hex: '#00bcca', name: 'Cian Secundario' },
+    { r: 78,  g: 156, b: 189, hex: '#4e9cbd', name: 'Transición Cian→Morado' },
+    { r: 157, g: 124, b: 176, hex: '#9d7cb0', name: 'Morado Cierre' }
   ];
 
   // 3. Paleta Formal Corporate Tech (Modo Claro) para Conecta Empresas (Cobalto, Zafiro, Cian, Teal, Índigo)
