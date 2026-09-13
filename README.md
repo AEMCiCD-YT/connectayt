@@ -89,10 +89,11 @@ Escala tonal del azul institucional. Es la escala más versátil del sistema: cu
 
 ---
 
-## 7. Contribuidores & Desarrolladores
+## 7. Contribuidores & Desarrolladores Oficiales
 
-* **Mateo** ([@MATEO197802](https://github.com/MATEO197802)) — Desarrollador de la sección Conecta Universidades (Integración IEEE 2026 - Gala Modo Noche) y Maquetador del Portal Hub Principal.
-* **Ariel Pincay** ([@arielpincayy](https://github.com/arielpincayy)) — Desarrollador de la sección Conecta Empresas (Feria B2B Modo Día).
+* **Mateo (Isaac Mateo Gavilanes Chávez)** ([@MATEO197802](https://github.com/MATEO197802)) — Lead Developer & Co-Organizador. Creador y diseñador de la sección **Conecta Universidades** (Integración IEEE 2026 - Gala Modo Noche), maquetador del **Portal Hub Principal** y responsable de la arquitectura de registro unificado.
+* **Ariel Pincay** ([@arielpincayy](https://github.com/arielpincayy)) — Co-Desarrollador. Desarrollador de la sección **Conecta Empresas** (Feria B2B Modo Día).
+* **Edwin Hurtado Almeida** ([@Hedurtado](https://github.com/Hedurtado)) — DevOps & Automatización de flujos CI/CD en la nube.
 * **Equipo AEMCiCD & IEEE Yachay Tech** — Co-Organización Institucional.
 
 ---
@@ -100,3 +101,4 @@ Escala tonal del azul institucional. Es la escala más versátil del sistema: cu
 ## 8. Organización Oficial en GitHub
 
 Este proyecto pertenece y es co-administrado institucionalmente por la [Asociación de Estudiantes de Matemática, Ciencias Computacionales y Ciencia de Datos (AEMCiCD-YT)](https://github.com/AEMCiCD-YT).
+

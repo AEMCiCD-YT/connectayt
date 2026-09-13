@@ -114,7 +114,8 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      alert('¡Confirmación exitosa! Hemos registrado tu asistencia a Conecta Universidades 2026. Te enviaremos tus credenciales y detalles de acceso al correo.');
+      alert('¡Confirmación exitosa! Te redirigimos al formulario oficial para completar tus credenciales.');
+      window.open('https://forms.cloud.microsoft/r/WfhkCradvM', '_blank');
       registrationForm.reset();
       closeRegisterModal();
     });
