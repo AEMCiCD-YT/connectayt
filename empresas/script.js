@@ -55,7 +55,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      alert('¡Gracias por registrar tu interés en Conecta Empresas 2026! Hemos recibido tus datos correctamente.');
+      alert('¡Gracias por registrar tu interés en Conecta Empresas 2026! Te redirigimos al formulario oficial para completar tus credenciales.');
+      window.open('https://forms.cloud.microsoft/r/WfhkCradvM', '_blank');
       contactForm.reset();
     });
   }
