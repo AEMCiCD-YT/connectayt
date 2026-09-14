@@ -668,13 +668,115 @@ main {
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid var(--linea-glass);
   padding: 0.4em 0.85em;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   transition: all var(--transition);
 }
 
 .comm-btn:hover {
-  background: var(--azul-ieee);
-  border-color: var(--azul-claro);
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: var(--blanco);
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   BANNER DIRECTORIO COMPLETO DE COMITÉS (ENLACE HOME -> COMITÉS)
+   ========================================================= */
+.comites-directory-banner {
+  margin-top: 3.5rem;
+  background: linear-gradient(135deg, rgba(147, 197, 253, 0.08) 0%, rgba(196, 181, 253, 0.05) 50%, rgba(252, 165, 165, 0.06) 100%);
+  border: 1px solid rgba(196, 181, 253, 0.3);
+  border-radius: var(--radius);
+  padding: 2.25rem 2.5rem;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+}
+
+.comites-directory-banner:hover {
+  border-color: rgba(196, 181, 253, 0.55);
+  transform: translateY(-3px);
+  box-shadow: 0 20px 44px rgba(196, 181, 253, 0.15);
+}
+
+.comites-directory-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #c4b5fd;
+  background: rgba(196, 181, 253, 0.15);
+  border: 1px solid rgba(196, 181, 253, 0.35);
+  padding: 0.35em 0.85em;
+  border-radius: 999px;
+  margin-bottom: 0.75rem;
+}
+
+.comites-directory-content h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--blanco);
+  margin-bottom: 0.5rem;
+}
+
+.comites-directory-content p {
+  color: var(--texto-muted);
+  font-size: 0.96rem;
+  line-height: 1.55;
+  max-width: 650px;
+}
+
+.comites-directory-action {
+  flex-shrink: 0;
+}
+
+.btn-comites-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: linear-gradient(135deg, #c4b5fd 0%, #93c5fd 100%);
+  color: #060d14 !important;
+  font-weight: 800;
+  font-size: 0.95rem;
+  padding: 0.9rem 1.6rem;
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(196, 181, 253, 0.3);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.btn-comites-primary:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(196, 181, 253, 0.45);
+}
+
+.btn-comites-primary svg {
+  transition: transform var(--transition);
+}
+
+.btn-comites-primary:hover svg {
+  transform: translateX(3px);
+}
+
+@media (max-width: 850px) {
+  .comites-directory-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.75rem;
+  }
+  .comites-directory-action {
+    width: 100%;
+  }
+  .btn-comites-primary {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 /* =========================================================
@@ -701,7 +803,9 @@ main {
 
 .footer-brand-logo img {
   height: 42px;
+  max-width: 260px;
   width: auto;
+  object-fit: contain;
   display: block;
   margin: 0 auto;
 }

@@ -10,6 +10,7 @@ El desarrollo y arquitectura de la plataforma web **Conecta IEEE YT 2026** ha si
     - Creador, diseñador y desarrollador integral de la experiencia **Conecta Universidades** (Integración IEEE 2026 – Gala Nocturna Tecnológica y Modo Noche Pastel).
     - Arquitecto y maquetador del **Portal Hub Principal (Conecta YT)**.
     - Integración de los formularios de registro unificado oficial y dinámicas de interfaz.
+    - Creador y desarrollador del directorio oficial interactivo de Comités Organizadores (`comites/`).
 
 - **Ariel Pincay** — [@arielpincayy](https://github.com/arielpincayy)  
   - **Rol:** Co-Desarrollador Web.
