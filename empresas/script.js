@@ -155,12 +155,13 @@ document.addEventListener('DOMContentLoaded', () => {
       current[2] += (target[2] - current[2]) * rate;
     }
 
-    // Generador de red elástica y resortes reticulares (MIT Nursing AI Symposium)
+    // Generador de red elástica y resortes reticulares amplios (MIT Nursing AI Symposium)
     function buildLattice(width, height) {
       let particles = [];
       let springs = [];
-      let cols = clamp(Math.floor(width / 105), 8, 16);
-      let rows = clamp(Math.floor(height / 90), 6, 12);
+      // Cuadros más grandes y espaciosos (distancia entre vértices ~175px y ~150px)
+      let cols = clamp(Math.floor(width / 175), 6, 11);
+      let rows = clamp(Math.floor(height / 150), 4, 8);
 
       for (let i = 0; i < rows; i += 1) {
         for (let h = 0; h < cols; h += 1) {
@@ -168,19 +169,19 @@ document.addEventListener('DOMContentLoaded', () => {
           let jx = hash(idx + 4) - 0.5;
           let jy = hash(idx + 19) - 0.5;
           let u = cols === 1 ? 0.5 : h / (cols - 1);
-          let wave = 26 * Math.sin(u * Math.PI);
-          let px = 30 + u * Math.max(1, width - 60) + 26 * jx;
-          let py = 44 + (i / Math.max(rows - 1, 1)) * Math.max(1, height - 88) - wave + 22 * jy;
+          let wave = 22 * Math.sin(u * Math.PI);
+          let px = 25 + u * Math.max(1, width - 50) + 30 * jx;
+          let py = 36 + (i / Math.max(rows - 1, 1)) * Math.max(1, height - 72) - wave + 24 * jy;
 
           particles.push({
-            x: px + 15 * jx,
-            y: py + 15 * jy,
+            x: px + 12 * jx,
+            y: py + 12 * jy,
             vx: 0,
             vy: 0,
             ax: px,
             ay: py,
             mass: 0.8 + 1.6 * hash(idx + 33),
-            radius: 2.8 + 2.0 * hash(idx + 51),
+            radius: 2.0 + 1.4 * hash(idx + 51),
             seed: hash(idx + 77) * Math.PI * 2
           });
 
@@ -204,7 +205,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
           }
 
-          if (i > 0 && h > 0 && hash(idx + 91) > 0.44) {
+          // Diagonales selectivas para mantener la geometría de cuadrícula abierta ("cuadros")
+          if (i > 0 && h > 0 && hash(idx + 91) > 0.68) {
             let diag = idx - cols - 1;
             springs.push({
               a: diag,
@@ -367,8 +369,8 @@ document.addEventListener('DOMContentLoaded', () => {
           ctx.fillRect(0, 0, width, height);
           ctx.restore();
         } else {
-          grad.addColorStop(0, rgba(activeColors.glow, 0.18));
-          grad.addColorStop(0.45, rgba(activeColors.glow, 0.06));
+          grad.addColorStop(0, rgba(activeColors.glow, 0.11));
+          grad.addColorStop(0.45, rgba(activeColors.glow, 0.03));
           grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
           ctx.save();
           ctx.fillStyle = grad;
@@ -377,7 +379,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
 
-      // Conexiones de resortes elásticos
+      // Conexiones de resortes elásticos (más tenues y arquitectónicos)
       ctx.save();
       ctx.lineCap = 'round';
       for (let sp of springs) {
@@ -393,13 +395,13 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.beginPath();
         ctx.moveTo(pA.x, pA.y);
         ctx.lineTo(pB.x, pB.y);
-        ctx.lineWidth = 1.15 + 1.6 * velEnergy + 1.2 * cursorProx;
-        ctx.strokeStyle = rgba(col, 0.36 + 0.28 * velEnergy + 0.42 * cursorProx);
+        ctx.lineWidth = 0.88 + 1.1 * velEnergy + 0.9 * cursorProx;
+        ctx.strokeStyle = rgba(col, 0.18 + 0.16 * velEnergy + 0.30 * cursorProx);
         ctx.stroke();
       }
       ctx.restore();
 
-      // Nodos elásticos de la malla
+      // Nodos elásticos de la malla (más sutiles y elegantes)
       for (let p of particles) {
         let velEnergy = clamp((Math.abs(p.vx) + Math.abs(p.vy)) * 0.2, 0, 1);
         let cursorDist = pointerActive ? Math.hypot(p.x - mouseX, p.y - mouseY) : Infinity;
@@ -408,12 +410,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         ctx.save();
         if (cursorProx > 0 && !reducedMotion) {
-          ctx.shadowColor = rgba(activeColors.hot, 0.90 * cursorProx);
-          ctx.shadowBlur = 16 * cursorProx;
+          ctx.shadowColor = rgba(activeColors.hot, 0.80 * cursorProx);
+          ctx.shadowBlur = 12 * cursorProx;
         }
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius + 1.8 * velEnergy + 2.6 * cursorProx, 0, 2 * Math.PI);
-        ctx.fillStyle = rgba(col, 0.75 + 0.25 * cursorProx);
+        ctx.arc(p.x, p.y, p.radius + 1.1 * velEnergy + 1.8 * cursorProx, 0, 2 * Math.PI);
+        ctx.fillStyle = rgba(col, 0.42 + 0.40 * cursorProx);
         ctx.fill();
         ctx.restore();
       }
