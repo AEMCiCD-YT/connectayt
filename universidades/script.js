@@ -266,7 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
             vy: 0,
             phase: hash(i + 47 * rIdx + 8) * Math.PI * 2,
             ring: rIdx,
-            radius: 2.8 + 2.2 * hash(i + 59 * rIdx + 14)
+            radius: 1.8 + 1.4 * hash(i + 59 * rIdx + 14)
           });
 
           edges.push({
@@ -292,7 +292,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
 
-      // Nodo central de la constelación
+      // Nodo central de la constelación (más tenue y refinado)
       let centerIdx = nodes.length;
       nodes.push({
         x: cx,
@@ -303,7 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
         vy: 0,
         phase: 0.4,
         ring: -1,
-        radius: 6.5
+        radius: 4.2
       });
       for (let i = 0; i < ringSpecs[0].count; i += 2) {
         edges.push({ a: centerIdx, b: ringStarts[0] + i });
@@ -448,12 +448,12 @@ document.addEventListener('DOMContentLoaded', () => {
       // 1. EL RESPLANDOR / BRILLO RADIAL DEL CURSOR (ESTILO FRED TRAJANO MIT)
       // ========================================================
       if (pointerActive && !reducedMotion) {
-        let glowRadius = 320;
+        let glowRadius = 300;
         let grad = ctx.createRadialGradient(mouseX, mouseY, 0, mouseX, mouseY, glowRadius);
         if (currentSceneName === 'ink') {
-          grad.addColorStop(0, rgba(activeColors.glow, 0.46));
-          grad.addColorStop(0.28, rgba(activeColors.glow, 0.20));
-          grad.addColorStop(0.65, rgba(activeColors.glow, 0.05));
+          grad.addColorStop(0, rgba(activeColors.glow, 0.22));
+          grad.addColorStop(0.32, rgba(activeColors.glow, 0.09));
+          grad.addColorStop(0.70, rgba(activeColors.glow, 0.02));
           grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
 
           ctx.save();
@@ -462,8 +462,8 @@ document.addEventListener('DOMContentLoaded', () => {
           ctx.fillRect(0, 0, width, height);
           ctx.restore();
         } else {
-          grad.addColorStop(0, rgba(activeColors.glow, 0.20));
-          grad.addColorStop(0.42, rgba(activeColors.glow, 0.07));
+          grad.addColorStop(0, rgba(activeColors.glow, 0.12));
+          grad.addColorStop(0.42, rgba(activeColors.glow, 0.04));
           grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
 
           ctx.save();
@@ -474,7 +474,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       // ========================================================
-      // 2. ANILLOS ORBITALES DISCONTINUOS (ESTRUCTURA MIT VISIBLE)
+      // 2. ANILLOS ORBITALES DISCONTINUOS (MÁS TENUES Y PRECISOS)
       // ========================================================
       for (let ring of field.rings) {
         ctx.save();
@@ -488,15 +488,15 @@ document.addEventListener('DOMContentLoaded', () => {
           0,
           2 * Math.PI
         );
-        ctx.setLineDash([5, 9]);
-        ctx.lineWidth = 1.25;
-        ctx.strokeStyle = rgba(activeColors.ring, 0.40);
+        ctx.setLineDash([4, 10]);
+        ctx.lineWidth = 0.95;
+        ctx.strokeStyle = rgba(activeColors.ring, 0.18);
         ctx.stroke();
         ctx.restore();
       }
 
       // ========================================================
-      // 3. LÍNEAS DE CONEXIÓN VECTORIAL CON DESTELLO AL CURSOR
+      // 3. LÍNEAS DE CONEXIÓN VECTORIAL (MÁS TENUES Y ELEGANTES)
       // ========================================================
       for (let edge of field.edges) {
         let na = field.nodes[edge.a];
@@ -510,8 +510,8 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.beginPath();
         ctx.moveTo(na.x, na.y);
         ctx.lineTo(nb.x, nb.y);
-        ctx.lineWidth = 1.15 + 1.8 * prox;
-        ctx.strokeStyle = rgba(col, 0.36 + 0.48 * prox);
+        ctx.lineWidth = 0.85 + 0.95 * prox;
+        ctx.strokeStyle = rgba(col, 0.17 + 0.30 * prox);
         ctx.stroke();
       }
 
@@ -525,13 +525,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         ctx.save();
         if (prox > 0) {
-          ctx.shadowColor = rgba(activeColors.hot, 0.95 * prox);
-          ctx.shadowBlur = 18 * prox;
+          ctx.shadowColor = rgba(activeColors.hot, 0.75 * prox);
+          ctx.shadowBlur = 10 * prox;
         }
         ctx.beginPath();
-        let baseRadius = node.ring === -1 ? 6.5 : node.radius;
-        ctx.arc(node.x, node.y, baseRadius + 3.4 * prox, 0, 2 * Math.PI);
-        ctx.fillStyle = rgba(col, 0.72 + 0.28 * prox);
+        let baseRadius = node.ring === -1 ? 4.2 : node.radius;
+        ctx.arc(node.x, node.y, baseRadius + 1.8 * prox, 0, 2 * Math.PI);
+        ctx.fillStyle = rgba(col, 0.38 + 0.42 * prox);
         ctx.fill();
         ctx.restore();
       }
