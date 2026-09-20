@@ -305,8 +305,11 @@ img, svg {
 /* Layout Asimétrico Editorial de 2 Columnas (Fred Trajano) */
 .scene-grid-2col {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: 3rem;
+}
+.scene-grid-2col > * {
+  min-width: 0;
 }
 
 @media (min-width: 1024px) {
@@ -717,16 +720,67 @@ img, svg {
 /* =========================================================
    SECCIÓN 04: SPONSORS & PATROCINIOS (SCENE PAPER)
    ========================================================= */
+.mobile-table-hint {
+  display: none;
+  margin-top: 1.5rem;
+  margin-bottom: -1rem;
+  text-align: right;
+}
+
+.mobile-table-hint span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--purpura-gala);
+  background: var(--purpura-dim);
+  border: 1px solid var(--purpura-border);
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+}
+
+@media (max-width: 860px) {
+  .mobile-table-hint {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
 .table-editorial-wrapper {
+  display: block;
+  width: 100%;
+  max-width: 100%;
   overflow-x: auto;
-  margin-top: 2.5rem;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x pan-y;
+  overscroll-behavior-x: contain;
+  margin-top: 1.75rem;
   border: 1px solid rgba(11, 17, 20, 0.15);
   border-radius: 1.25rem;
   background: #ffffff;
+  position: relative;
+}
+
+.table-editorial-wrapper::-webkit-scrollbar {
+  height: 6px;
+}
+
+.table-editorial-wrapper::-webkit-scrollbar-track {
+  background: rgba(11, 17, 20, 0.05);
+  border-radius: 999px;
+}
+
+.table-editorial-wrapper::-webkit-scrollbar-thumb {
+  background: var(--purpura-gala);
+  border-radius: 999px;
 }
 
 .table-editorial {
   width: 100%;
+  min-width: 680px;
   border-collapse: collapse;
   text-align: left;
   font-size: 0.95rem;

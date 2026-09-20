@@ -652,17 +652,68 @@ img, svg {
 /* =========================================================
    SECCIÓN 03: MODALIDADES COMERCIALES (SCENE PIZARRA)
    ========================================================= */
+.mobile-table-hint {
+  display: none;
+  margin-top: 2rem;
+  margin-bottom: -1.75rem;
+  text-align: right;
+}
+
+.mobile-table-hint span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--azul-ieee);
+  background: rgba(0, 98, 155, 0.08);
+  border: 1px solid rgba(0, 98, 155, 0.22);
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+}
+
+@media (max-width: 860px) {
+  .mobile-table-hint {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
 .b2b-table-container {
+  display: block;
+  width: 100%;
+  max-width: 100%;
   overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x pan-y;
+  overscroll-behavior-x: contain;
   border: 1px solid var(--border-light);
   border-radius: 1.5rem;
   background: #ffffff;
   box-shadow: 0 10px 30px rgba(17, 46, 66, 0.05);
-  margin-top: 3rem;
+  margin-top: 2.5rem;
+  position: relative;
+}
+
+.b2b-table-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.b2b-table-container::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 999px;
+}
+
+.b2b-table-container::-webkit-scrollbar-thumb {
+  background: var(--azul-ieee);
+  border-radius: 999px;
 }
 
 .b2b-table {
   width: 100%;
+  min-width: 760px;
   border-collapse: collapse;
   text-align: left;
 }
