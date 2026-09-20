@@ -1,43 +1,44 @@
 /**
  * Kinetic Aurora & Constellation Network Canvas — Full Page Engine
- * Soporta modos temáticos diferenciados:
- * 1. Default (Hub Conecta YT): Modo oscuro con malla pastel armónica y homogénea
- * 2. dark-pastel (Conecta Universidades): Modo oscuro de gala cálida y botánica
- * 3. corporate (Conecta Empresas): MODO CLARO CORPORATIVO (Zafiro, Cobalto, Cian, Teal, Índigo)
- *    con nodos pigmentados de alta nitidez, conexiones visibles en toda la página y radar interactivo.
+ * Dirección de Arte Editorial: Conecta IEEE YT 2026
+ * Inspiración: Nursing AI Symposium (MIT Critical Data)
+ * 
+ * Modos Temáticos Soportados:
+ * 1. default (Hub Conecta YT & Comités): Red de alta definición en azul IEEE, cobalto, cian y rojo AEMCiCD
+ * 2. corporate (Conecta Empresas): Modo claro corporativo (Cobalto, Zafiro, Cian, Índigo, Teal)
+ * 3. dark-pastel (Conecta Universidades): Modo gala nocturna de alto contraste (Violeta #9d7cb0 y Cian #00bcca)
  */
 
 (function () {
   'use strict';
 
-  // 1. Paleta Pastel Armónica para el Hub Principal (Lila, Lavanda, Cielo, Orquídea y Melocotón)
+  // 1. Paleta Conecta YT Hub & Comités (Azul IEEE, Cobalto, Cian, Púrpura y Rojo AEMCiCD)
   const PALETTE_HUB_PASTEL = [
-    { r: 196, g: 181, b: 253, hex: '#c4b5fd', name: 'Lila Pastel' },
-    { r: 165, g: 180, b: 252, hex: '#a5b4fc', name: 'Lavanda Cósmica Suave' },
-    { r: 147, g: 197, b: 253, hex: '#93c5fd', name: 'Cielo / Bígaro Pastel' },
-    { r: 244, g: 114, b: 182, hex: '#f472b6', name: 'Rosa Orquídea Pastel' },
-    { r: 252, g: 165, b: 165, hex: '#fca5a5', name: 'Rosa Sunset Pastel' },
-    { r: 253, g: 186, b: 116, hex: '#fdba74', name: 'Melocotón Cálido Pastel' },
-    { r: 196, g: 181, b: 253, hex: '#c4b5fd', name: 'Lila Pastel Cierre' }
+    { r: 0,   g: 98,  b: 155, hex: '#00629b', name: 'Azul IEEE' },
+    { r: 2,   g: 132, b: 199, hex: '#0284c7', name: 'Cobalto' },
+    { r: 0,   g: 188, b: 202, hex: '#00bcca', name: 'Cian' },
+    { r: 157, g: 124, b: 176, hex: '#9d7cb0', name: 'Púrpura' },
+    { r: 239, g: 64,  b: 54,  hex: '#ef4036', name: 'Rojo AEMCiCD' },
+    { r: 0,   g: 98,  b: 155, hex: '#00629b', name: 'Azul Cierre' }
   ];
 
-  // 2. Paleta Conecta Universidades — Bicromática #9d7cb0 + #00bcca
+  // 2. Paleta Conecta Universidades — Gala Nocturna #9d7cb0 + #00bcca
   const PALETTE_UNIV_PASTEL = [
-    { r: 157, g: 124, b: 176, hex: '#9d7cb0', name: 'Morado Principal' },
+    { r: 157, g: 124, b: 176, hex: '#9d7cb0', name: 'Morado Gala' },
     { r: 78,  g: 156, b: 189, hex: '#4e9cbd', name: 'Transición Morado→Cian' },
-    { r: 0,   g: 188, b: 202, hex: '#00bcca', name: 'Cian Secundario' },
+    { r: 0,   g: 188, b: 202, hex: '#00bcca', name: 'Cian Técnico' },
     { r: 78,  g: 156, b: 189, hex: '#4e9cbd', name: 'Transición Cian→Morado' },
     { r: 157, g: 124, b: 176, hex: '#9d7cb0', name: 'Morado Cierre' }
   ];
 
-  // 3. Paleta Formal Corporate Tech (Modo Claro) para Conecta Empresas (Cobalto, Zafiro, Cian, Teal, Índigo)
+  // 3. Paleta Formal Corporate Tech para Conecta Empresas (Cobalto, Zafiro, Cian, Teal, Índigo)
   const PALETTE_EMPRESAS_CORPORATE = [
-    { r: 2, g: 132, b: 199, hex: '#0284c7', name: 'Cobalto Corporativo' },
-    { r: 3, g: 105, b: 161, hex: '#0369a1', name: 'Zafiro Profundo' },
-    { r: 8, g: 145, b: 178, hex: '#0891b2', name: 'Cian Tecnológico' },
-    { r: 67, g: 56, b: 202, hex: '#4338ca', name: 'Índigo Real' },
-    { r: 15, g: 118, b: 110, hex: '#0f766e', name: 'Teal Esmeralda' },
-    { r: 2, g: 132, b: 199, hex: '#0284c7', name: 'Cobalto Cierre' }
+    { r: 2,   g: 132, b: 199, hex: '#0284c7', name: 'Cobalto Corporativo' },
+    { r: 3,   g: 105, b: 161, hex: '#0369a1', name: 'Zafiro Profundo' },
+    { r: 8,   g: 145, b: 178, hex: '#0891b2', name: 'Cian Tecnológico' },
+    { r: 67,  g: 56,  b: 202, hex: '#4338ca', name: 'Índigo Real' },
+    { r: 15,  g: 118, b: 110, hex: '#0f766e', name: 'Teal Esmeralda' },
+    { r: 2,   g: 132, b: 199, hex: '#0284c7', name: 'Cobalto Cierre' }
   ];
 
   function interpolateColor(color1, color2, factor) {
@@ -62,8 +63,10 @@
       this.canvas = canvas;
       this.ctx = canvas.getContext('2d');
       this.theme = options.theme || 'default';
-      this.isCorporate = (this.theme === 'corporate');
-      this.isGala = (this.theme === 'dark-pastel');
+      this.isCorporate = (this.theme === 'corporate' || this.theme === 'empresas');
+      this.isGala = (this.theme === 'dark-pastel' || this.theme === 'universidades');
+      this.isComites = (this.theme === 'comites' || this.theme === 'light');
+      this.isLight = (this.isCorporate || this.isComites);
       
       if (this.isGala) {
         this.palette = PALETTE_UNIV_PASTEL;
@@ -79,7 +82,7 @@
       this.mouse = {
         x: -9999,
         y: -9999,
-        radius: this.isCorporate ? 260 : 200,
+        radius: this.isLight ? 250 : 220,
         isActive: false
       };
 
@@ -100,20 +103,22 @@
 
       this.canvas.width = this.width * this.dpr;
       this.canvas.height = this.height * this.dpr;
+      this.canvas.style.width = this.width + 'px';
+      this.canvas.style.height = this.height + 'px';
       this.ctx.scale(this.dpr, this.dpr);
 
-      this.maxDistance = Math.min(this.width, this.height) * (this.isCorporate ? 0.22 : 0.18);
+      this.maxDistance = Math.min(this.width, this.height) * (this.isLight ? 0.22 : 0.20);
       if (this.maxDistance < 130) this.maxDistance = 130;
-      if (this.maxDistance > 200) this.maxDistance = 200;
+      if (this.maxDistance > 210) this.maxDistance = 210;
 
-      this.particleCount = Math.floor((this.width * this.height) / (this.isCorporate ? 9500 : (this.isGala ? 10000 : 13000)));
+      this.particleCount = Math.floor((this.width * this.height) / (this.isLight ? 9800 : (this.isGala ? 10500 : 12000)));
       if (this.particleCount < 70) this.particleCount = 70;
       if (this.particleCount > 150) this.particleCount = 150;
     }
 
     createAuroras() {
       this.auroras = [];
-      const numAuroras = this.isCorporate ? 4 : (this.isGala ? 4 : 3);
+      const numAuroras = this.isLight ? 4 : (this.isGala ? 4 : 3);
       for (let i = 0; i < numAuroras; i++) {
         this.auroras.push({
           x: (this.width / (numAuroras + 1)) * (i + 1),
@@ -129,12 +134,12 @@
     createParticles() {
       this.particles = [];
       for (let i = 0; i < this.particleCount; i++) {
-        const baseRadius = this.isCorporate ? (Math.random() * 1.8 + 2.8) : (this.isGala ? (Math.random() * 1.6 + 2.4) : (Math.random() * 1.2 + 2.0));
+        const baseRadius = this.isLight ? (Math.random() * 1.8 + 2.5) : (this.isGala ? (Math.random() * 1.6 + 2.4) : (Math.random() * 1.2 + 2.0));
         this.particles.push({
           x: Math.random() * this.width,
           y: Math.random() * this.height,
-          vx: (Math.random() - 0.5) * (this.isCorporate ? 0.38 : 0.4),
-          vy: (Math.random() - 0.5) * (this.isCorporate ? 0.38 : 0.4),
+          vx: (Math.random() - 0.5) * 0.38,
+          vy: (Math.random() - 0.5) * 0.38,
           radius: baseRadius,
           phase: Math.random() * Math.PI * 2,
           pulseSpeed: Math.random() * 0.025 + 0.012,
@@ -178,8 +183,8 @@
           const dx = p.x - clickX;
           const dy = p.y - clickY;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 220 && dist > 0) {
-            const force = (1 - dist / 220) * 3.5;
+          if (dist < 240 && dist > 0) {
+            const force = (1 - dist / 240) * 3.5;
             p.vx += (dx / dist) * force;
             p.vy += (dy / dist) * force;
           }
@@ -191,6 +196,7 @@
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => {
           this.resize();
+          this.createAuroras();
           this.createParticles();
         }, 150);
       });
@@ -200,7 +206,7 @@
       this.ctx.clearRect(0, 0, this.width, this.height);
 
       // =========================================================
-      // 1. DIBUJAR AURORAS DE FONDO
+      // 1. DIBUJAR AURORAS DE FONDO SUTILES
       // =========================================================
       for (let i = 0; i < this.auroras.length; i++) {
         const a = this.auroras[i];
@@ -213,7 +219,7 @@
         if (a.y > this.height + 120) a.y = -120;
 
         const auroraColor = getDynamicColor(time, this.palette, a.colorOffset, 0.00025);
-        const auroraAlpha = this.isCorporate ? 0.06 : 0.075;
+        const auroraAlpha = this.isLight ? 0.055 : 0.075;
 
         const radialGrad = this.ctx.createRadialGradient(a.x, a.y, 0, a.x, a.y, a.radius);
         radialGrad.addColorStop(0, `rgba(${auroraColor.r}, ${auroraColor.g}, ${auroraColor.b}, ${auroraAlpha})`);
@@ -244,62 +250,58 @@
         if (p.y < -10) p.y = this.height + 10;
         if (p.y > this.height + 10) p.y = -10;
 
-        // Gradiente espacial continuo armónico
         const spatialProgress = ((p.x / this.width) * 1.5 + (p.y / this.height) * 0.7);
         const pColor = getDynamicColor(time, this.palette, spatialProgress, 0.0003);
 
-        // Interacción con cursor global
+        // Interacción con cursor
         if (this.mouse.isActive) {
           const dx = this.mouse.x - p.x;
           const dy = this.mouse.y - p.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < this.mouse.radius && dist > 0) {
-            const force = (1 - dist / this.mouse.radius) * (this.isCorporate ? 0.95 : 0.65);
+            const force = (1 - dist / this.mouse.radius) * (this.isLight ? 0.95 : 0.65);
             p.vx += (dx / dist) * force * 0.1;
             p.vy += (dy / dist) * force * 0.1;
 
             // Línea luminosa hacia el cursor
-            const lineAlpha = (1 - dist / this.mouse.radius) * (this.isCorporate ? 0.65 : 0.38);
+            const lineAlpha = (1 - dist / this.mouse.radius) * (this.isLight ? 0.65 : 0.45);
             this.ctx.beginPath();
             this.ctx.moveTo(p.x, p.y);
             this.ctx.lineTo(this.mouse.x, this.mouse.y);
             this.ctx.strokeStyle = `rgba(${pColor.r}, ${pColor.g}, ${pColor.b}, ${lineAlpha})`;
-            this.ctx.lineWidth = this.isCorporate ? 1.5 : 1.1;
+            this.ctx.lineWidth = this.isLight ? 1.5 : 1.2;
             this.ctx.stroke();
           }
         }
 
         p.phase += p.pulseSpeed;
-        const currentRadius = p.radius + Math.sin(p.phase) * (this.isCorporate ? 0.7 : 0.4);
+        const currentRadius = p.radius + Math.sin(p.phase) * (this.isLight ? 0.7 : 0.4);
 
-        if (this.isCorporate) {
-          // MODO CLARO CORPORATIVO: Nodos pigmentados de alto contraste
+        if (this.isLight) {
+          // MODO CLARO / PIGMENTADO: Nodos nítidos de alta definición
           const glowAlpha = p.isHighPriority ? 0.28 : 0.18;
           
-          // Halo exterior sutil
           this.ctx.beginPath();
           this.ctx.arc(p.x, p.y, currentRadius * 2.4, 0, Math.PI * 2);
           this.ctx.fillStyle = `rgba(${pColor.r}, ${pColor.g}, ${pColor.b}, ${glowAlpha})`;
           this.ctx.fill();
 
-          // Anillo medio nítido
           this.ctx.beginPath();
           this.ctx.arc(p.x, p.y, currentRadius * 1.5, 0, Math.PI * 2);
           this.ctx.strokeStyle = `rgba(${pColor.r}, ${pColor.g}, ${pColor.b}, 0.70)`;
           this.ctx.lineWidth = 1.2;
           this.ctx.stroke();
 
-          // Núcleo pigmentado brillante de alta definición
           this.ctx.beginPath();
           this.ctx.arc(p.x, p.y, currentRadius, 0, Math.PI * 2);
           this.ctx.fillStyle = `rgb(${pColor.r}, ${pColor.g}, ${pColor.b})`;
           this.ctx.fill();
         } else {
-          // ESTILO HUB & GALA: Halo pastel suave luminoso
-          const glowAlpha = this.isGala ? 0.32 : 0.20;
+          // ESTILO GALA NOCTURNA: Halo pastel suave luminoso
+          const glowAlpha = this.isGala ? 0.35 : 0.22;
           this.ctx.beginPath();
-          this.ctx.arc(p.x, p.y, currentRadius * (this.isGala ? 2.3 : 1.9), 0, Math.PI * 2);
+          this.ctx.arc(p.x, p.y, currentRadius * (this.isGala ? 2.4 : 2.0), 0, Math.PI * 2);
           this.ctx.fillStyle = `rgba(${pColor.r}, ${pColor.g}, ${pColor.b}, ${glowAlpha})`;
           this.ctx.fill();
 
@@ -309,7 +311,7 @@
           this.ctx.fill();
         }
 
-        // Conectar con nodos cercanos
+        // Conexiones entre nodos cercanos
         for (let j = i + 1; j < this.particles.length; j++) {
           const p2 = this.particles[j];
           const dx = p.x - p2.x;
@@ -317,12 +319,12 @@
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < this.maxDistance) {
-            const lineAlpha = (1 - dist / this.maxDistance) * (this.isCorporate ? 0.42 : (this.isGala ? 0.38 : 0.24));
+            const lineAlpha = (1 - dist / this.maxDistance) * (this.isLight ? 0.48 : (this.isGala ? 0.42 : 0.36));
             this.ctx.beginPath();
             this.ctx.moveTo(p.x, p.y);
             this.ctx.lineTo(p2.x, p2.y);
             this.ctx.strokeStyle = `rgba(${pColor.r}, ${pColor.g}, ${pColor.b}, ${lineAlpha})`;
-            this.ctx.lineWidth = this.isCorporate ? 1.15 : (this.isGala ? 1.1 : 0.95);
+            this.ctx.lineWidth = this.isLight ? 1.25 : (this.isGala ? 1.15 : 1.1);
             this.ctx.stroke();
           }
         }
@@ -339,6 +341,7 @@
       canvas = document.createElement('canvas');
       canvas.id = 'globalKineticCanvas';
       canvas.className = 'global-kinetic-canvas';
+      canvas.setAttribute('aria-hidden', 'true');
       document.body.prepend(canvas);
     }
 
