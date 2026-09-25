@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /comites/
+Disallow: /tools/
+Disallow: /scratch/
+Disallow: /visual_analysis/
+
+Sitemap: https://conectayt.com/sitemap.xml

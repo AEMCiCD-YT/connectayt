@@ -1,5 +1,5 @@
 /**
- * Conecta IEEE YT 2026 - Directorio de Comités Organizadores
+ * Conecta YT 2026 - Directorio de Comités Organizadores
  * Script interactivo: Búsqueda en tiempo real, filtros por categoría y navegación
  */
 
