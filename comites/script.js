@@ -1,5 +1,5 @@
-﻿/**
- * Conecta IEEE YT 2026 - Directorio de Comités Organizadores
+/**
+ * Conecta YT 2026 - Directorio de Comités Organizadores
  * Script interactivo: Búsqueda en tiempo real, filtros por categoría y navegación
  */
 
@@ -28,8 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const searchInput = document.getElementById('memberSearch');
   const clearSearchBtn = document.getElementById('clearSearch');
   const filterBtns = document.querySelectorAll('.filter-btn');
-  const committeeSections = document.querySelectorAll('.committee-block');
-  const noResultsBox = document.getElementById('noResultsBox');
+  const committeeSections = document.querySelectorAll('.committee-section-block');
+  const noResultsBox = document.getElementById('noResults');
 
   let activeCategory = 'all';
   let searchTerm = '';
@@ -48,39 +48,26 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // Filtrar subgrupos y tarjetas dentro de esta sección
+      // Filtrar filas de integrantes dentro de esta sección
       let visibleMembersInSection = 0;
-      const subgroups = section.querySelectorAll('.committee-subgroup');
+      const rows = section.querySelectorAll('.roster-row');
 
-      subgroups.forEach(subgroup => {
-        let visibleMembersInSubgroup = 0;
-        const cards = subgroup.querySelectorAll('.member-card');
+      rows.forEach(row => {
+        const name = (row.getAttribute('data-name') || '').toLowerCase();
+        const role = (row.getAttribute('data-role') || '').toLowerCase();
+        const rowText = row.textContent.toLowerCase();
 
-        cards.forEach(card => {
-          const name = (card.getAttribute('data-name') || '').toLowerCase();
-          const role = (card.getAttribute('data-role') || '').toLowerCase();
-          const cardText = card.textContent.toLowerCase();
+        const matchesSearch = !normalizedQuery || 
+                              name.includes(normalizedQuery) || 
+                              role.includes(normalizedQuery) || 
+                              rowText.includes(normalizedQuery);
 
-          const matchesSearch = !normalizedQuery || 
-                                name.includes(normalizedQuery) || 
-                                role.includes(normalizedQuery) || 
-                                cardText.includes(normalizedQuery);
-
-          if (matchesSearch) {
-            card.style.display = '';
-            visibleMembersInSubgroup++;
-            visibleMembersInSection++;
-            totalVisibleMembers++;
-          } else {
-            card.style.display = 'none';
-          }
-        });
-
-        // Ocultar subgrupo si no tiene miembros visibles
-        if (visibleMembersInSubgroup === 0) {
-          subgroup.style.display = 'none';
+        if (matchesSearch) {
+          row.style.display = '';
+          visibleMembersInSection++;
+          totalVisibleMembers++;
         } else {
-          subgroup.style.display = '';
+          row.style.display = 'none';
         }
       });
 
@@ -134,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
       activeCategory = btn.getAttribute('data-filter') || 'all';
       applyFilters();
 
-      // Si seleccionó una sección específica y no está en vista, scroll suave hacia los controles/sección
+      // Si seleccionó una sección específica y no está en vista, scroll suave
       if (activeCategory !== 'all') {
         const targetSection = document.getElementById(activeCategory);
         if (targetSection && targetSection.style.display !== 'none') {
