@@ -41,18 +41,13 @@
   <!-- ===================== TICKER METADATOS ===================== -->
   <aside class="meta-ticker-bar" aria-label="Información oficial del macroevento">
     <div class="meta-ticker-inner">
-      <div class="meta-ticker-left">
+      <div class="meta-ticker-left meta-ticker-left--expanded">
         <span class="meta-ticker-item">
           <span class="meta-ticker-dot"></span>
           Sábado 21 de Noviembre, 2026
         </span>
         <span class="meta-ticker-item">Ibarra, Imbabura, Ecuador</span>
         <span class="meta-ticker-item">IEEE Yachay Tech &amp; AEMCiCD</span>
-      </div>
-      <div class="meta-ticker-right">
-        <a href="#experiencias">Componentes</a>
-        <a href="#partners">Instituciones</a>
-        <a href="comites/index.html">Directorio (+40)</a>
       </div>
     </div>
   </aside>
@@ -80,6 +75,7 @@
       </nav>
     </div>
   </header>
+  <div id="miniCountdown" class="mini-countdown" data-countdown="2026-11-21T10:00:00-05:00" hidden><span data-dd>58</span>:<span data-hh>16</span>:<span data-mm>24</span>:<span data-ss>00</span></div>
 
   <main id="contenido">
     <!-- ===================== HERO MONOGRÁFICO ===================== -->
@@ -90,6 +86,7 @@
         <p class="hero-lead-hub">
           El punto de convergencia donde la excelencia académica se articula con la industria nacional y la integración universitaria. Elige tu perfil y accede al componente correspondiente.
         </p>
+        <div class="hero-countdown" data-countdown="2026-11-21T10:00:00-05:00" aria-label="Cuenta atrás"><span data-dd>58</span>:<span data-hh>16</span>:<span data-mm>24</span>:<span data-ss>00</span></div>
 
         <div class="hero-meta-grid">
           <div class="hero-meta-item">
@@ -121,7 +118,7 @@
           <div class="dual-panel-header">
             <div class="panel-index-badge">Componente 01 / Diurno</div>
             <p class="panel-subtitle">Feria Empresarial &amp; Vinculación Laboral</p>
-            <h2>Conecta Empresas</h2>
+            <img src="assets/logos/svg/Conecta Empresas/ce_logo_hcolor.svg" alt="Conecta Empresas" class="panel-logo-img">
             <p class="panel-desc">
               Cumbre profesional diseñada para conectar a organizaciones líderes con perfiles de ingeniería, salud, agroindustria, ciencia de datos, ciencias aplicadas, gestión de negocios y más áreas del conocimiento del Ecuador.
             </p>
@@ -160,7 +157,7 @@
           <div class="dual-panel-header">
             <div class="panel-index-badge">Componente 02 / Nocturno</div>
             <p class="panel-subtitle">Gala Nocturna &amp; Networking Estudiantil</p>
-            <h2>Conecta Universidades</h2>
+            <img src="assets/logos/svg/Conecta Universidad/cu_logo_hcolor.svg" alt="Conecta Universidades" class="panel-logo-img">
             <p class="panel-desc">
               Gala interuniversitaria exclusiva orientada a reunir a ramas IEEE, directivas estudiantiles, capítulos técnicos y aliados estratégicos en una experiencia semiformal de convergencia nacional.
             </p>
@@ -334,17 +331,14 @@
             <ul>
               <li><a href="comites/index.html">Comités Organizadores</a></li>
               <li><a href="#partners">Instituciones Aliadas</a></li>
-              <li><a href="mailto:contacto@conectayt.com">contacto@conectayt.com</a></li>
-              <li><a href="mailto:empresas@conectayt.com">empresas@conectayt.com</a></li>
-              <li><a href="mailto:universidades@conectayt.com">universidades@conectayt.com</a></li>
             </ul>
           </div>
           <div class="footer-col">
             <h4>Sedes &amp; Fecha</h4>
             <ul>
               <li><span>21 de Noviembre de 2026</span></li>
-              <li><span>Hotel Ajaví — 10h00 a 18h00</span></li>
-              <li><span>Acrópolis — 20h00 a 02h00</span></li>
+              <li><span class="sede-tag sede-ce">CE · Hotel Ajaví — 10h00 a 18h00</span></li>
+              <li><span class="sede-tag sede-cu">CU · Acrópolis — 20h00 a 02h00</span></li>
               <li><span>Ibarra, Imbabura, Ecuador</span></li>
             </ul>
           </div>

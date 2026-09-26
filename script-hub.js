@@ -34,6 +34,35 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Countdown hero + mini (d:h:m:s, 00 si fecha pasada)
+  const pad = (n) => String(n).padStart(2, '0');
+  const tickCountdown = (el) => {
+    const target = new Date(el.dataset.countdown).getTime();
+    let diff = target - Date.now();
+    if (isNaN(diff) || diff < 0) diff = 0;
+    const dd = Math.floor(diff / 864e5);
+    const hh = Math.floor(diff / 36e5) % 24;
+    const mm = Math.floor(diff / 6e4) % 60;
+    const ss = Math.floor(diff / 1e3) % 60;
+    const q = (s) => el.querySelector(`[data-${s}]`);
+    if (q('dd')) q('dd').textContent = pad(dd);
+    if (q('hh')) q('hh').textContent = pad(hh);
+    if (q('mm')) q('mm').textContent = pad(mm);
+    if (q('ss')) q('ss').textContent = pad(ss);
+  };
+  const countdownEls = document.querySelectorAll('[data-countdown]');
+  if (countdownEls.length) {
+    countdownEls.forEach(tickCountdown);
+    setInterval(() => countdownEls.forEach(tickCountdown), 1000);
+  }
+
+  // Mini contador visible cuando el hero sale de pantalla
+  const hero = document.querySelector('.hero-hub');
+  const mini = document.getElementById('miniCountdown');
+  if (hero && mini && 'IntersectionObserver' in window) {
+    new IntersectionObserver(([e]) => { mini.hidden = e.isIntersecting; }).observe(hero);
+  }
+
   // Modal de Términos y Privacidad
   const legalTriggers = document.querySelectorAll('.legal-trigger');
   const legalModal = document.getElementById('legalModal');

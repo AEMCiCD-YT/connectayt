@@ -185,7 +185,7 @@ img, svg {
 }
 
 .brand-logo-img {
-  height: 36px;
+  height: clamp(3.4rem, 5vw, 4.5rem);
   width: auto;
 }
 
@@ -387,7 +387,7 @@ img, svg {
   flex-direction: column;
   justify-content: space-between;
   position: relative;
-  border-radius: 1.75rem;
+  border-radius: 0.75rem;
   background: rgba(255, 255, 255, 0.70);
   backdrop-filter: blur(24px) saturate(180%);
   -webkit-backdrop-filter: blur(24px) saturate(180%);
@@ -451,7 +451,7 @@ img, svg {
 .panel-empresas .btn-editorial {
   background: linear-gradient(135deg, #00629b 0%, #004d7a 100%);
   border: 1px solid rgba(0, 98, 155, 0.3);
-  border-radius: 0.85rem;
+  border-radius: 0.5rem;
   box-shadow: 0 8px 24px rgba(0, 98, 155, 0.25);
 }
 
@@ -499,7 +499,7 @@ img, svg {
 .panel-universidades .btn-editorial {
   background: linear-gradient(135deg, #121824 0%, #201530 100%);
   border: 1px solid rgba(157, 124, 176, 0.35);
-  border-radius: 0.85rem;
+  border-radius: 0.5rem;
   box-shadow: 0 8px 24px rgba(32, 21, 48, 0.30);
 }
 
@@ -969,7 +969,7 @@ img, svg {
 }
 
 .footer-logo-img {
-  height: 38px;
+  height: clamp(3.4rem, 4vw, 4rem);
   width: auto;
   margin-bottom: 1.25rem;
 }
@@ -1120,6 +1120,17 @@ img, svg {
   line-height: 1.6;
   margin-bottom: 1rem;
 }
+
+/* =========================================================
+   LOTE PORTAL: logos paneles, sedes, countdowns
+   ========================================================= */
+.meta-ticker-left--expanded { flex: 1 1 auto; }
+.panel-logo-img{height:clamp(2.8rem,4vw,3.8rem);width:auto;max-width:100%;margin-bottom:1rem;display:block;}
+.sede-tag{display:inline-block;padding:.2rem .6rem;border-radius:.5rem;font-size:.8rem;border:1px solid currentColor;}
+.sede-ce{color:#ef4036;}
+.sede-cu{color:#a855f7;}
+.hero-countdown{display:inline-flex;gap:.35rem;align-items:baseline;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-variant-numeric:tabular-nums;font-size:clamp(1.1rem,2.5vw,1.5rem);font-weight:700;background:var(--bg-dark);color:#fff;border:1px solid var(--border-dark);border-radius:999px;padding:.5rem 1.1rem;margin-bottom:2rem;letter-spacing:.04em;}
+.mini-countdown{position:fixed;top:.75rem;right:.75rem;z-index:999;background:#fff;color:#ef4036;border:1px solid #ef4036;border-radius:.5rem;padding:.35rem .6rem;font-variant-numeric:tabular-nums;}
 
 /* =========================================================
    RESPONSIVE DESIGN

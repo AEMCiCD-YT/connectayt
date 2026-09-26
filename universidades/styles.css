@@ -112,7 +112,7 @@ img, svg {
 }
 
 .brand-logo-img {
-  height: 38px;
+  height: 55px;
   width: auto;
 }
 
@@ -336,6 +336,8 @@ img, svg {
   width: 2rem;
   height: 1px;
 }
+
+.eyebrow-gala{display:block;font-size:1.35em;letter-spacing:.12em;margin-top:.35rem;}
 
 .scene-title {
   font-family: var(--font-display);
@@ -1061,7 +1063,7 @@ img, svg {
 }
 
 .footer-brand-col .footer-logo-img {
-  height: 38px;
+  height: clamp(3.4rem,4vw,4rem);
   width: auto;
   margin-bottom: 1.25rem;
 }

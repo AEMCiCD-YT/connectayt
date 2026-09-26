@@ -212,10 +212,10 @@ img, svg {
   color: var(--text-light);
 }
 .scene-navy .eyebrow-text {
-  color: #38bdf8;
+  color: #ef4036;
 }
 .scene-navy .eyebrow-line {
-  background-color: #38bdf8;
+  background-color: #ef4036;
 }
 .scene-navy .section-title {
   color: #ffffff;
@@ -354,11 +354,11 @@ img, svg {
 .hero-nursing-title .title-italic {
   display: block;
   font-family: var(--font-display);
-  font-style: italic;
-  font-weight: 400;
-  padding-left: 6%;
-  color: var(--azul-ieee);
-  letter-spacing: -0.05em;
+  font-style: normal;
+  font-weight: 700;
+  padding-left: 0;
+  color: var(--slate-navy);
+  letter-spacing: -0.03em;
 }
 
 .hero-nursing-sub {
@@ -429,7 +429,7 @@ img, svg {
   border: 1px solid rgba(17, 46, 66, 0.2);
   background: var(--slate-navy);
   color: var(--text-light);
-  border-radius: 1.6rem;
+  border-radius: 0.5rem;
   box-shadow: 0 24px 70px rgba(17, 46, 66, 0.22);
   overflow: hidden;
 }
@@ -452,13 +452,13 @@ img, svg {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  color: #38bdf8;
+  color: #ef4036;
 }
 .facts-badge-dot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #38bdf8;
+  background: #ef4036;
 }
 
 .facts-grid-inner {
@@ -483,7 +483,7 @@ img, svg {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  color: #38bdf8;
+  color: #ef4036;
   margin-bottom: 0.4rem;
 }
 
@@ -519,7 +519,7 @@ img, svg {
 .pillar-card {
   border: 1px solid var(--slate-navy-border);
   background: var(--slate-navy-card);
-  border-radius: 1.5rem;
+  border-radius: 0.5rem;
   padding: 2.25rem 2rem;
   transition: background var(--duration) var(--ease), transform var(--duration) var(--ease);
 }
@@ -532,7 +532,7 @@ img, svg {
   font-family: var(--font-display);
   font-size: 0.9rem;
   font-weight: 700;
-  color: #38bdf8;
+  color: #ef4036;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -565,6 +565,11 @@ img, svg {
   margin-top: 3.5rem;
 }
 
+/* ponytail: overflow visible en #talento porque overflow:hidden del .section-editorial rompe el sticky */
+#talento.section-editorial {
+  overflow: visible;
+}
+
 @media (min-width: 1024px) {
   .talent-layout-grid {
     grid-template-columns: 0.72fr 1.28fr;
@@ -578,7 +583,7 @@ img, svg {
   top: 6rem;
   background: #f1f5f9;
   border: 1px solid var(--border-light);
-  border-radius: 1.5rem;
+  border-radius: 0.5rem;
   padding: 2.25rem;
 }
 
@@ -690,7 +695,7 @@ img, svg {
   touch-action: pan-x pan-y;
   overscroll-behavior-x: contain;
   border: 1px solid var(--border-light);
-  border-radius: 1.5rem;
+  border-radius: 0.5rem;
   background: #ffffff;
   box-shadow: 0 10px 30px rgba(17, 46, 66, 0.05);
   margin-top: 2.5rem;
@@ -709,51 +714,6 @@ img, svg {
 .b2b-table-container::-webkit-scrollbar-thumb {
   background: var(--azul-ieee);
   border-radius: 999px;
-}
-
-.b2b-table {
-  width: 100%;
-  min-width: 760px;
-  border-collapse: collapse;
-  text-align: left;
-}
-
-.b2b-table th {
-  background: #f8fafc;
-  padding: 1.25rem 1.75rem;
-  font-family: var(--font-display);
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: #475569;
-  border-bottom: 1px solid var(--border-light);
-}
-
-.b2b-table td {
-  padding: 1.4rem 1.75rem;
-  border-bottom: 1px solid var(--border-light);
-  color: #334155;
-  vertical-align: top;
-  font-size: 0.95rem;
-}
-
-.b2b-table tr:last-child td {
-  border-bottom: none;
-}
-
-.modalidad-name {
-  font-family: var(--font-display);
-  font-weight: 700;
-  color: var(--slate-navy);
-  font-size: 1.1rem;
-}
-
-.modalidad-dimension {
-  display: block;
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  margin-top: 0.2rem;
 }
 
 .modalidad-price {
@@ -782,7 +742,7 @@ img, svg {
 
 .ajavi-card {
   border: 1px solid var(--border-light);
-  border-radius: 1.5rem;
+  border-radius: 0.5rem;
   padding: 2.5rem;
   background: #f8fafc;
 }
@@ -828,7 +788,7 @@ img, svg {
   margin-top: 2.75rem;
   background: #ffffff;
   border: 1px solid var(--border-light);
-  border-radius: 1.25rem;
+  border-radius: 0.5rem;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(17, 46, 66, 0.08);
 }
@@ -866,7 +826,7 @@ img, svg {
   font-family: var(--font-display);
   font-size: 0.82rem;
   font-weight: 600;
-  color: #7dd3fc;
+  color: #ef4036;
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
@@ -911,7 +871,7 @@ img, svg {
 .b2b-channels-card {
   border: 1px solid var(--slate-navy-border);
   background: var(--slate-navy-card);
-  border-radius: 1.5rem;
+  border-radius: 0.5rem;
   padding: 2.5rem;
 }
 
@@ -933,7 +893,7 @@ img, svg {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: #38bdf8;
+  color: #ef4036;
   margin-bottom: 0.35rem;
 }
 
@@ -943,14 +903,14 @@ img, svg {
   color: #ffffff;
 }
 .channel-val a:hover {
-  color: #38bdf8;
+  color: #ef4036;
 }
 
 .btn-whatsapp-b2b {
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  background: #25d366;
+  background: #ef4036;
   color: #0b1e2c;
   padding: 0.95rem 1.85rem;
   border-radius: 999px;
@@ -961,7 +921,7 @@ img, svg {
   transition: transform var(--duration) var(--ease), background var(--duration) var(--ease);
 }
 .btn-whatsapp-b2b:hover {
-  background: #20ba59;
+  background: #c93329;
   transform: translateY(-1px);
 }
 
@@ -1028,9 +988,9 @@ img, svg {
   transition: all var(--duration) var(--ease);
 }
 .social-icon-btn:hover {
-  border-color: #38bdf8;
-  color: #38bdf8;
-  background: rgba(56, 189, 248, 0.1);
+  border-color: #ef4036;
+  color: #ef4036;
+  background: rgba(239, 64, 54, 0.1);
 }
 
 .footer-nav-cols {
